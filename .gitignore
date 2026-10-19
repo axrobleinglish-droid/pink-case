@@ -1,0 +1,12 @@
+# Archivos del sistema y editores
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Herramental de la plataforma de publicación (no forma parte del sitio)
+.harness/
+audits/
+.space-build/
+.space-build-cvm/
+space.json
