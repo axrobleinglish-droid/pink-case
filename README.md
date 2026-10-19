@@ -23,20 +23,20 @@ Convertir esta página en el canal digital de Pink Case que replique la asesorí
 5. Generar confianza con asesoras reales, fotos de los locales, garantía de micas con seguro y enlace a la página de Facebook.
 6. Mantener la página rápida, mobile-first y 100% estática: sin backend, sin base de datos y sin dependencias externas que puedan fallar.
 
-## Limitaciones: lo que esta página no puede llevar
+## Limitaciones técnicas: lo que una página pública estática no puede hacer
 
-Reglas que se cumplen en cada publicación. Nada de esto puede aparecer en una página publicada para Pink Case:
+Reglas técnicas que se cumplen en cada publicación. Esta página es 100% estática (sin servidor ni base de datos), y eso impone lo siguiente:
 
-1. **Datos personales de clientas**: ni nombres, ni teléfonos, ni capturas de conversaciones de WhatsApp.
-2. **Precios inventados**: solo se publican rangos y precios reales del negocio.
-3. **Inventario en tiempo real**: la página es estática y no puede prometer disponibilidad garantizada ni existencias actualizadas.
-4. **Fotos ajenas**: solo imágenes del negocio o autorizadas expresamente por Axel.
-5. **Formularios de datos personales**: no hay backend donde guardarlos ni aviso de privacidad que los respalde.
-6. **Cambios en Facebook**: esta página no publica ni modifica nada en la página de Facebook del negocio.
-7. **Rastreadores de terceros**: ningún script de analítica, píxel o publicidad sin aprobación explícita.
-8. **Dependencia de internet para lo esencial**: fuentes, estilos e imágenes van autohospedados; la página debe verse bien aun con conexión lenta.
-9. **Promesas incumplibles**: nada de envíos, entregas o tiempos que el negocio no pueda cumplir.
-10. **Tono ajeno a la marca**: nada de faltas de ortografía ni textos que no suenen a Pink Case.
+1. **Sin backend, sin base de datos**: nada se guarda en un servidor. No hay registro de pedidos, usuarios ni inventario centralizado.
+2. **Sin inventario en tiempo real**: la página no puede prometer existencias. La disponibilidad siempre se confirma por WhatsApp.
+3. **Sin pagos en línea**: no hay pasarela de pago ni cobro automático. El cierre de la venta es por WhatsApp.
+4. **Sin cuentas de usuario**: todo lo que la página "recuerda" (el pedido en curso) vive en el navegador del visitante (`localStorage`) y se pierde si cambia de dispositivo o borra sus datos.
+5. **Todo el código es público**: cualquiera puede ver el HTML y el JavaScript. Nunca se ponen claves, tokens, números privados ni datos sensibles en el código.
+6. **Sin envíos automáticos**: la página no manda correos, SMS ni mensajes de WhatsApp por sí sola; solo abre el chat con el mensaje pre-llenado y la clienta presiona enviar.
+7. **Formularios limitados**: sin servidor no hay a dónde mandar los datos de un formulario; solo sirven para armar el mensaje del pedido.
+8. **Fotos optimizadas**: el hosting estático sirve los archivos tal cual; cada imagen debe pesar poco para que la página cargue rápido en celulares con datos limitados.
+9. **Cambios manuales**: precios, productos y textos solo se actualizan editando el código y volviendo a publicar. No hay panel de administración.
+10. **Una sola vista previa para compartir**: sin servidor no se generan vistas previas distintas por producto; toda la página comparte el mismo título, descripción e imagen al compartirse en redes.
 
 ## Tecnología
 
