@@ -276,7 +276,7 @@
               Modelo de Teléfono
             </label>
 <div class="flex flex-col gap-2">
-<input class="w-full px-4 py-2.5 rounded-xl bg-surface-2 border border-white/10 text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none focus:border-pink-primary focus:ring-1 focus:ring-pink-primary transition-colors" id="model-input" placeholder="Ej. iPhone 15, Galaxy A36, Moto G85" type="text" value="iPhone 15"/>
+<input class="w-full px-4 py-2.5 rounded-xl bg-surface-2 border border-white/10 text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none focus:border-pink-primary focus:ring-1 focus:ring-pink-primary transition-colors" id="model-input" autocomplete="off" placeholder="Ej. iPhone 15, Galaxy A36, Moto G85" type="text" value="iPhone 15"/>
 <div class="flex items-center gap-1.5 flex-wrap pt-1" id="model-chips"></div>
 <div class="flex items-center gap-1.5 flex-wrap pt-1">
 <span class="font-archivo text-xs text-text-muted">Sugerencias:</span>
@@ -330,6 +330,10 @@
 <span class="material-symbols-outlined text-pink-primary text-[19px]">bolt</span>
 <span>Confirmamos modelos exactos en mostrador en menos de 15 minutos.</span>
 </div>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-surface-2 hover:bg-surface-3 border border-white/10 text-text-muted hover:text-white font-unbounded text-xs sm:text-sm transition-all" id="btn-reset-advisor" type="button">
+<span class="material-symbols-outlined text-[17px]">restart_alt</span>
+<span>Limpiar selección</span>
+</button>
 <button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-pink-primary hover:bg-pink-hover text-white font-unbounded text-xs sm:text-sm font-semibold pink-glow-sm transition-all" id="btn-show-suggestions" type="button">
 <span class="material-symbols-outlined text-[18px]">travel_explore</span>
 <span>Ver opciones sugeridas</span>
@@ -616,7 +620,7 @@
             <span class="font-unbounded text-lg text-white font-extrabold">${money(p.price)}</span>
             <span class="block font-archivo text-[11px] text-text-muted">Precio en mostrador</span>
           </div>
-          <button class="px-3 py-2 rounded-xl bg-pink-primary/10 hover:bg-pink-primary border border-pink-500/30 text-pink-light hover:text-white transition-all flex items-center gap-1.5 font-unbounded text-[11px] font-semibold" onclick="addToInquiry('${p.code}')" title="Añadir a mi consulta" type="button">
+          <button class="add-btn px-3 py-2 rounded-xl bg-pink-primary/10 hover:bg-pink-primary border border-pink-500/30 text-pink-light hover:text-white transition-all flex items-center gap-1.5 font-unbounded text-[11px] font-semibold" data-code="${p.code}" onclick="toggleInquiry('${p.code}')" title="Añadir o quitar de mi consulta" type="button">
             <span class="material-symbols-outlined text-[17px]">add_shopping_cart</span><span>+ Consulta</span>
           </button>
         </div>
@@ -627,6 +631,7 @@
       const grid = document.getElementById("product-grid");
       grid.innerHTML = list.map(cardHTML).join("");
       document.getElementById("catalog-empty").classList.toggle("hidden", list.length > 0);
+      refreshCardButtons();
     }
 
     function filterCatalog(cat) {
@@ -686,13 +691,6 @@
     let inquiryItems = [];
     let folio = null;
     function newFolio() { return "PC-" + Math.random().toString(36).slice(2, 6).toUpperCase(); }
-    function saveState() { try { localStorage.setItem("pc_consulta", JSON.stringify({ items: inquiryItems, folio })); } catch (e) {} }
-    function loadState() {
-      try {
-        const s = JSON.parse(localStorage.getItem("pc_consulta") || "null");
-        if (s && Array.isArray(s.items)) { inquiryItems = s.items.filter(i => byCode[i.code]); folio = s.folio || null; }
-      } catch (e) {}
-    }
     function shareHash() {
       const payload = { f: folio, items: inquiryItems.map(i => [i.code, i.qty]) };
       const b64 = btoa(unescape(encodeURIComponent(JSON.stringify(payload)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -713,7 +711,7 @@
           </div>`;
         if (totalElement) totalElement.innerText = "$0 MXN";
         updateHeaderBadge(0);
-        saveState();
+        refreshCardButtons();
         return;
       }
       let total = 0, units = 0;
@@ -746,7 +744,7 @@
           <p class="font-archivo text-xs text-text-muted">Folio de tu lista: <strong class="text-pink-light">${folio}</strong> · Compártela con esta liga: <button type="button" class="underline text-pink-light" onclick="copyShareLink()">copiar liga de mi lista</button></p>`;
       if (totalElement) totalElement.innerText = money(total) + " MXN";
       updateHeaderBadge(units);
-      saveState();
+      refreshCardButtons();
     }
 
     function updateHeaderBadge(count) {
@@ -760,6 +758,31 @@
       if (!folio) folio = newFolio();
       renderInquiry();
       document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    function toggleInquiry(code) {
+      const idx = inquiryItems.findIndex(i => i.code === code);
+      if (idx > -1) { inquiryItems.splice(idx, 1); renderInquiry(); }
+      else addToInquiry(code);
+    }
+    function refreshCardButtons() {
+      document.querySelectorAll(".add-btn").forEach(btn => {
+        const inList = inquiryItems.some(i => i.code === btn.dataset.code);
+        btn.innerHTML = inList
+          ? '<span class="material-symbols-outlined text-[17px]">check</span><span>En tu lista</span>'
+          : '<span class="material-symbols-outlined text-[17px]">add_shopping_cart</span><span>+ Consulta</span>';
+        btn.classList.toggle("bg-pink-primary", inList);
+        btn.classList.toggle("text-white", inList);
+        btn.classList.toggle("bg-pink-primary/10", !inList);
+        btn.classList.toggle("text-pink-light", !inList);
+      });
+    }
+    function resetAdvisor() {
+      document.querySelector('.brand-btn[data-brand="iPhone"]')?.click();
+      const input = document.getElementById("model-input");
+      if (input) input.value = "";
+      document.querySelectorAll(".style-chip").forEach(c => { c.classList.remove("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold"); c.classList.add("bg-surface-2", "border-white/10", "text-text-muted"); });
+      filterCatalog("all");
+      updateSuggestion();
     }
     function updateQty(index, change) {
       if (!inquiryItems[index]) return;
@@ -827,9 +850,12 @@
       const styleChips = document.querySelectorAll(".style-chip");
       styleChips.forEach(chip => {
         chip.addEventListener("click", () => {
+          const wasActive = chip.classList.contains("active");
           styleChips.forEach(c => { c.classList.remove("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold"); c.classList.add("bg-surface-2", "border-white/10", "text-text-muted"); });
-          chip.classList.add("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold");
-          chip.classList.remove("bg-surface-2", "border-white/10", "text-text-muted");
+          if (!wasActive) {
+            chip.classList.add("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold");
+            chip.classList.remove("bg-surface-2", "border-white/10", "text-text-muted");
+          }
           updateSuggestion();
         });
       });
@@ -842,9 +868,9 @@
       });
       document.getElementById("model-input")?.addEventListener("input", updateSuggestion);
       document.getElementById("btn-show-suggestions")?.addEventListener("click", showSuggestions);
+      document.getElementById("btn-reset-advisor")?.addEventListener("click", resetAdvisor);
 
       const fromShared = loadFromHash();
-      if (!fromShared) loadState();
       renderFilters();
       renderGrid(PRODUCTS);
       renderModelChips();
