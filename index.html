@@ -123,7 +123,7 @@
 <body class="bg-cyber-dark font-archivo text-[#f1e9ed] antialiased selection:bg-pink-primary selection:text-white">
 <!-- 1. HEADER (Glassmorphism & Fixed Navigation) -->
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0608]/85 border-b border-pink-500/15 transition-all">
-<div class="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 lg:py-0 lg:h-16 flex flex-wrap items-center justify-between gap-3 lg:gap-4">
 <!-- Brand & Local Badge -->
 <div class="flex items-center gap-3">
 <a class="flex items-center gap-2.5 group focus:outline-none" href="#">
@@ -138,12 +138,11 @@
 </div>
 </div>
 <!-- Navigation Links -->
-<nav class="hidden lg:flex items-center gap-7">
-<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#asesoria">Asesoría Guiada</a>
-<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#catalogo">Catálogo Físico</a>
-<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#visitanos">Visítanos</a>
-<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#pedido">Preguntas / FAQ</a>
-</nav>
+<div class="relative flex-1 w-full order-3 lg:order-none lg:w-auto max-w-xl mx-auto">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-pink-primary text-[22px]">search</span>
+<input autocomplete="off" class="w-full pl-12 pr-12 py-2.5 rounded-2xl bg-white border-2 border-pink-primary shadow-[0_0_20px_rgba(255,46,136,0.45)] focus:ring-2 focus:ring-pink-primary text-gray-900 placeholder:text-gray-500 font-archivo text-sm font-medium focus:outline-none transition-colors" id="catalog-search" placeholder="Busca tu modelo o producto: A36, iPhone 13, mica, audífonos…" type="text"/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-200 border border-gray-300 text-gray-700 text-sm leading-none items-center justify-center" id="catalog-search-clear" onclick="clearSearch()" title="Limpiar búsqueda" type="button">×</button>
+</div>
 <!-- Action Area -->
 <div class="flex items-center gap-3">
 <a class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs sm:text-sm font-unbounded text-white hover:text-pink-primary transition-all" href="#catalogo">
@@ -162,16 +161,7 @@
 </div>
 </header>
 <!-- MAIN WRAPPER (Scroll Nativo Fluido) -->
-<main class="w-full pt-16 bg-cyber-dark">
-<div class="sticky top-16 z-40 bg-[#0a0608]/90 backdrop-blur-md border-b border-pink-500/15">
-<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-<div class="relative">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
-<input autocomplete="off" class="w-full pl-12 pr-12 py-3 rounded-2xl bg-surface-1 border border-white/10 focus:border-pink-primary focus:ring-1 focus:ring-pink-primary text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none transition-colors" id="catalog-search" placeholder="Busca tu modelo o producto: A36, iPhone 13, mica, audífonos…" type="text"/>
-<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-surface-3 border border-white/15 text-white text-sm leading-none items-center justify-center" id="catalog-search-clear" onclick="clearSearch()" title="Limpiar búsqueda" type="button">×</button>
-</div>
-</div>
-</div>
+<main class="w-full pt-[7.75rem] lg:pt-16 bg-cyber-dark">
 <!-- 2. HERO SECTION -->
 <div class="relative w-full overflow-hidden">
 <!-- Glow ambient background -->
@@ -193,7 +183,7 @@
             </p>
 <!-- CTAs -->
 <div class="flex flex-wrap items-center gap-3.5 pt-2 w-full sm:w-auto">
-<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-pink-primary hover:bg-pink-hover text-white font-unbounded text-xs sm:text-sm font-semibold pink-glow transition-all hover:-translate-y-0.5 active:translate-y-0" href="#asesoria">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-pink-primary hover:bg-pink-hover text-white font-unbounded text-xs sm:text-sm font-semibold pink-glow transition-all hover:-translate-y-0.5 active:translate-y-0" href="#catalogo">
 <span class="material-symbols-outlined text-[19px]">tune</span>
 <span>Encuentra opciones para tu modelo</span>
 </a>
@@ -231,147 +221,7 @@
 </div>
 </section>
 </div>
-<!-- 3. ASESORÍA RÁPIDA INTERACTIVA (#asesoria) -->
-<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 scroll-mt-20" id="asesoria">
-<div class="flex flex-col gap-2 mb-8">
-<div class="flex items-center gap-2">
-<span class="font-unbounded text-xs tracking-wider uppercase text-pink-primary font-bold">Asistente Interactivo</span>
-<span class="w-8 h-px bg-pink-primary/40"></span>
-</div>
-<h2 class="font-unbounded text-2xl sm:text-3xl font-bold text-white">Asesoría Rápida para tu Dispositivo</h2>
-<p class="font-archivo text-sm sm:text-base text-text-muted max-w-2xl">Ahorra tiempo y viajes en vano. Selecciona tu marca, escribe tu modelo y te mostramos las opciones con stock disponible para probar en tienda física hoy mismo.</p>
-</div>
-<!-- Stepper Enmarcado UX -->
-<div class="p-6 md:p-8 rounded-2xl bg-surface-1 border border-pink-500/20 shadow-xl flex flex-col gap-7">
-<!-- Indicator Header -->
-<div class="flex items-center justify-between gap-2 border-b border-white/10 pb-4">
-<div class="flex items-center gap-3">
-<span class="w-7 h-7 rounded-full bg-pink-primary text-white font-unbounded text-xs flex items-center justify-center font-bold">1</span>
-<span class="font-unbounded text-sm sm:text-base text-white">Configura tu consulta en 3 pasos</span>
-</div>
-<span class="font-archivo text-xs px-3 py-1 rounded-full bg-surface-2 border border-pink-500/30 text-pink-light font-medium" id="step-badge">Paso 1 de 3</span>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-<!-- Paso 1: Marca (Chips Clicables) -->
-<div class="flex flex-col gap-3">
-<label class="font-archivo text-sm font-semibold text-white flex items-center gap-2">
-<span class="w-5 h-5 rounded-full bg-surface-3 text-pink-primary text-xs flex items-center justify-center font-bold">1</span>
-              Selecciona tu Marca
-            </label>
-<div class="grid grid-cols-2 gap-2" id="brand-selector">
-<button class="brand-btn p-2.5 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/40 hover:text-white font-archivo text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all" data-brand="iPhone" type="button">
-<span class="material-symbols-outlined text-[17px]">smartphone</span>
-<span>iPhone</span>
-</button>
-<button class="brand-btn p-2.5 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/40 hover:text-white font-archivo text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all" data-brand="Samsung" type="button">
-<span class="material-symbols-outlined text-[17px]">phone_android</span>
-<span>Samsung</span>
-</button>
-<button class="brand-btn p-2.5 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/40 hover:text-white font-archivo text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all" data-brand="Motorola" type="button">
-<span class="material-symbols-outlined text-[17px]">devices</span>
-<span>Motorola</span>
-</button>
-<button class="brand-btn p-2.5 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/40 hover:text-white font-archivo text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all" data-brand="Honor" type="button">
-<span class="material-symbols-outlined text-[17px]">mobile_friendly</span>
-<span>Honor</span>
-</button>
-</div>
-<p class="font-archivo text-[11px] text-text-muted">¿Tu marca no está? Las <strong class="text-pink-light">micas son para cualquier modelo</strong>: se cortan a la medida en el local.</p>
-</div>
-<!-- Paso 2: Modelo + Sugerencias Rápidas -->
-<div class="flex flex-col gap-3">
-<label class="font-archivo text-sm font-semibold text-white flex items-center gap-2" for="model-input">
-<span class="w-5 h-5 rounded-full bg-surface-3 text-pink-primary text-xs flex items-center justify-center font-bold">2</span>
-              Modelo de Teléfono
-            </label>
-<div class="flex flex-col gap-2">
-<input class="w-full px-4 py-2.5 rounded-xl bg-surface-2 border border-white/10 text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none focus:border-pink-primary focus:ring-1 focus:ring-pink-primary transition-colors" id="model-input" autocomplete="off" placeholder="Ej. iPhone 15, Galaxy A36, Moto G85" type="text"/>
-<div class="flex items-center gap-1.5 flex-wrap pt-1" id="model-chips"></div>
-<div class="flex items-center gap-1.5 flex-wrap pt-1">
-<span class="font-archivo text-xs text-text-muted">Sugerencias:</span>
-<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('iPhone 15')" type="button">iPhone 15</button>
-<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('Galaxy A36')" type="button">Galaxy A36</button>
-<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('Moto G85')" type="button">Moto G85</button>
-<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('Honor X9b')" type="button">Honor X9b</button>
-</div>
-</div>
-</div>
-<!-- Paso 3: Estilo & Chips rápidos -->
-<div class="flex flex-col gap-3">
-<label class="font-archivo text-sm font-semibold text-white flex items-center gap-2">
-<span class="w-5 h-5 rounded-full bg-surface-3 text-pink-primary text-xs flex items-center justify-center font-bold">3</span>
-              Estilo Preferido &amp; Tono
-            </label>
-<div class="flex flex-col gap-2">
-<!-- Chips rápidos de estilo -->
-<div class="grid grid-cols-2 gap-2" id="style-chips">
-<button class="style-chip p-2 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/30 text-xs font-archivo text-left" data-style="Uso Rudo" type="button">
-                  🛡️ Uso Rudo
-                </button>
-<button class="style-chip p-2 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/30 text-xs font-archivo text-left" data-style="Silicona Suave" type="button">
-                  ☁️ Silicona Suave
-                </button>
-<button class="style-chip p-2 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/30 text-xs font-archivo text-left" data-style="MagSafe" type="button">
-                  ⚡ MagSafe
-                </button>
-<button class="style-chip p-2 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/30 text-xs font-archivo text-left" data-style="Glitter Boutique" type="button">
-                  ✨ Glitter Boutique
-                </button>
-</div>
-<!-- Selector tradicional sincronizado -->
-<input id="style-select" type="hidden" value="Uso Rudo antichoque"/>
-<!-- Preferencia de color -->
-<div class="flex items-center gap-2 pt-1">
-<span class="font-archivo text-xs text-text-muted">Color preferido:</span>
-<div class="flex items-center gap-2">
-<button class="color-dot w-5 h-5 rounded-full bg-black" title="Negro" type="button"></button>
-<button class="color-dot w-5 h-5 rounded-full bg-[#ff2e93]" title="Rosa Cyber" type="button"></button>
-<button class="color-dot w-5 h-5 rounded-full bg-[#49709c]" title="Azul" type="button"></button>
-<button class="color-dot w-5 h-5 rounded-full bg-[#3a3336]" title="Transparente / Humo" type="button"></button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Action & Feedback -->
-<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
-<div class="flex items-center gap-2 text-text-muted text-xs sm:text-sm">
-<span class="material-symbols-outlined text-pink-primary text-[19px]">bolt</span>
-<span>Confirmamos modelos exactos en mostrador en menos de 15 minutos.</span>
-</div>
-<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-surface-2 hover:bg-surface-3 border border-white/10 text-text-muted hover:text-white font-unbounded text-xs sm:text-sm transition-all" id="btn-reset-advisor" type="button">
-<span class="material-symbols-outlined text-[17px]">restart_alt</span>
-<span>Limpiar selección</span>
-</button>
-<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-pink-primary hover:bg-pink-hover text-white font-unbounded text-xs sm:text-sm font-semibold pink-glow-sm transition-all" id="btn-show-suggestions" type="button">
-<span class="material-symbols-outlined text-[18px]">travel_explore</span>
-<span>Ver opciones sugeridas</span>
-</button>
-</div>
-<!-- Dynamic Suggestion Display -->
-<div class="p-4 rounded-xl bg-surface-2 border border-pink-500/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4" id="suggestion-box">
-<div class="flex items-start gap-3">
-<div class="w-9 h-9 rounded-lg bg-pink-primary/10 border border-pink-primary/30 text-pink-primary flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-[20px]">recommend</span>
-</div>
-<div class="flex flex-col">
-<span class="font-unbounded text-sm sm:text-base font-bold text-white" id="suggestion-headline">Opciones recomendadas para iPhone 15</span>
-<span class="font-archivo text-xs sm:text-sm text-text-muted" id="suggestion-subline">Estilo: Uso Rudo (iPhone). Stock listo para verificar en Ixtlahuaca Centro.</span>
-</div>
-</div>
-<a class="px-4 py-2 rounded-xl bg-surface-3 hover:bg-pink-primary hover:text-white border border-pink-500/30 text-pink-light font-unbounded text-xs whitespace-nowrap transition-all" href="#catalogo">
-            Filtrar Catálogo Abajo ↓
-          </a>
-</div>
-<!-- Transparency disclaimer UX -->
-<div class="p-3.5 rounded-xl bg-cyber-dark border border-white/5 text-xs text-text-muted flex items-start gap-2.5">
-<span class="material-symbols-outlined text-pink-primary/70 text-[18px] shrink-0">verified_user</span>
-<p class="leading-relaxed font-archivo">
-<strong class="text-white font-semibold">Aviso de transparencia UX:</strong> Resultados orientativos. Nuestro equipo valida disponibilidad y compatibilidad física directamente en mostrador o WhatsApp.
-          </p>
-</div>
-</div>
-</section>
+
 <!-- 4. CATÁLOGO DE PRODUCTOS EN EXHIBICIÓN (#catalogo) -->
 <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 scroll-mt-20" id="asesoria-humana">
 <div class="rounded-3xl bg-surface-1 border border-pink-500/20 p-6 sm:p-10 grid md:grid-cols-[300px_1fr] gap-8 items-center">
@@ -615,7 +465,7 @@
 <div class="flex items-center gap-4">
 <a class="hover:text-pink-light transition-colors" href="#visitanos">Ubicación</a>
 <span class="opacity-30">•</span>
-<a class="hover:text-pink-light transition-colors" href="#asesoria">Compatibilidad</a>
+<a class="hover:text-pink-light transition-colors" href="#catalogo">Compatibilidad</a>
 <span class="opacity-30">•</span>
 <a class="hover:text-pink-light transition-colors" href="#pedido">Garantía Mostrador</a>
 </div>
@@ -1016,8 +866,6 @@
         const fromShared = loadFromHash();
         renderFilters();
         renderGrid(PRODUCTS);
-        renderModelChips();
-        updateSuggestion();
         renderInquiry();
         if (fromShared) setTimeout(() => document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }), 450);
       }
