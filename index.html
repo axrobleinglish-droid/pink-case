@@ -639,8 +639,6 @@
       document.getElementById("pm-line").textContent = p.line || "";
       document.getElementById("pm-sub").textContent = p.sub || "";
       document.getElementById("pm-price").textContent = money(p.price);
-      const fb = Math.round(p.price * 0.8);
-      document.getElementById("pm-fb").innerHTML = 'Precio por Facebook: <strong class="text-white">' + money(fb) + '</strong> · te ahorras ' + money(p.price - fb);
       const chips = [];
       if (p.cat === "fundas") { const ms = (p.modelos && p.modelos.length) ? p.modelos : (p.model ? [p.model] : []); ms.forEach(m => chips.push(p.brand + " " + m)); }
       else if (p.brand) { chips.push(p.brand + (p.model ? " " + p.model : "")); }
@@ -648,7 +646,8 @@
       document.getElementById("pm-models").innerHTML = chips.map(c => `<span class="px-2.5 py-1 rounded-full bg-surface-2 border border-pink-500/25 text-pink-light font-archivo text-[11px] font-semibold">${c}</span>`).join("");
       mw.classList.toggle("hidden", chips.length === 0);
       const addBtn = document.getElementById("pm-add"); addBtn.dataset.code = code;
-      document.getElementById("pm-wa").href = "https://wa.me/527121654968?text=" + encodeURIComponent("Hola, me interesa este producto: " + p.name + " (" + money(p.price) + "). ¿Sigue disponible?");
+      const prodLink = "https://pinkcasemovil.github.io/pink-case/#lista=" + btoa(unescape(encodeURIComponent(JSON.stringify({ items: [[p.code, 1]] })))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+      document.getElementById("pm-wa").href = "https://wa.me/527121654968?text=" + encodeURIComponent("Hola, me interesa este producto: " + p.name + " (" + money(p.price) + "). ¿Sigue disponible?\nVer el producto: " + prodLink);
       pmResetZoom();
       document.getElementById("product-modal").classList.remove("hidden");
       document.body.style.overflow = "hidden";
@@ -936,7 +935,6 @@
 <div class="p-4 rounded-xl bg-surface-2 border border-pink-500/20">
 <span class="font-unbounded text-3xl text-white font-extrabold" id="pm-price"></span>
 <span class="block font-archivo text-[11px] text-text-muted mt-0.5">Precio en mostrador</span>
-<p class="font-archivo text-xs text-text-muted mt-2" id="pm-fb"></p>
 </div>
 <div id="pm-models-wrap">
 <span class="font-archivo text-xs text-text-muted font-semibold">Compatible con:</span>
