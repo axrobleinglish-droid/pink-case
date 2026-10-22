@@ -1,1779 +1,845 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="dark" />
-    <link rel="icon" href="assets/logo.jpg" />
-    <title>Pink Case Móvil — Encuentra tu funda ideal</title>
-    <link rel="preload" href="assets/fonts/unbounded-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <style>
-      /* ---------- Fuentes autohospedadas (woff2 variables, subset latino) ---------- */
-      @font-face {
-        font-family: "Archivo";
-        src: url("assets/fonts/archivo-latin.woff2") format("woff2");
-        font-weight: 100 900;
-        font-style: normal;
-        font-display: swap;
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-      @font-face {
-        font-family: "Archivo";
-        src: url("assets/fonts/archivo-latin-ext.woff2") format("woff2");
-        font-weight: 100 900;
-        font-style: normal;
-        font-display: swap;
-        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-      @font-face {
-        font-family: "Unbounded";
-        src: url("assets/fonts/unbounded-latin.woff2") format("woff2");
-        font-weight: 200 900;
-        font-style: normal;
-        font-display: swap;
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-      @font-face {
-        font-family: "Unbounded";
-        src: url("assets/fonts/unbounded-latin-ext.woff2") format("woff2");
-        font-weight: 200 900;
-        font-style: normal;
-        font-display: swap;
-        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-      }
-      :root {
-        color-scheme: dark;
-        --bg: #0a0608;
-        --surface: #171016;
-        --surface-2: #241019;
-        --ink: #fdf3f7;
-        --muted: #dcb7cb;
-        --line: #452433;
-        --brand: #ff2e93;
-        --brand-dark: #ff5cab;
-        --brand-fill: #d6006f;
-        --brand-fill-hover: #bd0063;
-        --brand-soft: #33101f;
-        --gold: #eec25e;
-        --gold-bg: #3a2f10;
-        --wa: #0b7a43;
-        --wa-dark: #0a6e3b;
-        --fb: #1667d9;
-        --fb-dark: #0f56b8;
-        --shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
-        --glow: 0 0 10px rgba(255, 46, 147, 0.20);
-        --glow-strong: 0 0 18px rgba(255, 46, 147, 0.50), 0 0 42px rgba(255, 46, 147, 0.22);
-        --radius: 18px;
-        --fs-h1: clamp(1.6rem, 4.8vw, 3rem);
-        --fs-h2: clamp(1.3rem, 3.4vw, 2rem);
-        --fs-h3: clamp(1.1rem, 2.8vw, 1.45rem);
-      }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      @media (prefers-reduced-motion: reduce) {
-        html { scroll-behavior: auto; }
-        * { transition: none !important; animation: none !important; }
-      }
-      body {
-        margin: 0;
-        font-family: "Archivo", system-ui, sans-serif;
-        font-size: 1.0625rem;
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-      }
-      h1, h2, h3, .display { font-family: "Unbounded", "Archivo", sans-serif; line-height: 1.18; margin: 0; letter-spacing: 0; }
-      ::selection { background: var(--brand-fill); color: #fff; }
-      :focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; border-radius: 6px; }
-      .price, .order-total, .order-item .pr, .qty b, .mica-opt .p, .wa-item .p, .folio-pill { font-variant-numeric: tabular-nums; }
-      img { display: block; max-width: 100%; }
-      button { font: inherit; cursor: pointer; }
-      .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+<!DOCTYPE html>
 
-      /* ---------- Hero ---------- */
-      .hero { padding: 40px 0 30px; background: radial-gradient(640px 320px at 12% -40px, rgba(255,46,147,0.16), transparent 62%), radial-gradient(520px 300px at 88% 0%, rgba(255,46,147,0.08), transparent 60%), linear-gradient(180deg, var(--surface-2) 0%, var(--bg) 96%); }
-      .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; align-items: center; }
-      .brandline { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-      .brandmark-img { width: 50px; height: 50px; border-radius: 13px; object-fit: cover; border: 1px solid var(--line); flex: none; }
-      .brandname { font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 16.5px; letter-spacing: 0.02em; }
-      .brandname span { color: var(--brand); text-shadow: 0 0 16px rgba(255,46,147,0.65); }
-      .brandsub { font-size: 14px; color: var(--muted); margin-top: -3px; }
-      .hero h1 { font-size: var(--fs-h1); font-weight: 800; letter-spacing: 0; line-height: 1.14; }
-      .hero h1 em { font-style: normal; color: var(--brand); text-shadow: 0 0 24px rgba(255,46,147,0.55); }
-      .hero p.lede { font-size: clamp(1rem, 2vw, 1.1875rem); color: var(--muted); margin: 16px 0 24px; max-width: 62ch; }
-      .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-      .btn {
-        display: inline-flex; align-items: center; gap: 9px; border: 0; border-radius: 999px;
-        padding: 14px 26px; font-weight: 700; font-size: 16px; text-decoration: none;
-        transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.25s ease, border-color 0.18s ease, color 0.18s ease;
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>Pink Case Móvil | Ixtlahuaca Centro - Accesorios &amp; Micas para Celular</title>
+<meta content="Fundas, micas con seguro, audífonos y servicios para tu celular en el Centro de Ixtlahuaca. Arma tu lista y confirma existencias por WhatsApp." name="description"/>
+<meta content="Pink Case Móvil — Accesorios para tu celular, con asesoría cercana" property="og:title"/>
+<meta content="Catálogo de mostrador en Ixtlahuaca Centro: fundas por modelo, micas desde $30 con instalación gratis y 1 cambio gratis en precio actual." property="og:description"/>
+<meta content="assets/tienda-02.jpg" property="og:image"/>
+<meta content="website" property="og:type"/>
+<!-- Fonts: Unbounded (Titulares & Precios) + Archivo (Lectura & Contenido) -->
+<style>
+    @font-face { font-family: 'Archivo'; src: url('assets/fonts/archivo-latin.woff2') format('woff2'); font-weight: 300 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Archivo'; src: url('assets/fonts/archivo-latin-ext.woff2') format('woff2'); font-weight: 300 700; font-style: normal; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family: 'Unbounded'; src: url('assets/fonts/unbounded-latin.woff2') format('woff2'); font-weight: 400 900; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Unbounded'; src: url('assets/fonts/unbounded-latin-ext.woff2') format('woff2'); font-weight: 400 900; font-style: normal; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+  </style>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    /* CRITICAL TECHNICAL & SCROLL REQUIREMENT */
+    html, body {
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 100vh !important;
+      height: auto !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      scroll-behavior: smooth !important;
+      background-color: #0a0608;
+      color: #f1e9ed;
+    }
+    
+    .font-unbounded {
+      font-family: 'Unbounded', system-ui, sans-serif;
+    }
+    .font-archivo {
+      font-family: 'Archivo', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Glows & Neon accents */
+    .pink-glow {
+      box-shadow: 0 0 25px -4px rgba(255, 46, 147, 0.45);
+    }
+    .pink-glow-sm {
+      box-shadow: 0 0 14px -2px rgba(255, 46, 147, 0.35);
+    }
+    .cyber-border {
+      border: 1px solid rgba(255, 46, 147, 0.22);
+    }
+    .cyber-border:hover {
+      border-color: rgba(255, 46, 147, 0.55);
+    }
+
+    /* Animated underline link */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: linear-gradient(90deg, #ff2e93, #ff66b2);
+      transition: width 0.25s ease-in-out;
+      border-radius: 9999px;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0d080c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2b1420;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff2e93;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "pink-primary": "#ff2e93",
+            "pink-hover": "#ff479e",
+            "pink-light": "#ffb0d3",
+            "pink-glow": "rgba(255, 46, 147, 0.2)",
+            "cyber-dark": "#0a0608",
+            "surface-1": "#130b10",
+            "surface-2": "#1a0f16",
+            "surface-3": "#24151f",
+            "surface-border": "rgba(255, 46, 147, 0.18)",
+            "text-muted": "#ad9fa6",
+            "whatsapp": "#25D366"
+          },
+          fontFamily: {
+            unbounded: ['Unbounded', 'sans-serif'],
+            archivo: ['Archivo', 'sans-serif'],
+          }
+        }
       }
-      .btn:hover { transform: translateY(-2px); }
-      .btn:active { transform: scale(0.97); }
-      .btn-brand { background: var(--brand-fill); color: #fff; box-shadow: var(--glow-strong); font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.01em; }
-      .btn-brand:hover { background: var(--brand-fill-hover); box-shadow: var(--glow-strong); }
-      .btn-ghost { background: transparent; color: var(--ink); border: 2px solid var(--line); }
-      .btn-ghost:hover { border-color: var(--brand); color: var(--brand); box-shadow: 0 0 16px rgba(255,46,147,0.30); }
-      .btn-wa { background: var(--wa); color: #fff; }
-      .btn-wa:hover { background: var(--wa-dark); box-shadow: 0 0 20px rgba(37,211,102,0.35); }
-      .trust { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 26px; font-size: 14px; color: var(--muted); }
-      .trust b { color: var(--ink); }
-      .hero-img { border-radius: 26px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow), 0 0 34px rgba(255,46,147,0.18); }
-      .hero-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1 / 1.02; }
-
-      /* ---------- Sections ---------- */
-      section { padding: 34px 0; }
-      .sec-head { max-width: 640px; margin-bottom: 22px; }
-      .sec-head h2 { font-size: var(--fs-h2); font-weight: 800; }
-      .sec-head p { color: var(--muted); margin: 8px 0 0; max-width: 65ch; }
-
-      /* ---------- Quiz ---------- */
-      .quiz-card { background: var(--surface); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); padding: 28px; }
-      .progress { display: flex; gap: 8px; margin-bottom: 8px; }
-      .progress i { flex: 1; height: 6px; border-radius: 99px; background: #3a1e2c; transition: background 0.4s ease, box-shadow 0.4s ease; }
-      .progress i.on { background: var(--brand); box-shadow: 0 0 10px rgba(255,46,147,0.55); }
-      .step-label { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand); margin: 14px 0 4px; }
-      .quiz-card h3 { font-size: var(--fs-h3); font-weight: 700; margin-bottom: 6px; }
-      .quiz-hint { color: var(--muted); margin: 0 0 18px; font-size: 16px; max-width: 65ch; }
-      .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-      .chip {
-        border: 2px solid var(--line); background: var(--surface); color: var(--ink);
-        border-radius: 999px; padding: 10px 18px; font-weight: 600; font-size: 16px;
-        transition: border-color 0.15s, background 0.15s, box-shadow 0.25s, transform 0.12s;
-      }
-      .chip:hover { border-color: var(--brand); box-shadow: 0 0 14px rgba(255,46,147,0.35); }
-      .chip:active { transform: scale(0.96); }
-      .chip.sel { background: var(--brand-fill); border-color: var(--brand-fill); color: #fff; font-weight: 800; box-shadow: none; }
-      .chip:disabled { opacity: 0.45; cursor: default; }
-      .model-zone { margin-top: 18px; }
-      .model-zone[hidden] { display: none; }
-      .model-search {
-        width: 100%; padding: 12px 16px; border-radius: 12px; border: 2px solid var(--line);
-        background: var(--bg); color: var(--ink); font: inherit; margin-bottom: 12px;
-      }
-      .model-search:focus { outline: none; border-color: var(--brand); }
-      .cards4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-      .pick {
-        border: 2px solid var(--line); background: var(--surface); border-radius: var(--radius);
-        padding: 18px 12px; text-align: center; font-weight: 700; font-size: 16px; color: var(--ink);
-        transition: border-color 0.15s, background 0.15s, box-shadow 0.25s, transform 0.12s;
-      }
-      .pick small { display: block; font-weight: 500; color: var(--muted); font-size: 13px; margin-top: 4px; }
-      .pick:hover { border-color: var(--brand); box-shadow: 0 0 16px rgba(255,46,147,0.35); transform: translateY(-2px); }
-      .pick:active { transform: scale(0.97); }
-      .pick.sel { background: var(--brand-soft); border-color: var(--brand); box-shadow: 0 0 8px rgba(255,46,147,0.25); font-weight: 800; }
-      .swatches { display: flex; flex-wrap: wrap; gap: 10px; }
-      .swatch {
-        display: inline-flex; align-items: center; gap: 8px; border: 2px solid var(--line);
-        background: var(--surface); border-radius: 999px; padding: 8px 16px 8px 9px; font-weight: 600; color: var(--ink);
-        transition: border-color 0.15s, background 0.15s, box-shadow 0.25s, transform 0.12s;
-      }
-      .swatch:hover { border-color: var(--brand); }
-      .swatch:active { transform: scale(0.96); }
-      .swatch .dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); }
-      .swatch.sel { border-color: var(--brand); background: var(--brand-soft); font-weight: 800; box-shadow: none; }
-      .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 26px; gap: 12px; flex-wrap: wrap; }
-      .link-btn { background: none; border: 0; color: var(--muted); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; padding: 8px 4px; }
-      .link-btn:hover { color: var(--brand); }
-      .step { display: none; }
-      .step.active { display: block; }
-      .skip-note { font-size: 14px; color: var(--muted); margin-top: 14px; }
-
-      /* ---------- Product cards ---------- */
-      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
-      .card {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-        overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 18px rgba(0,0,0,0.35);
-        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      }
-      .card .ph { position: relative; background: var(--surface-2); overflow: hidden; }
-      .card .ph img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; transition: transform 0.45s ease; }
-      .badge {
-        position: absolute; top: 10px; left: 10px; background: rgba(8,4,6,0.85); color: #fff;
-        font-size: 12px; font-weight: 700; padding: 5px 10px; border-radius: 999px;
-      }
-      .badge.hot { background: var(--brand-fill); color: #fff; }
-      .badge.gold { background: var(--gold-bg); color: var(--gold); }
-      .card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
-      .card h4 { margin: 0; font-size: 16.5px; font-weight: 700; font-family: "Archivo", sans-serif; }
-      .card .meta { font-size: 15px; color: var(--muted); }
-      .card .why { font-size: 15px; color: var(--brand); font-weight: 600; }
-      .card .foot { margin-top: auto; padding-top: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-      .price { font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 20px; }
-      .price small { font-size: 12px; color: var(--muted); font-family: "Archivo", sans-serif; font-weight: 500; display: block; }
-      .add-btn {
-        border: 0; border-radius: 999px; background: var(--brand-fill); color: #fff; font-weight: 700;
-        padding: 10px 16px; font-size: 16px; white-space: nowrap;
-        transition: background 0.15s, box-shadow 0.25s, transform 0.12s;
-      }
-      .add-btn:hover { background: var(--brand-fill-hover); box-shadow: 0 0 14px rgba(255,46,147,0.45); transform: translateY(-1px); }
-      .add-btn:active { transform: scale(0.96); }
-      .add-btn.added { background: var(--surface-2); color: var(--brand); border: 2px solid var(--brand); padding: 8px 12px; font-size: 14.5px; white-space: normal; text-align: center; line-height: 1.25; }
-      .empty {
-        background: var(--surface); border: 2px dashed var(--line); border-radius: var(--radius);
-        padding: 30px; text-align: center; color: var(--muted);
-      }
-      .empty b { color: var(--ink); display: block; font-size: 18px; margin-bottom: 6px; }
-      .results-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
-      .results-head .count { color: var(--muted); font-size: 15px; }
-
-      /* ---------- Complements ---------- */
-      .comp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
-      .mica-opts { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-      .mica-opt {
-        display: flex; justify-content: space-between; align-items: center; gap: 10px; text-align: left;
-        border: 2px solid var(--line); background: var(--surface); border-radius: 12px; padding: 10px 14px; color: var(--ink);
-        transition: border-color 0.15s, background 0.15s, box-shadow 0.25s, transform 0.12s;
-      }
-      .mica-opt:hover { border-color: var(--brand); }
-      .mica-opt:active { transform: scale(0.98); }
-      .mica-opt small { display: block; color: var(--muted); font-weight: 500; }
-      .mica-opt.sel { border-color: var(--brand); background: var(--brand-soft); box-shadow: none; }
-      .mica-opt .p { font-weight: 800; font-family: "Unbounded", sans-serif; }
-
-      /* ---------- Order / cart ---------- */
-      .order {
-        background: linear-gradient(180deg, #1a0b13 0%, #10060b 100%); color: var(--ink);
-        border: 1px solid var(--line); border-radius: 26px; padding: 28px;
-        box-shadow: 0 18px 44px rgba(0,0,0,0.6), 0 0 38px rgba(255,46,147,0.12);
-      }
-      .order h2 { color: var(--ink); font-size: var(--fs-h2); }
-      .order .sub { opacity: 0.75; margin: 6px 0 18px; max-width: 65ch; }
-      .order-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
-      .order-item {
-        display: flex; align-items: center; gap: 12px;
-        background: rgba(127,127,127,0.14); border-radius: 12px; padding: 10px 14px;
-      }
-      .order-item .thumb { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; flex: none; background: rgba(127,127,127,0.2); }
-      .order-item .info { flex: 1; min-width: 0; }
-      .order-item .nm { font-weight: 600; font-size: 15px; }
-      .order-item .dt { font-size: 14.5px; opacity: 0.85; }
-      .qty { display: flex; align-items: center; gap: 6px; background: rgba(127,127,127,0.18); border-radius: 999px; padding: 4px; flex: none; }
-      .qty button {
-        width: 44px; height: 44px; border-radius: 50%; border: 0; background: transparent; color: inherit;
-        font-weight: 800; font-size: 20px; line-height: 1; display: grid; place-items: center;
-      }
-      .qty button:hover { background: rgba(127,127,127,0.28); }
-      .qty b { min-width: 24px; text-align: center; font-size: 16px; }
-      .order-item .pr { font-weight: 800; font-family: "Unbounded", sans-serif; white-space: nowrap; text-align: right; }
-      .order-item .pr small { display: block; font-size: 12px; opacity: 0.65; font-family: "Archivo", sans-serif; font-weight: 500; }
-      .order-item .rm { background: none; border: 0; color: inherit; opacity: 0.6; font-size: 18px; line-height: 1; padding: 4px; flex: none; min-width: 44px; min-height: 44px; display: grid; place-items: center; }
-      .order-item .rm:hover { opacity: 1; }
-
-      /* ---------- Vista previa de WhatsApp ---------- */
-      .wa-preview { margin: 2px 0 18px; }
-      .wa-preview .lbl { font-size: 13px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; opacity: 0.7; margin: 0 0 10px; }
-      .wa-phone { background: #e7dfd3; border-radius: 16px; overflow: hidden; max-width: 520px; box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
-      .wa-head { background: #008069; color: #fff; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
-      .wa-avatar {
-        width: 34px; height: 34px; border-radius: 50%; flex: none; object-fit: cover;
-      }
-      .wa-head .t { font-weight: 700; font-size: 14.5px; line-height: 1.15; }
-      .wa-head .s { font-size: 12px; opacity: 0.85; }
-      .wa-chat { padding: 14px 12px; }
-      .wa-items { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
-      .wa-items[hidden] { display: none; }
-      .wa-item { background: #fff; border-radius: 10px; padding: 6px; width: 88px; box-shadow: 0 1px 1px rgba(0,0,0,0.12); }
-      .wa-item img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 7px; }
-      .wa-item .n { font-size: 12px; font-weight: 600; color: #111b21; line-height: 1.25; margin-top: 5px; }
-      .wa-item .p { font-size: 12px; color: #008069; font-weight: 700; }
-      .wa-note { font-size: 14px; opacity: 0.85; margin: 8px 2px 0; max-width: 520px; }
-      .wa-bubble {
-        background: #d9fdd3; color: #111b21; border-radius: 10px; padding: 9px 11px 6px;
-        max-width: 94%; margin-left: auto; font-size: 14px; line-height: 1.45;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.13); overflow-wrap: break-word;
-      }
-      .wa-meta { text-align: right; font-size: 12px; color: #4a5a62; margin-top: 3px; }
-      .wa-meta .ticks { color: #53bdeb; font-weight: 700; letter-spacing: -2px; }
-      .order-total { display: flex; justify-content: space-between; font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 18px; }
-      .order .btn-wa { width: 100%; justify-content: center; font-family: "Unbounded", "Archivo", sans-serif; font-weight: 700; font-size: clamp(15px, 2.4vw, 17px); letter-spacing: 0.01em; padding: 16px; }
-      .order .fineprint { font-size: 14px; opacity: 0.8; margin-top: 12px; text-align: center; }
-      .order-empty { opacity: 0.75; margin-bottom: 18px; }
-
-      /* ---------- Enlace único del pedido ---------- */
-      .shared-banner { background: var(--brand-fill); color: #fff; padding: 14px 0; }
-      .shared-banner .wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-      .shared-banner .txt { flex: 1; min-width: 220px; font-size: 15px; }
-      .shared-banner .txt b { font-family: "Unbounded", sans-serif; }
-      .shared-banner a {
-        background: #fff; color: var(--brand-fill); font-weight: 700; text-decoration: none;
-        border-radius: 999px; padding: 9px 18px; font-size: 14.5px; white-space: nowrap;
-      }
-      .share-box { margin-top: 18px; background: rgba(127,127,127,0.14); border-radius: 14px; padding: 16px; }
-      .share-box[hidden] { display: none; }
-      .share-lbl { font-weight: 700; font-size: 15.5px; margin: 0 0 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-      .folio-pill { background: var(--brand-fill); color: #fff; font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.03em; }
-      .share-txt { font-size: 14.5px; opacity: 0.85; margin: 0 0 12px; }
-      .share-row { display: flex; gap: 8px; flex-wrap: wrap; }
-      .share-row input {
-        flex: 1 1 240px; min-width: 0; border: 2px solid transparent; border-radius: 10px;
-        background: var(--surface-2); color: var(--ink); font: inherit; font-size: 13px; padding: 10px 12px;
-      }
-      .share-row input:focus { outline: none; border-color: var(--brand); }
-      .copy-btn {
-        border: 0; border-radius: 10px; background: var(--brand-fill); color: #fff; font-weight: 700;
-        padding: 10px 18px; font-size: 16px; white-space: nowrap;
-      }
-      .copy-btn:hover { background: var(--brand-fill-hover); box-shadow: 0 0 14px rgba(255,46,147,0.45); }
-      .copy-btn:active { transform: scale(0.97); }
-      .copy-btn { transition: background 0.15s, box-shadow 0.25s, transform 0.12s; }
-
-      /* ---------- Catalog ---------- */
-      .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-      .tab {
-        border: 2px solid var(--line); background: var(--surface); color: var(--ink);
-        border-radius: 999px; padding: 8px 18px; font-weight: 600;
-        transition: border-color 0.15s, background 0.15s, box-shadow 0.25s, transform 0.12s;
-      }
-      .tab:hover { border-color: var(--brand); }
-      .tab:active { transform: scale(0.96); }
-      .tab.sel { background: var(--brand-fill); color: #fff; border-color: var(--brand-fill); font-weight: 800; box-shadow: none; }
-
-      /* ---------- Equipo ---------- */
-      .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-      .team-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.35); margin: 0; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
-      .team-card img { width: 100%; aspect-ratio: 3 / 3.4; object-fit: cover; object-position: center top; transition: transform 0.45s ease; }
-      .team-card .cap { padding: 12px 14px 15px; }
-      .team-card .cap b { display: block; font-family: "Unbounded", sans-serif; font-size: 15px; margin-bottom: 2px; }
-      .team-card .cap span { font-size: 14.5px; color: var(--muted); line-height: 1.45; display: block; }
-
-      /* ---------- Síguenos / Facebook ---------- */
-      .btn-fb { background: transparent; color: var(--ink); border: 2px solid var(--line); }
-      .btn-fb svg { color: #8ab8ff; }
-      .btn-fb:hover { background: var(--surface-2); border-color: #8ab8ff; box-shadow: none; }
-      .follow-card {
-        background: var(--surface); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow);
-        padding: 26px; display: flex; gap: 22px; align-items: center; flex-wrap: wrap;
-      }
-      .follow-card .logo-lg { width: 84px; height: 84px; border-radius: 20px; object-fit: cover; flex: none; }
-      .follow-card .txt { flex: 1 1 280px; }
-      .follow-card h2 { font-size: var(--fs-h2); font-weight: 800; }
-      .follow-card p { color: var(--muted); margin: 6px 0 0; max-width: 62ch; }
-      .follow-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-      footer a { color: var(--brand); font-weight: 600; text-decoration: none; }
-      footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-      /* ---------- Botón flotante de WhatsApp ---------- */
-      .wa-fab {
-        position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 56px; height: 56px; border-radius: 50%;
-        background: var(--wa); color: #fff; display: grid; place-items: center;
-        box-shadow: 0 8px 22px rgba(0,0,0,0.28); text-decoration: none;
-        transition: transform 0.15s ease, background 0.15s ease;
-      }
-      .wa-fab:hover { background: var(--wa-dark); transform: scale(1.07); }
-
-      footer { padding: 36px 0 90px; border-top: 1px solid var(--line); margin-top: 20px; }
-      footer .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-      footer h3 { font-size: 17px; margin-bottom: 8px; }
-      footer p, footer li { color: var(--muted); font-size: 15px; }
-      footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px; }
-      .sample-note {
-        margin-top: 26px; background: var(--surface-2); border-radius: 12px; padding: 14px 18px;
-        font-size: 13.5px; color: var(--muted);
-      }
-      .toast {
-        position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 20px); z-index: 50;
-        background: var(--ink); color: var(--bg); padding: 12px 20px; border-radius: 999px; font-weight: 600;
-        opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; max-width: calc(100vw - 40px); text-align: center;
-      }
-      .toast.show { opacity: 1; transform: translate(-50%, 0); }
-
-
-      /* ---------- Navegación fija ---------- */
-      .topnav { position: sticky; top: 0; z-index: 70; background: rgba(10,6,8,0.97); border-bottom: 1px solid var(--line); }
-      .topnav .wrap { display: flex; align-items: center; gap: 4px; min-height: 52px; overflow-x: auto; }
-      .topnav a { color: var(--muted); text-decoration: none; font-weight: 700; font-size: 15px; padding: 10px 12px; border-radius: 999px; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; }
-      .topnav a:hover { color: var(--ink); background: var(--surface-2); }
-      .topnav a.nav-fb svg { color: #8ab8ff; }
-      .nav-count[hidden] { display: none; }
-      .nav-count { background: var(--brand-fill); color: #fff; font-size: 12.5px; font-weight: 800; min-width: 22px; height: 22px; border-radius: 999px; display: inline-grid; place-items: center; padding: 0 6px; }
-      section[id], header[id] { scroll-margin-top: 68px; }
-      .text-link { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; padding: 12px 6px; }
-      .text-link:hover { color: var(--brand-dark); }
-
-      /* ---------- Selección: color + palomita + peso ---------- */
-      .chip.sel::after, .tab.sel::after { content: "✓"; font-weight: 900; }
-      .pick.sel::after { content: "✓ Elegida"; display: block; font-size: 13px; font-weight: 800; color: var(--brand); margin-top: 6px; }
-      .swatch.sel .dot { outline: 3px solid var(--brand); outline-offset: 2px; }
-      .swatch.sel::after { content: "✓"; font-weight: 900; color: var(--brand); }
-      .mica-opt.sel::before { content: "✓"; font-weight: 900; color: var(--brand); }
-
-      /* ---------- Barra fija del pedido ---------- */
-      .order-bar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 65; max-width: 720px; margin: 0 auto;
-        background: var(--surface-2); border: 2px solid var(--brand); border-radius: 999px; padding: 8px 8px 8px 20px;
-        display: flex; align-items: center; gap: 12px; box-shadow: 0 14px 34px rgba(0,0,0,0.6); }
-      .order-bar[hidden] { display: none; }
-      .order-bar.bar-hidden { display: none; }
-      .order-bar .txt { flex: 1; font-size: 15px; min-width: 0; }
-      .order-bar .txt b { font-family: "Unbounded", sans-serif; }
-      .order-bar a { background: var(--brand-fill); color: #fff; text-decoration: none; font-weight: 800; border-radius: 999px; padding: 12px 18px; white-space: nowrap; box-shadow: var(--glow-strong); }
-      body.has-bar { padding-bottom: 84px; }
-      body.has-bar .wa-fab { bottom: 92px; }
-
-      /* ---------- Pedido: certezas, mica sugerida, confirmación ---------- */
-      .certainties { background: rgba(127,127,127,0.12); border-radius: 14px; padding: 16px 18px; margin: 0 0 16px; }
-      .certainties p { margin: 0 0 8px; font-weight: 800; font-family: "Unbounded", sans-serif; font-size: 15px; }
-      .certainties ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
-      .certainties li { font-size: 15px; display: flex; gap: 9px; }
-      .certainties li::before { content: "✓"; color: var(--brand); font-weight: 900; flex: none; }
-      .mica-upsell { background: var(--brand-soft); border: 2px dashed var(--brand); border-radius: 14px; padding: 14px 16px; margin: 0 0 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-      .mica-upsell[hidden] { display: none; }
-      .mica-upsell .t { flex: 1 1 240px; font-size: 15px; }
-      .recovered-note { background: var(--brand-soft); border-radius: 12px; padding: 11px 14px; font-size: 14.5px; margin: 0 0 14px; }
-      .recovered-note[hidden] { display: none; }
-      .saved-note { font-size: 14px; opacity: 0.8; margin: 0 0 14px; }
-      .order-team { display: flex; gap: 12px; align-items: center; font-size: 14.5px; opacity: 0.92; margin: 0 0 16px; }
-      .order-team img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; flex: none; }
-      .order-confirm { background: #123524; border: 1px solid #2ea36b; border-radius: 14px; padding: 14px 16px; margin-top: 14px; font-size: 15px; }
-      .order-confirm[hidden] { display: none; }
-      .order-confirm b { font-family: "Unbounded", sans-serif; }
-
-      /* ---------- Catálogo: pastilla de modelo y nota de respaldo ---------- */
-      .model-pill { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-soft); border: 2px solid var(--brand); border-radius: 999px; padding: 7px 8px 7px 16px; font-size: 15px; margin-bottom: 14px; }
-      .model-pill[hidden] { display: none; }
-      .model-pill button { border: 0; background: var(--surface); color: var(--ink); border-radius: 999px; padding: 8px 13px; font-weight: 700; min-height: 40px; }
-      .proof-note { font-size: 14.5px; color: var(--muted); margin-top: 16px; max-width: 65ch; }
-      .req-note { font-size: 14.5px; color: var(--muted); margin: 0 0 14px; }
-      .req-note b { color: var(--ink); }
-      #showResults:disabled { opacity: 0.45; box-shadow: none; cursor: default; transform: none; }
-
-      /* ---------- Ayuda para encontrar el modelo ---------- */
-      .find-model { margin-top: 16px; background: var(--surface-2); border-radius: 14px; padding: 6px 16px 14px; }
-      .find-model summary { cursor: pointer; font-weight: 700; padding: 10px 0 4px; min-height: 44px; }
-      .find-model p, .find-model li { font-size: 15px; color: var(--muted); }
-      .find-model ul { margin: 6px 0 12px; padding-left: 20px; display: flex; flex-direction: column; gap: 5px; }
-      .find-model b { color: var(--ink); }
-
-      /* ---------- Resultados en modo neutro (para él / uso rudo) ---------- */
-      #resultados.neutral .card { background: #191919; border-color: #4a4238; }
-      #resultados.neutral .card .why { color: var(--gold); }
-      #resultados.neutral .card .ph { background: #22201d; }
-
-      /* ---------- Ficha de detalle ---------- */
-      .card .ph[data-detail] { cursor: zoom-in; }
-      .detail-overlay { position: fixed; inset: 0; z-index: 90; background: rgba(4,2,3,0.88); display: grid; place-items: end center; padding: 0; }
-      .detail-overlay[hidden] { display: none; }
-      .detail-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 24px 24px 0 0; width: 100%; max-width: 640px; max-height: 92vh; overflow-y: auto; padding: 18px 20px 26px; }
-      @media (min-width: 700px) { .detail-overlay { place-items: center; padding: 20px; } .detail-panel { border-radius: 24px; } }
-      .detail-panel img.main { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 16px; transition: transform 0.3s ease; }
-      .detail-panel img.main.zoomed { transform: scale(1.7); }
-      .detail-zoom-wrap { overflow: hidden; border-radius: 16px; }
-      .detail-thumbs { display: flex; gap: 8px; margin: 12px 0 4px; }
-      .detail-thumbs button { border: 2px solid var(--line); background: var(--surface-2); color: var(--ink); border-radius: 999px; padding: 9px 15px; font-weight: 700; min-height: 44px; }
-      .detail-thumbs button.sel { border-color: var(--brand); font-weight: 800; }
-      .detail-thumbs button.sel::after { content: " ✓"; color: var(--brand); }
-      .detail-panel h3 { font-size: var(--fs-h3); margin: 12px 0 4px; }
-      .detail-panel .dmeta { color: var(--muted); font-size: 15px; margin: 0 0 8px; }
-      .detail-panel .dwhy { color: var(--brand); font-weight: 600; font-size: 15px; margin: 0 0 12px; }
-      .detail-panel .dlabel { font-size: 13px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin: 14px 0 7px; }
-      .detail-models { display: flex; flex-wrap: wrap; gap: 7px; }
-      .detail-models span { border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; font-size: 14px; }
-      .detail-foot { display: flex; align-items: center; gap: 14px; margin-top: 20px; flex-wrap: wrap; }
-      .detail-close { position: sticky; top: 0; float: right; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--surface-2); color: var(--ink); font-size: 20px; z-index: 2; }
-
-      /* ---------- Confianza / respaldo ---------- */
-      .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
-      .trust-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
-      .trust-card b { display: block; font-family: "Unbounded", sans-serif; font-size: 17px; margin-bottom: 5px; }
-      .trust-card p { color: var(--muted); font-size: 15px; margin: 0; }
-
-      /* ---------- Animaciones (dirección neón) ---------- */
-      @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-      @keyframes stepIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
-      @keyframes cardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-      @keyframes popIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
-      @keyframes bump { 0% { transform: scale(1); } 40% { transform: scale(1.14); } 100% { transform: scale(1); } }
-      @keyframes neonPulse {
-        0%, 100% { box-shadow: 0 0 0 1px rgba(255,46,147,0.35), 0 0 14px rgba(255,46,147,0.28); }
-        50% { box-shadow: 0 0 0 1px rgba(255,46,147,0.60), 0 0 24px rgba(255,46,147,0.50); }
-      }
-      @keyframes fabPulse {
-        0% { box-shadow: 0 8px 22px rgba(0,0,0,0.40), 0 0 0 0 rgba(37,211,102,0.45); }
-        70% { box-shadow: 0 8px 22px rgba(0,0,0,0.40), 0 0 0 16px rgba(37,211,102,0); }
-        100% { box-shadow: 0 8px 22px rgba(0,0,0,0.40), 0 0 0 0 rgba(37,211,102,0); }
-      }
-      .hero .hero-grid > div { animation: fadeUp 0.7s ease backwards; }
-      .hero .hero-grid > div:nth-child(2) { animation-delay: 0.15s; }
-      .step.active { animation: stepIn 0.35s ease backwards; }
-      .grid .card { animation: cardIn 0.45s ease backwards; }
-      .order-item { animation: popIn 0.28s ease backwards; }
-      #orderTotal { display: inline-block; }
-      #orderTotal.bump { animation: bump 0.35s ease; }
-      .brandmark-img { animation: neonPulse 1.6s ease-in-out 1; }
-      .wa-fab { animation: fabPulse 2.8s ease-out infinite; }
-      .card:hover, .team-card:hover { transform: translateY(-4px); border-color: var(--brand); box-shadow: 0 16px 34px rgba(0,0,0,0.5), 0 0 10px rgba(255,46,147,0.14); }
-      .card:hover .ph img, .team-card:hover img { transform: scale(1.05); }
-      @media (prefers-reduced-motion: no-preference) {
-        .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
-        .reveal.in { opacity: 1; transform: none; }
-        .team-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
-        .team-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
-        .team-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
-      }
-
-      @media (max-width: 760px) {
-        .hero-grid { grid-template-columns: 1fr; }
-        .hero-img { order: 0; }
-        .hero-img img { aspect-ratio: 16 / 8; }
-        .cards4 { grid-template-columns: repeat(2, 1fr); }
-        .quiz-card { padding: 20px; }
-        .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-        .card .foot { flex-direction: column; align-items: stretch; }
-        .add-btn { width: 100%; }
-        .order-item { flex-wrap: wrap; padding: 10px; gap: 10px; }
-        .order-item .thumb { width: 48px; height: 48px; }
-        .order-item .info { flex: 1 1 110px; }
-        .wa-bubble { max-width: 100%; }
-        .team-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .follow-card { padding: 20px; gap: 16px; }
-        .follow-card .logo-lg { width: 64px; height: 64px; border-radius: 16px; }
-        .wa-fab { right: 14px; bottom: 14px; }
-        .topnav .wrap { flex-wrap: wrap; overflow-x: visible; row-gap: 2px; padding-top: 6px; padding-bottom: 6px; }
-        .topnav a { padding: 8px 9px; font-size: 14.5px; }
-      }
-
-      /* ---------- Tienda y servicio de hidrogel ---------- */
-      .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .service-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 24px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); padding: 24px; }
-      .service-grid img { width: 100%; aspect-ratio: 4 / 3.1; object-fit: cover; border-radius: 18px; }
-      .service-grid h3 { font-size: var(--fs-h3); font-weight: 700; margin-bottom: 8px; }
-      .service-grid p { color: var(--muted); margin: 0; }
-      .service-grid p b { color: var(--ink); }
-      .hidro-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
-      @media (max-width: 760px) {
-        .store-grid, .service-grid { grid-template-columns: 1fr; }
-        .service-grid { padding: 18px; }
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="topnav" aria-label="Secciones de la página">
-      <div class="wrap">
-        <a href="#asesor">Asesor</a>
-        <a href="#catalogo">Catálogo</a>
-        <a href="#tienda">Tienda</a>
-        <a href="#pedido">Tu pedido <span class="nav-count" id="navCount" hidden>0</span></a>
-        <a class="nav-fb" href="https://www.facebook.com/profile.php?id=100089142581532" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg> Facebook</a>
-      </div>
-    </nav>
-    <!-- ================= PEDIDO COMPARTIDO ================= -->
-    <div class="shared-banner" id="sharedBanner" hidden>
-      <div class="wrap">
-        <p class="txt" style="margin:0">🔎 <b>Estás viendo un pedido compartido</b> <span id="sharedFolio"></span> — esto es lo que el cliente quiere comprar: productos, fotos, cantidades y total.</p>
-        <a href="#pedido">Ver el pedido ↓</a>
-      </div>
-    </div>
-
-    <!-- ================= HERO ================= -->
-    <header class="hero">
-      <div class="wrap">
-        <div class="hero-grid">
-          <div>
-            <div class="brandline">
-              <img class="brandmark-img" src="assets/logo.jpg" alt="Logo de Pink Case" />
-              <div>
-                <div class="brandname">PINK CASE <span>MÓVIL</span></div>
-                <div class="brandsub">Accesorios para tu celular · Ixtlahuaca</div>
-              </div>
-            </div>
-            <h1>Encuentra tu funda ideal en <em>menos de un minuto</em></h1>
-            <p class="lede">Dinos qué celular tienes, para quién es y qué estilo buscas. Te mostramos solo las opciones que te quedan, como cuando te atiende un asesor en el local.</p>
-            <div class="hero-cta">
-              <a class="btn btn-brand" href="#asesor">Empezar mi búsqueda</a>
-              <a class="text-link" href="#catalogo">Ver todo el catálogo →</a>
-            </div>
-            <div class="trust">
-              <span><b>+6 años</b> vendiendo en Ixtlahuaca</span>
-              <span><b>3 locales</b> y el 4º en camino</span>
-              <span>Micas desde <b>$50</b></span>
-            </div>
-          </div>
-          <div class="hero-img">
-            <img src="assets/funda-01.jpg" alt="Funda mate morada con anillo magnético puesta en un iPhone, en la mano de una clienta" />
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- ================= ASESOR / QUIZ ================= -->
-    <section id="asesor">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2>Tu asesor en línea</h2>
-          <p>Tres preguntas rápidas. Sin registros, sin formularios largos.</p>
-        </div>
-        <div class="quiz-card">
-          <div class="progress" aria-hidden="true"><i id="bar1" class="on"></i><i id="bar2"></i><i id="bar3"></i></div>
-
-          <!-- Paso 1 -->
-          <div class="step active" id="step1">
-            <p class="step-label">Paso 1 de 3</p>
-            <h3>¿Para qué teléfono buscas?</h3>
-            <p class="quiz-hint">Elige la marca y luego el modelo exacto, así solo te mostramos lo que sí le queda.</p>
-            <div class="chips" id="brandChips" role="group" aria-label="Marca del teléfono"></div>
-            <div class="model-zone" id="modelZone" hidden>
-              <input class="model-search" id="modelSearch" type="search" placeholder="Escribe tu modelo… ej. S25 Ultra" aria-label="Buscar modelo" />
-              <div class="chips" id="modelChips"></div>
-            </div>
-            <p class="skip-note">¿No sabes el modelo? <button class="link-btn" id="unknownModel" type="button">Ver las más pedidas de todos modos</button></p>
-            <details class="find-model">
-              <summary>No sé mi modelo — ayúdame a encontrarlo</summary>
-              <ul>
-                <li><b>En Android:</b> abre Ajustes → Acerca del teléfono. Ahí dice el modelo exacto.</li>
-                <li><b>En iPhone:</b> abre Ajustes → General → Información. Ahí dice el nombre del modelo.</li>
-                <li><b>¿Prefieres ayuda?</b> Mándanos una foto de tu celular por WhatsApp y te decimos qué fundas le quedan.</li>
-              </ul>
-              <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/527121654968?text=Hola%20Pink%20Case%20%F0%9F%92%96%20No%20s%C3%A9%20el%20modelo%20de%20mi%20celular%2C%20te%20mando%20una%20foto%20para%20que%20me%20ayudes%20a%20encontrar%20mi%20funda.">Enviar foto por WhatsApp</a>
-            </details>
-          </div>
-
-          <!-- Paso 2 -->
-          <div class="step" id="step2">
-            <p class="step-label">Paso 2 de 3</p>
-            <h3>¿Para quién es?</h3>
-            <p class="quiz-hint">Cada quien busca algo distinto: esto nos ayuda a atinarle al estilo.</p>
-            <div class="cards4" id="whoCards">
-              <button class="pick" type="button" data-who="ella">Para ella<small>Diseño y color, sin perder protección</small></button>
-              <button class="pick" type="button" data-who="el">Para él<small>Resistencia y agarre para el uso diario</small></button>
-              <button class="pick" type="button" data-who="nina">Para una niña<small>Personajes y colores, con esquinas reforzadas</small></button>
-              <button class="pick" type="button" data-who="nino">Para un niño<small>Diseños de aventura, lista para caídas y juegos</small></button>
-            </div>
-            <div class="quiz-nav">
-              <button class="link-btn" type="button" data-back="1">← Cambiar teléfono</button>
-              <span></span>
-            </div>
-          </div>
-
-          <!-- Paso 3 -->
-          <div class="step" id="step3">
-            <p class="step-label">Paso 3 de 3</p>
-            <h3>¿Qué estilo te gusta?</h3>
-            <p class="quiz-hint">Elige un estilo y, si quieres, un color.</p>
-            <p class="req-note"><b>Obligatorio:</b> el estilo · <b>Opcional:</b> el color, solo si quieres</p>
-            <div class="chips" id="styleChips" role="group" aria-label="Estilo">
-              <button class="chip" type="button" data-style="elegante">Elegante</button>
-              <button class="chip" type="button" data-style="divertido">Divertido</button>
-              <button class="chip" type="button" data-style="rudo">Uso rudo</button>
-              <button class="chip" type="button" data-style="sencillo">Sencillo / minimalista</button>
-            </div>
-            <p class="step-label" style="margin-top:22px">Color favorito · opcional</p>
-            <div class="swatches" id="colorSwatches"></div>
-            <div class="quiz-nav">
-              <button class="link-btn" type="button" data-back="2">← Cambiar para quién es</button>
-              <button class="btn btn-brand" id="showResults" type="button" disabled>Ver mis opciones</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= RESULTADOS ================= -->
-    <section id="resultados" hidden>
-      <div class="wrap">
-        <div class="sec-head results-head">
-          <div>
-            <h2 id="resultsTitle">Tus opciones</h2>
-            <p id="resultsSub"></p>
-          </div>
-          <span class="count" id="resultsCount"></span>
-        </div>
-        <div class="grid" id="resultsGrid"></div>
-        <div id="resultsEmpty"></div>
-        <p style="margin-top:18px"><button class="link-btn" id="restartQuiz" type="button">← Empezar de nuevo</button>
-        · <a class="link-btn" href="#catalogo" style="display:inline">Ver toda la variedad del catálogo</a></p>
-      </div>
-    </section>
-
-    <!-- ================= COMPLEMENTOS ================= -->
-    <section id="complementos" hidden>
-      <div class="wrap">
-        <div class="sec-head">
-          <h2>Completa tu protección</h2>
-          <p>La funda cuida las esquinas; la mica cuida la pantalla. Esto es lo que el asesor te sugeriría en el local.</p>
-        </div>
-        <div class="comp-grid">
-          <div class="card">
-            <div class="ph" data-detail="mica:mica-completa" role="button" aria-label="Ver detalle de las micas"><img src="assets/mica-01.jpg" alt="Asesora de Pink Case en el mostrador del local, donde te colocan la mica sin costo" /></div>
-            <div class="body">
-              <h4>Mica para tu pantalla</h4>
-              <p class="meta" id="micaFor">Elige el tipo que prefieres. La colocamos en el local sin costo.</p>
-              <div class="mica-opts" id="micaOpts"></div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="ph" data-detail="extra:audifonos" role="button" aria-label="Ver detalle de los audífonos"><img src="assets/audifonos-26.jpg" alt="Audífonos inalámbricos 1HORA color lila con su estuche de carga redondo" /></div>
-            <div class="body">
-              <h4>Audífonos inalámbricos 1HORA</h4>
-              <p class="meta">Pequeños, color lila, con estuche de carga: hasta 17 horas de música y llamadas.</p>
-              <div class="foot">
-                <span class="price">$299</span>
-                <button class="add-btn" type="button" data-add="audifonos">Quiero esta</button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="ph" data-detail="extra:cargador" role="button" aria-label="Ver detalle de la batería portátil"><img src="assets/accesorio-31.jpg" alt="Batería portátil 1HORA de 10,000 mAh con sus cables integrados" /></div>
-            <div class="body">
-              <h4>Batería portátil 10,000 mAh</h4>
-              <p class="meta">Con cables integrados para cualquier celular. Para que no te quedes sin pila a medio día.</p>
-              <div class="foot">
-                <span class="price">$299</span>
-                <button class="add-btn" type="button" data-add="cargador">Quiero esta</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= CATÁLOGO COMPLETO ================= -->
-    <section id="catalogo">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2>Toda la variedad</h2>
-          <p>¿Prefieres explorar por tu cuenta? Este es el catálogo completo de la tienda.</p>
-        </div>
-        <div class="model-pill" id="modelPill" hidden><span>Mostrando para <b id="modelPillName"></b></span><button type="button" id="modelPillClear">Quitar ✕</button></div>
-        <div class="tabs" id="catTabs" role="group" aria-label="Categorías">
-          <button class="tab sel" type="button" data-cat="todos">Todos</button>
-          <button class="tab" type="button" data-cat="funda">Fundas</button>
-          <button class="tab" type="button" data-cat="mica">Micas</button>
-          <button class="tab" type="button" data-cat="audio">Audífonos</button>
-          <button class="tab" type="button" data-cat="carga">Cargadores y cables</button>
-          <button class="tab" type="button" data-cat="extra">Accesorios</button>
-        </div>
-        <div class="grid" id="catalogGrid"></div>
-        <p class="proof-note">La etiqueta <b>“La más pedida”</b> no es un adorno: se marca solo en los modelos que más piden las clientas en nuestros locales de Ixtlahuaca.</p>
-      </div>
-    </section>
-
-    <!-- ================= PEDIDO ================= -->
-    <section id="pedido">
-      <div class="wrap">
-        <div class="order">
-          <h2 id="orderTitle">Tu pedido</h2>
-          <p class="sub" id="orderSub">Revisa tu pedido con foto, ajusta las cantidades y genera tu enlace único para compartirlo con el vendedor: al abrirlo verá exactamente lo que quieres comprar.</p>
-          <p class="recovered-note" id="recoveredNote" hidden>Recuperamos tu pedido de hace un rato. Quedó guardado en este celular para que no empezaras de cero.</p>
-          <p class="saved-note">Tu pedido se guarda automáticamente <b>solo en este celular</b>: si se cierra la página, lo recuperas al volver.</p>
-          <p class="order-team"><img src="assets/asesora-mostrador-tienda.jpg" alt="" /> Te atiende el mismo equipo del local: las asesoras de las fotos son quienes te responden por mensaje.</p>
-          <div class="order-items" id="orderItems"></div>
-          <p class="order-empty" id="orderEmpty">Todavía no eliges nada. Responde las 3 preguntas del asesor o explora el catálogo y toca “Quiero esta”.</p>
-          <div class="mica-upsell" id="micaUpsell" hidden>
-            <span class="t"><b>Tu funda cuida las esquinas; la mica cuida la pantalla.</b> ¿Agregas la mica de cristal completa? La colocamos sin costo en el local.</span>
-            <button class="add-btn" type="button" id="micaUpsellBtn">Quiero esta · $100</button>
-          </div>
-          <div class="order-total" id="orderTotalRow" hidden><span id="orderTotalLabel">Total estimado</span><span id="orderTotal">$0</span></div>
-          <div class="wa-preview">
-            <p class="lbl">Así se verá el mensaje que enviarás</p>
-            <div class="wa-phone">
-              <div class="wa-head">
-                <img class="wa-avatar" src="assets/logo.jpg" alt="" />
-                <div><div class="t">Pink Case Móvil</div><div class="s">en línea</div></div>
-              </div>
-              <div class="wa-chat">
-                <div class="wa-items" id="waItems" hidden></div>
-                <div class="wa-bubble">
-                  <div id="waBubbleText"></div>
-                  <div class="wa-meta"><span id="waTime"></span> <span class="ticks">✓✓</span></div>
-                </div>
-              </div>
-            </div>
-            <p class="wa-note">El enlace de WhatsApp solo puede llevar texto (no adjunta fotos), por eso el mensaje va con el nombre, detalle y precio de cada producto; las fotos las ves aquí en tu pedido.</p>
-          </div>
-          <div class="certainties">
-            <p>Antes de pedir, ten esto claro</p>
-            <ul>
-              <li>Apartas tu producto por mensaje y lo recoges en el local, sin pagar nada por adelantado en la página.</li>
-              <li>Por WhatsApp te confirmamos que la funda sí le queda a tu modelo antes de cerrar tu compra.</li>
-              <li>Si al recogerlo no le quedó a tu modelo, tráelo al local y lo revisamos contigo.</li>
-              <li>Te responde el equipo del local, no un robot.</li>
-            </ul>
-          </div>
-          <a class="btn btn-wa" id="waOrder" href="#" target="_blank" rel="noopener" aria-disabled="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2.1 22l4.9-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .9.9-2.9-.2-.3a8.2 8.2 0 1 1 6.8 3.6Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3Z"/></svg>
-            Pedir por WhatsApp
+    };
+  </script>
+</head>
+<body class="bg-cyber-dark font-archivo text-[#f1e9ed] antialiased selection:bg-pink-primary selection:text-white">
+<!-- 1. HEADER (Glassmorphism & Fixed Navigation) -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0608]/85 border-b border-pink-500/15 transition-all">
+<div class="h-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<!-- Brand & Local Badge -->
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2.5 group focus:outline-none" href="#">
+<img alt="Pink Case Móvil Logo" class="h-8 w-auto object-contain transition-transform group-hover:scale-105" src="assets/logo.webp"/>
+<span class="font-unbounded font-bold text-sm sm:text-base tracking-tight text-white group-hover:text-pink-primary transition-colors">
+            Pink Case <span class="text-pink-primary">Móvil</span>
+</span>
+</a>
+<div class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-pink-primary/10 border border-pink-primary/20 text-pink-light text-xs font-archivo font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-pink-primary animate-pulse"></span>
+<span>Ixtlahuaca Centro</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-7">
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#asesoria">Asesoría Guiada</a>
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#catalogo">Catálogo Físico</a>
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#visitanos">Visítanos</a>
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors" href="#pedido">Preguntas / FAQ</a>
+</nav>
+<!-- Action Area -->
+<div class="flex items-center gap-3">
+<a class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs sm:text-sm font-unbounded text-white hover:text-pink-primary transition-all" href="#catalogo">
+          Ver Catálogo
+        </a>
+<!-- Consulta Counter Floating CTA -->
+<a class="relative flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-pink-primary to-[#ff479e] text-white text-xs sm:text-sm font-unbounded font-semibold pink-glow-sm hover:brightness-110 active:scale-95 transition-all" href="#pedido">
+<span class="material-symbols-outlined text-[18px]">quickreply</span>
+<span class="hidden xs:inline">Consulta</span>
+<span class="px-1.5 py-0.2 rounded-full bg-[#0a0608] text-pink-primary text-[11px] font-bold leading-none border border-pink-500/30" id="header-inquiry-count">0</span>
+</a>
+<div class="w-8 h-8 rounded-full bg-surface-2 border border-pink-500/30 flex items-center justify-center text-pink-light">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN WRAPPER (Scroll Nativo Fluido) -->
+<main class="w-full pt-16 bg-cyber-dark">
+<!-- 2. HERO SECTION -->
+<div class="relative w-full overflow-hidden">
+<!-- Glow ambient background -->
+<div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-pink-primary/12 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="absolute top-1/3 -right-40 w-[450px] h-[450px] bg-pink-primary/8 rounded-full blur-[150px] pointer-events-none"></div>
+<section class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pt-16 lg:pb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+<!-- Hero Left Column -->
+<div class="lg:col-span-7 flex flex-col items-start gap-6">
+<!-- Micro badge -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-2 border border-pink-primary/25 text-xs text-[#d8c7cf] shadow-sm"><span class="w-2 h-2 rounded-full bg-pink-primary animate-ping"></span><span class="font-medium tracking-wide">Ixtlahuaca Centro • <strong class="text-white font-semibold">Cero cobros online</strong> • Pagas en mostrador tras probarlo</span></div>
+<!-- Hero Headline (Jerarquía contundente) -->
+<h1 class="font-unbounded text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-white tracking-tight leading-[1.18]">
+              Accesorios para tu celular, <span class="bg-gradient-to-r from-[#ff2e93] via-[#ff5ca6] to-[#ffa3cb] bg-clip-text text-transparent">con asesoría cercana</span>
+</h1>
+<!-- Microcopia empática -->
+<p class="font-archivo text-base sm:text-lg text-text-muted max-w-2xl leading-relaxed">
+              Explora modelos disponibles, arma tu lista de mostrador y confirma existencias y colores vía WhatsApp antes de dar la vuelta al Centro.
+            </p>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-3.5 pt-2 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-pink-primary hover:bg-pink-hover text-white font-unbounded text-xs sm:text-sm font-semibold pink-glow transition-all hover:-translate-y-0.5 active:translate-y-0" href="#asesoria">
+<span class="material-symbols-outlined text-[19px]">tune</span>
+<span>Encuentra opciones para tu modelo</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-surface-2 hover:bg-surface-3 border border-pink-500/25 text-white font-unbounded text-xs sm:text-sm transition-all hover:border-pink-500/50" href="#catalogo">
+<span class="material-symbols-outlined text-[19px] text-pink-primary">storefront</span>
+<span>Explorar catálogo completo</span>
+</a>
+</div><div class="flex items-center gap-3 pt-1 text-xs text-text-muted"><div class="flex -space-x-2 overflow-hidden"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-pink-primary/30 border border-pink-primary text-[10px] text-pink-light font-bold font-unbounded">✓</span><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-surface-3 border border-pink-500/30 text-[10px] text-white font-bold font-unbounded">★</span><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/30 border border-emerald-400 text-[10px] text-emerald-400 font-bold font-unbounded">6+</span></div><span class="font-archivo">Más de <strong class="text-white font-medium">6 años de experiencia</strong> atendiendo en Ixtlahuaca</span></div>
+<!-- 3 Tarjetas de métricas con borde luminoso -->
+<div class="w-full grid grid-cols-3 gap-3 pt-3 mt-2"><div class="p-3.5 rounded-xl bg-surface-1 border border-pink-500/15 hover:border-pink-500/35 transition-colors flex flex-col gap-1"><div class="flex items-center gap-1.5 text-pink-primary"><span class="material-symbols-outlined text-[18px]">verified</span><span class="font-unbounded text-sm sm:text-base font-bold text-white">100%</span></div><span class="font-archivo text-xs text-text-muted">Pruebas físicas antes de pagar</span></div><div class="p-3.5 rounded-xl bg-surface-1 border border-pink-500/15 hover:border-pink-500/35 transition-colors flex flex-col gap-1"><div class="flex items-center gap-1.5 text-whatsapp"><span class="material-symbols-outlined text-[18px]">bolt</span><span class="font-unbounded text-sm sm:text-base font-bold text-white">&lt; 15 min</span></div><span class="font-archivo text-xs text-text-muted">Confirmación exprés WhatsApp</span></div><div class="p-3.5 rounded-xl bg-surface-1 border border-pink-500/15 hover:border-pink-500/35 transition-colors flex flex-col gap-1"><div class="flex items-center gap-1.5 text-pink-light"><span class="material-symbols-outlined text-[18px]">handyman</span><span class="font-unbounded text-sm sm:text-base font-bold text-white">Gratis</span></div><span class="font-archivo text-xs text-text-muted">Instalación perfecta sin burbujas</span></div></div>
+</div>
+<!-- Hero Right Column (Showcase fotográfico) -->
+<div class="lg:col-span-5 relative">
+<div class="relative rounded-2xl overflow-hidden bg-surface-2 border border-pink-500/25 shadow-2xl">
+<img class="w-full h-[400px] object-cover" data-alt="A modern stylish boutique smartphone accessory counter inside a Mexican local tech shop with glass shelves exhibiting premium shockproof phone cases, tempered glass screen protectors with subtle neon magenta and soft pink mood lighting, clean reflections, elegant dark aesthetic" src="assets/tienda-02.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cyber-dark via-cyber-dark/20 to-transparent"></div>
+<!-- Badge activo 'Abierto hoy' con punto verde pulsante -->
+<div class="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-surface-1/90 backdrop-blur-md border border-pink-500/20 flex items-center justify-between gap-3 shadow-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-pink-primary/15 border border-pink-primary/30 text-pink-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">store</span>
+</div>
+<div class="flex flex-col">
+<span class="font-archivo font-bold text-xs sm:text-sm text-white">Exhibición Física Activa</span>
+<span class="font-archivo text-xs text-text-muted">Centro de Ixtlahuaca, Edo. Méx.</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-archivo text-xs font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span>Abierto hoy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- 3. ASESORÍA RÁPIDA INTERACTIVA (#asesoria) -->
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 scroll-mt-20" id="asesoria">
+<div class="flex flex-col gap-2 mb-8">
+<div class="flex items-center gap-2">
+<span class="font-unbounded text-xs tracking-wider uppercase text-pink-primary font-bold">Asistente Interactivo</span>
+<span class="w-8 h-px bg-pink-primary/40"></span>
+</div>
+<h2 class="font-unbounded text-2xl sm:text-3xl font-bold text-white">Asesoría Rápida para tu Dispositivo</h2>
+<p class="font-archivo text-sm sm:text-base text-text-muted max-w-2xl">Ahorra tiempo y viajes en vano. Selecciona tu marca, escribe tu modelo y te mostramos las opciones con stock disponible para probar en tienda física hoy mismo.</p>
+</div>
+<!-- Stepper Enmarcado UX -->
+<div class="p-6 md:p-8 rounded-2xl bg-surface-1 border border-pink-500/20 shadow-xl flex flex-col gap-7">
+<!-- Indicator Header -->
+<div class="flex items-center justify-between gap-2 border-b border-white/10 pb-4">
+<div class="flex items-center gap-3">
+<span class="w-7 h-7 rounded-full bg-pink-primary text-white font-unbounded text-xs flex items-center justify-center font-bold">1</span>
+<span class="font-unbounded text-sm sm:text-base text-white">Configura tu consulta en 3 pasos</span>
+</div>
+<span class="font-archivo text-xs px-3 py-1 rounded-full bg-surface-2 border border-pink-500/30 text-pink-light font-medium" id="step-badge">Paso 1 de 3</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Paso 1: Marca (Chips Clicables) -->
+<div class="flex flex-col gap-3">
+<label class="font-archivo text-sm font-semibold text-white flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-surface-3 text-pink-primary text-xs flex items-center justify-center font-bold">1</span>
+              Selecciona tu Marca
+            </label>
+<div class="grid grid-cols-2 gap-2" id="brand-selector">
+<button class="brand-btn active p-2.5 rounded-xl bg-pink-primary/15 border border-pink-primary text-pink-light font-archivo text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all" data-brand="iPhone" type="button">
+<span class="material-symbols-outlined text-[17px]">smartphone</span>
+<span>iPhone</span>
+</button>
+<button class="brand-btn p-2.5 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/40 hover:text-white font-archivo text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all" data-brand="Samsung" type="button">
+<span class="material-symbols-outlined text-[17px]">phone_android</span>
+<span>Samsung</span>
+</button>
+<button class="brand-btn p-2.5 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/40 hover:text-white font-archivo text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all" data-brand="Motorola" type="button">
+<span class="material-symbols-outlined text-[17px]">devices</span>
+<span>Motorola</span>
+</button>
+<button class="brand-btn p-2.5 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/40 hover:text-white font-archivo text-xs sm:text-sm flex items-center justify-center gap-1.5 transition-all" data-brand="Honor" type="button">
+<span class="material-symbols-outlined text-[17px]">mobile_friendly</span>
+<span>Honor</span>
+</button>
+</div>
+<p class="font-archivo text-[11px] text-text-muted">¿Tu marca no está? Las <strong class="text-pink-light">micas son para cualquier modelo</strong>: se cortan a la medida en el local.</p>
+</div>
+<!-- Paso 2: Modelo + Sugerencias Rápidas -->
+<div class="flex flex-col gap-3">
+<label class="font-archivo text-sm font-semibold text-white flex items-center gap-2" for="model-input">
+<span class="w-5 h-5 rounded-full bg-surface-3 text-pink-primary text-xs flex items-center justify-center font-bold">2</span>
+              Modelo de Teléfono
+            </label>
+<div class="flex flex-col gap-2">
+<input class="w-full px-4 py-2.5 rounded-xl bg-surface-2 border border-white/10 text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none focus:border-pink-primary focus:ring-1 focus:ring-pink-primary transition-colors" id="model-input" placeholder="Ej. iPhone 15, Galaxy A36, Moto G85" type="text" value="iPhone 15"/>
+<div class="flex items-center gap-1.5 flex-wrap pt-1" id="model-chips"></div>
+<div class="flex items-center gap-1.5 flex-wrap pt-1">
+<span class="font-archivo text-xs text-text-muted">Sugerencias:</span>
+<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('iPhone 15')" type="button">iPhone 15</button>
+<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('Galaxy A36')" type="button">Galaxy A36</button>
+<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('Moto G85')" type="button">Moto G85</button>
+<button class="px-2 py-0.5 rounded-lg bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-xs text-text-muted hover:text-pink-light transition-colors" onclick="setModel('Honor X9b')" type="button">Honor X9b</button>
+</div>
+</div>
+</div>
+<!-- Paso 3: Estilo & Chips rápidos -->
+<div class="flex flex-col gap-3">
+<label class="font-archivo text-sm font-semibold text-white flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-surface-3 text-pink-primary text-xs flex items-center justify-center font-bold">3</span>
+              Estilo Preferido &amp; Tono
+            </label>
+<div class="flex flex-col gap-2">
+<!-- Chips rápidos de estilo -->
+<div class="grid grid-cols-2 gap-2" id="style-chips">
+<button class="style-chip active p-2 rounded-xl bg-pink-primary/15 border border-pink-primary text-pink-light text-xs font-archivo font-semibold text-left" data-style="Uso Rudo" type="button">
+                  🛡️ Uso Rudo
+                </button>
+<button class="style-chip p-2 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/30 text-xs font-archivo text-left" data-style="Silicona Suave" type="button">
+                  ☁️ Silicona Suave
+                </button>
+<button class="style-chip p-2 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/30 text-xs font-archivo text-left" data-style="MagSafe" type="button">
+                  ⚡ MagSafe
+                </button>
+<button class="style-chip p-2 rounded-xl bg-surface-2 border border-white/10 text-text-muted hover:border-pink-500/30 text-xs font-archivo text-left" data-style="Glitter Boutique" type="button">
+                  ✨ Glitter Boutique
+                </button>
+</div>
+<!-- Selector tradicional sincronizado -->
+<input id="style-select" type="hidden" value="Uso Rudo antichoque"/>
+<!-- Preferencia de color -->
+<div class="flex items-center gap-2 pt-1">
+<span class="font-archivo text-xs text-text-muted">Color preferido:</span>
+<div class="flex items-center gap-2">
+<button class="color-dot w-5 h-5 rounded-full bg-black ring-2 ring-pink-primary" title="Negro" type="button"></button>
+<button class="color-dot w-5 h-5 rounded-full bg-[#ff2e93]" title="Rosa Cyber" type="button"></button>
+<button class="color-dot w-5 h-5 rounded-full bg-[#49709c]" title="Azul" type="button"></button>
+<button class="color-dot w-5 h-5 rounded-full bg-[#3a3336]" title="Transparente / Humo" type="button"></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action & Feedback -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
+<div class="flex items-center gap-2 text-text-muted text-xs sm:text-sm">
+<span class="material-symbols-outlined text-pink-primary text-[19px]">bolt</span>
+<span>Confirmamos modelos exactos en mostrador en menos de 15 minutos.</span>
+</div>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-pink-primary hover:bg-pink-hover text-white font-unbounded text-xs sm:text-sm font-semibold pink-glow-sm transition-all" id="btn-show-suggestions" type="button">
+<span class="material-symbols-outlined text-[18px]">travel_explore</span>
+<span>Ver opciones sugeridas</span>
+</button>
+</div>
+<!-- Dynamic Suggestion Display -->
+<div class="p-4 rounded-xl bg-surface-2 border border-pink-500/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4" id="suggestion-box">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-pink-primary/10 border border-pink-primary/30 text-pink-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">recommend</span>
+</div>
+<div class="flex flex-col">
+<span class="font-unbounded text-sm sm:text-base font-bold text-white" id="suggestion-headline">Opciones recomendadas para iPhone 15</span>
+<span class="font-archivo text-xs sm:text-sm text-text-muted" id="suggestion-subline">Estilo: Uso Rudo (iPhone). Stock listo para verificar en Ixtlahuaca Centro.</span>
+</div>
+</div>
+<a class="px-4 py-2 rounded-xl bg-surface-3 hover:bg-pink-primary hover:text-white border border-pink-500/30 text-pink-light font-unbounded text-xs whitespace-nowrap transition-all" href="#catalogo">
+            Filtrar Catálogo Abajo ↓
           </a>
-          <div class="order-confirm" id="orderConfirm" hidden></div>
-          <div class="share-box" id="shareBox" hidden>
-            <p class="share-lbl">Enlace único de tu pedido <span class="folio-pill" id="shareFolio"></span></p>
-            <p class="share-txt">Este enlace lleva tu carrito: compártelo con el vendedor por WhatsApp, Messenger o donde quieras. Al abrirlo, verá tu pedido con fotos, cantidades y total, sin tener que preguntar.</p>
-            <div class="share-row">
-              <input id="shareLink" type="text" readonly aria-label="Enlace único de tu pedido" />
-              <button class="copy-btn" id="copyLink" type="button">Copiar enlace</button>
+</div>
+<!-- Transparency disclaimer UX -->
+<div class="p-3.5 rounded-xl bg-cyber-dark border border-white/5 text-xs text-text-muted flex items-start gap-2.5">
+<span class="material-symbols-outlined text-pink-primary/70 text-[18px] shrink-0">verified_user</span>
+<p class="leading-relaxed font-archivo">
+<strong class="text-white font-semibold">Aviso de transparencia UX:</strong> Resultados orientativos. Nuestro equipo valida disponibilidad y compatibilidad física directamente en mostrador o WhatsApp.
+          </p>
+</div>
+</div>
+</section>
+<!-- 4. CATÁLOGO DE PRODUCTOS EN EXHIBICIÓN (#catalogo) -->
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20" id="catalogo">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-unbounded text-xs tracking-wider uppercase text-pink-primary font-bold">Inventario de Mostrador</span>
+<span class="w-8 h-px bg-pink-primary/40"></span>
+</div>
+<h2 class="font-unbounded text-2xl sm:text-3xl font-bold text-white mt-1">Catálogo de Productos en Exhibición</h2>
+</div>
+<p class="font-archivo text-xs sm:text-sm text-text-muted max-w-md">
+          Precios informativos para consulta rápida. Añade los artículos de tu interés a la lista para verificar disponibilidad al instante.
+        </p>
+</div>
+<!-- Filtros de categorías estilo Pill Activos -->
+<div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none" id="catalog-filters"></div>
+<!-- Catalog Grid (Cards con elevación y precio Unbounded) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+<!-- Tarjetas generadas por JS desde el inventario real -->
+</div>
+<p class="hidden font-archivo text-sm text-text-muted text-center py-8" id="catalog-empty">No hay productos en esta categoría por el momento.</p>
+</section>
+<!-- 5. MI CONSULTA DE MOSTRADOR / CONVERSIÓN WHATSAPP (#pedido) -->
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20" id="pedido">
+<div class="p-6 md:p-10 rounded-2xl bg-surface-1 border border-pink-500/25 shadow-2xl flex flex-col gap-6">
+<!-- Header del resumen -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-pink-primary text-[24px]">receipt_long</span>
+<h2 class="font-unbounded text-xl sm:text-2xl font-bold text-white">Mi Consulta de Mostrador</h2>
+</div>
+<p class="font-archivo text-xs sm:text-sm text-text-muted mt-1">Tu lista de cotejo antes de salir de casa. Consulta existencias de color y compatibilidad exacta por WhatsApp sin compromiso de compra.</p>
+</div>
+<button class="text-text-muted hover:text-pink-light text-xs font-archivo flex items-center gap-1 transition-colors" onclick="clearInquiry()" type="button">
+<span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+<span>Vaciar lista</span>
+</button>
+</div>
+<!-- Items Container Dinámico -->
+<div class="hidden p-3.5 rounded-xl bg-pink-primary/10 border border-pink-500/30 text-xs sm:text-sm font-archivo text-pink-light" id="shared-banner"></div>
+<div class="flex flex-col gap-3 min-h-[120px]" id="inquiry-items-container">
+<!-- Renderizado por JS -->
+</div>
+<!-- Callout de transparencia: No pagos en línea -->
+<div class="p-4 rounded-xl bg-surface-2 border border-pink-500/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="flex flex-col gap-1.5 max-w-xl">
+<div class="flex items-center gap-2">
+<span class="font-archivo text-sm text-text-muted">Estimado Total Informativo:</span>
+<span class="font-unbounded text-xl font-bold text-white" id="inquiry-total">$0 MXN</span>
+</div>
+<p class="font-archivo text-xs text-text-muted leading-relaxed">
+<strong class="text-white font-medium">Aviso de transparencia:</strong> No requiere tarjetas ni pagos en línea. Pagas directamente en efectivo o transferencia al recibir tu accesorio en tienda.
+            </p>
+</div>
+<!-- Botón de WhatsApp Oficial -->
+<div class="w-full md:w-auto flex flex-col gap-2 shrink-0">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-xl bg-whatsapp hover:bg-[#20bd5a] text-[#0a0608] font-unbounded text-xs sm:text-sm font-bold shadow-lg shadow-whatsapp/25 transition-all hover:scale-[1.02] active:scale-95" id="whatsapp-send-btn" onclick="sendWhatsAppInquiry()" type="button">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12.031 2C6.495 2 2 6.495 2 12.031a10.01 10.01 0 0 0 1.609 5.484L2.094 22l4.633-1.488a10.038 10.038 0 0 0 5.304 1.52h.004c5.536 0 10.031-4.495 10.031-10.031A10.034 10.034 0 0 0 12.031 2zm0 18.35a8.33 8.33 0 0 1-4.25-1.156l-.305-.18-3.156 1.013 1.039-3.078-.199-.316a8.312 8.312 0 0 1-1.277-4.602c0-4.606 3.746-8.352 8.352-8.352 2.23 0 4.328.871 5.906 2.45a8.293 8.293 0 0 1 2.446 5.902c0 4.606-3.746 8.352-8.556 8.32z"></path>
+<path d="M16.89 14.383c-.266-.133-1.574-.777-1.816-.867-.246-.086-.426-.133-.605.133s-.699.867-.855 1.047c-.156.176-.312.2-.578.066s-1.125-.414-2.145-1.32c-.793-.707-1.328-1.582-1.484-1.848s-.016-.41.117-.543c.121-.121.266-.312.4-.469.133-.156.176-.266.266-.445.086-.176.043-.332-.023-.465-.066-.133-.605-1.457-.828-1.996-.219-.527-.441-.453-.605-.461-.156-.008-.332-.008-.512-.008s-.469.066-.715.332c-.246.266-.941.922-.941 2.246s.965 2.605 1.102 2.785c.133.176 1.898 2.898 4.6 4.062.645.277 1.148.441 1.543.566.652.207 1.246.176 1.715.105.523-.078 1.574-.645 1.797-1.266.223-.625.223-1.164.156-1.27-.066-.109-.246-.176-.512-.309z"></path>
+</svg>
+<span>Consultar por WhatsApp (Abre chat con tu lista preparada)</span>
+</button>
+<span class="text-center font-archivo text-xs text-text-muted"><div class="flex flex-col items-center gap-1 text-center font-archivo text-xs text-text-muted"><span>⚡ Respuesta promedio: <strong>&lt; 15 min</strong> en horario comercial</span><span class="text-emerald-400 flex items-center justify-center gap-1"><span class="material-symbols-outlined text-[14px]">lock_open</span> Sin pago anticipado • Ajuste verificado en mano</span></div></span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. EXPERIENCIA DE VISITA Y CONFIANZA LOCAL (#visitanos) -->
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 scroll-mt-20" id="visitanos">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Detalles y confianza -->
+<div class="lg:col-span-6 flex flex-col gap-6">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-unbounded text-xs tracking-wider uppercase text-pink-primary font-bold">Punto Físico Oficial</span>
+<span class="w-8 h-px bg-pink-primary/40"></span>
+</div>
+<h2 class="font-unbounded text-2xl sm:text-3xl font-bold text-white mt-1">Atención personalizada y trato directo en Ixtlahuaca</h2>
+<p class="font-archivo text-sm sm:text-base text-text-muted mt-2 leading-relaxed">
+              Nada reemplaza tocar la textura de la funda, probarla directamente en tu teléfono o asegurarte de que la mica quede perfectamente alineada sin burbujas.
+            </p>
+</div>
+<!-- Cards Ubicación & Horarios -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-4 rounded-xl bg-surface-1 border border-pink-500/15 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-pink-primary">
+<span class="material-symbols-outlined text-[20px]">pin_drop</span>
+<span class="font-unbounded text-xs font-bold text-white">Ubicación Física</span>
+</div>
+<p class="font-archivo text-sm text-white font-medium">Centro de Ixtlahuaca, Edo. Méx.</p>
+<span class="font-archivo text-xs text-text-muted">A un costado de Laboratorios El Chopo, en pleno Centro. Toca el mapa para abrir la ruta.</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-1 border border-pink-500/15 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-pink-primary">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<span class="font-unbounded text-xs font-bold text-white">Horario de Mostrador</span>
+</div>
+<div class="font-archivo text-xs space-y-1">
+<p class="text-white">Confirma el horario de hoy por <strong class="text-pink-light">WhatsApp</strong>: respondemos en minutos y de paso te confirmamos existencias.</p>
+</div>
+</div>
+</div>
+<!-- Beneficios presenciales en cards con iconos -->
+<div class="p-5 rounded-xl bg-surface-1 border border-pink-500/20 flex flex-col gap-3">
+<span class="font-unbounded text-xs sm:text-sm font-bold text-white">Beneficios directos al visitarnos:</span>
+<ul class="space-y-2.5 font-archivo text-xs sm:text-sm text-text-muted">
+<li class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-400 text-[18px]">verified</span>
+<span><strong class="text-white">Micas sin burbujas garantizadas:</strong> Instalación profesional sin costo adicional.</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-400 text-[18px]">check_circle</span>
+<span><strong class="text-white">Prueba antes de pagar:</strong> Verifica ajuste de botones, cámaras y cargador.</span>
+</li>
+<li class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-400 text-[18px]">bolt</span>
+<span><strong class="text-white">Verificación de carga rápida:</strong> Pruebas con tu propio teléfono en mostrador.</span>
+</li>
+</ul>
+</div><div class="p-4 rounded-xl bg-surface-2 border border-pink-500/15 flex items-start gap-3.5"><div class="w-9 h-9 rounded-full bg-pink-primary/20 border border-pink-primary/40 flex items-center justify-center text-pink-primary shrink-0"><span class="material-symbols-outlined text-[19px]">rate_review</span></div><div class="flex flex-col gap-1"><div class="flex items-center gap-1 text-pink-primary"><span class="material-symbols-outlined text-[16px]">star</span><span class="material-symbols-outlined text-[16px]">star</span><span class="material-symbols-outlined text-[16px]">star</span><span class="material-symbols-outlined text-[16px]">star</span><span class="material-symbols-outlined text-[16px]">star</span><span class="text-xs text-white font-unbounded ml-1 font-semibold">Negocio local</span></div><p class="font-archivo text-xs text-text-muted italic leading-relaxed">“Somos un negocio de Ixtlahuaca: más de 6 años vendiendo accesorios para celular, con 3 locales en el municipio.”</p><span class="font-archivo text-[11px] text-[#d8c7cf] font-medium">— Equipo Pink Case</span></div></div>
+<!-- Action buttons: Maps + Facebook -->
+<div class="flex flex-wrap items-center gap-3">
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-2 hover:bg-surface-3 border border-pink-500/30 text-white font-unbounded text-xs transition-colors" href="https://maps.app.goo.gl/PdRusqZ2FFMa5y7eA?g_st=ic" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-pink-primary text-[18px]">map</span>
+<span>Cómo llegar en Google Maps</span>
+</a>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-2 hover:bg-surface-3 border border-pink-500/30 text-text-muted hover:text-white font-archivo text-xs transition-colors" href="https://www.facebook.com/pinkcase.ixtlahuaca" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-pink-primary text-[18px]">share</span>
+<span>Facebook Oficial</span>
+</a>
+</div>
+</div>
+<!-- Visuals Grid y Mapa Local -->
+<div class="lg:col-span-6 grid grid-cols-2 gap-4">
+<div class="relative rounded-2xl overflow-hidden bg-surface-2 border border-pink-500/15 h-56 sm:h-64">
+<img class="w-full h-full object-cover" data-alt="Close up shot of store staff carefully applying a tempered glass screen protector with microfiber cloth in a local modern tech accessory shop" src="assets/hidrogel-01.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 via-transparent to-transparent flex items-end p-3">
+<span class="font-archivo text-xs font-semibold text-white">Instalación cuidadosa</span>
+</div>
+</div>
+<div class="relative rounded-2xl overflow-hidden bg-surface-2 border border-pink-500/15 h-56 sm:h-64">
+<img class="w-full h-full object-cover" data-alt="Brightly lit phone accessories counter with friendly boutique vibe showing rows of colorful pastel and clear phone cases in Ixtlahuaca Mexico" src="assets/asesora-mostrador-tienda.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cyber-dark/80 via-transparent to-transparent flex items-end p-3">
+<span class="font-archivo text-xs font-semibold text-white">Asesoría de mostrador</span>
+</div>
+</div>
+<!-- Mapa local del Centro de Ixtlahuaca -->
+<a class="col-span-2 relative block rounded-2xl overflow-hidden bg-surface-2 border border-pink-500/20 h-48" href="https://maps.app.goo.gl/PdRusqZ2FFMa5y7eA?g_st=ic" rel="noopener noreferrer" target="_blank">
+<div class="w-full h-full bg-cover bg-center" data-location="Centro de Ixtlahuaca, Estado de Mexico" style="background-image: url('assets/tienda-01.jpg')"></div>
+<div class="absolute top-3 left-3 px-3 py-1.5 rounded-lg bg-cyber-dark/90 backdrop-blur-md border border-pink-500/30 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-pink-primary animate-ping"></span>
+<span class="font-unbounded text-xs font-bold text-white">Mapa Centro de Ixtlahuaca</span>
+</div>
+<span class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-pink-primary text-white font-unbounded text-[11px] font-bold">Abrir ruta →</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 7. AVISOS DE TRANSPARENCIA Y MARCAS -->
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+<div class="p-6 rounded-2xl bg-surface-1 border border-white/5 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-white font-unbounded text-xs sm:text-sm font-semibold">
+<span class="material-symbols-outlined text-pink-primary text-[19px]">policy</span>
+<span>Avisos de Transparencia y Marcas</span>
+</div>
+<p class="font-archivo text-xs text-text-muted leading-relaxed">
+          Precios y existencias sujetos a confirmación en mostrador o chat. Todos los nombres y marcas registradas (iPhone, Apple, Samsung, Xiaomi, Redmi, Motorola, Honor, OPPO, etc.) son propiedad de sus respectivos dueños y se mencionan únicamente con fines de compatibilidad descriptiva e informativa para los usuarios.
+        </p>
+<div class="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-white/5 font-archivo text-xs text-text-muted">
+<span>Pink Case Móvil • Comercio Local de Ixtlahuaca de Rayón, Estado de México</span>
+<a class="hover:text-pink-light transition-colors" href="https://www.facebook.com/pinkcase.ixtlahuaca" rel="noopener noreferrer" target="_blank">
+            Facebook Oficial: Pink Case Móvil Ixtlahuaca
+          </a>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="w-full bg-[#070406] border-t border-pink-500/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col gap-8">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<img alt="Pink Case Móvil Logo" class="h-6 w-auto object-contain" src="assets/logo.webp"/>
+<span class="font-unbounded text-sm font-bold text-white">Pink Case <span class="text-pink-primary">Móvil</span></span>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-surface-2 border border-pink-500/20 text-pink-light font-archivo">Ixtlahuaca Centro</span>
+</div>
+<p class="font-archivo text-xs text-text-muted max-w-xl">
+            Boutique de fundas de alta protección, micas templadas y accesorios para smartphones. Asesoría directa y confirmación exprés en mostrador.
+          </p>
+</div>
+<div class="flex items-center gap-4">
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-2 hover:bg-surface-3 border border-pink-500/20 text-white font-archivo text-xs transition-colors" href="https://www.facebook.com/pinkcase.ixtlahuaca" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[17px] text-pink-primary">thumb_up</span>
+<span>Página Oficial de Facebook</span>
+</a>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-1 border border-pink-500/15 flex flex-col sm:flex-row items-start sm:items-center gap-3 text-text-muted">
+<span class="material-symbols-outlined text-pink-primary text-[20px] shrink-0">info</span>
+<p class="font-archivo text-xs leading-relaxed">
+<strong class="text-white font-medium">Aviso de Consulta:</strong> Este portal es un catálogo informativo de exhibición. No procesamos pagos en línea. La disponibilidad física y el ajuste milimétrico para tu equipo se confirman directamente en mostrador en Ixtlahuaca Centro o vía WhatsApp antes de tu visita.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 text-text-muted font-archivo text-xs border-t border-white/5">
+<p>© 2026 Pink Case Móvil. Comercio Local Independiente en Ixtlahuaca, Estado de México.</p>
+<div class="flex items-center gap-4">
+<a class="hover:text-pink-light transition-colors" href="#visitanos">Ubicación</a>
+<span class="opacity-30">•</span>
+<a class="hover:text-pink-light transition-colors" href="#asesoria">Compatibilidad</a>
+<span class="opacity-30">•</span>
+<a class="hover:text-pink-light transition-colors" href="#pedido">Garantía Mostrador</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interactivity Scripts: catálogo real Pink Case -->
+<script>
+    const PRODUCTS = [{"code": "f-01", "name": "Funda MagSafe translúcida ahumada", "line": "Para iPhone 13, 14 y 15", "sub": "Borde morado, aro magnético y acabado ahumado", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13, 14 y 15", "price": 350, "img": "assets/funda-01.jpg"}, {"code": "f-02", "name": "Funda tipo piel blanca hueso", "line": "Para iPhone 13, 14 y 15", "sub": "Aro MagSafe, tacto tipo piel", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13, 14 y 15", "price": 350, "img": "assets/funda-02.jpg"}, {"code": "f-03", "name": "Funda transparente tornasol SIMER", "line": "Para iPhone 13, 14 y 15", "sub": "Efecto arcoíris con aro MagSafe", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13, 14 y 15", "price": 300, "img": "assets/funda-03.jpg"}, {"code": "f-04", "name": "Fundas con anillo magnético en empaque", "line": "Para iPhone 13 y 15", "sub": "Varios diseños en tienda (foto del equipo con empaques SIMER)", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13 y 15", "price": 300, "img": "assets/funda-04.jpg"}, {"code": "f-05", "name": "Funda acabado espejo con rositas", "line": "Para Motorola Moto G85", "sub": "Diseño HAPPY de rosas rosas y moradas", "cat": "fundas", "catLabel": "Fundas", "brand": "Motorola", "model": "Moto G85", "price": 300, "img": "assets/funda-05.jpg"}, {"code": "f-06", "name": "Funda transparente con cerezas", "line": "Para Samsung Galaxy A36", "sub": "Cerezas rojas y dije de corazón", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "Galaxy A36", "price": 300, "img": "assets/funda-06.jpg"}, {"code": "f-07", "name": "Funda tipo piel azul rey", "line": "Para Samsung S25 Ultra", "sub": "Aro magnético, color azul rey", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "S25 Ultra", "price": 350, "img": "assets/funda-07.jpg"}, {"code": "f-08", "name": "Funda translúcida degradado", "line": "Para iPhone 16", "sub": "Degradado blanco a negro con aro MagSafe", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "16", "price": 300, "img": "assets/funda-08.jpg"}, {"code": "f-09", "name": "Funda rosa mate KIMO", "line": "La más pedida", "sub": "Marco de cámara metálico morado", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "Galaxy A36", "price": 300, "img": "assets/funda-09.jpg"}, {"code": "f-10", "name": "Funda transparente aro MagSafe rosa", "line": "Para Samsung Galaxy S24", "sub": "Aro magnético rosa", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "Galaxy S24", "price": 300, "img": "assets/funda-10.jpg"}, {"code": "f-11", "name": "Funda gris mate con aro MagSafe", "line": "Para iPhone 14", "sub": "Acabado mate, aro magnético", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "14", "price": 250, "img": "assets/funda-11.jpg"}, {"code": "f-12", "name": "Funda translúcida borde azul", "line": "Para iPhone 14 Pro", "sub": "Aro MagSafe, borde azul", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "14 Pro", "price": 300, "img": "assets/funda-12.jpg"}, {"code": "f-25", "name": "Funda transparente con florecitas", "line": "Para Honor X9b", "sub": "Florecitas rosas, cámara circular", "cat": "fundas", "catLabel": "Fundas", "brand": "Honor", "model": "X9b", "price": 300, "img": "assets/funda-25.jpg"}, {"code": "f-27", "name": "Funda transparente SIMER aro amarillo", "line": "Para iPhone 16e", "sub": "Aro MagSafe amarillo/verde", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "16e", "price": 250, "img": "assets/funda-27.jpg"}, {"code": "f-28", "name": "Funda transparente SIMER aro azul", "line": "Para iPhone 15", "sub": "Aro MagSafe azul", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "15", "price": 250, "img": "assets/funda-28.jpg"}, {"code": "f-29", "name": "Funda transparente SIMER aro negro", "line": "Para iPhone 15", "sub": "Aro MagSafe negro", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "15", "price": 250, "img": "assets/funda-29.jpg"}, {"code": "f-30", "name": "Funda transparente SIMER aro rosa", "line": "Para iPhone 15", "sub": "Aro MagSafe rosa", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "15", "price": 250, "img": "assets/funda-30.jpg"}, {"code": "acuatica", "name": "Funda-bolsa impermeable KBOD", "line": "Para cualquier modelo", "sub": "Tornasol, con correa; protege del agua", "cat": "fundas", "catLabel": "Fundas", "brand": "KBOD", "model": "Bolsa impermeable universal", "price": 150, "img": "assets/accesorio-02.jpg"}, {"code": "mica-sencilla", "name": "Mica de cristal templado", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "La básica que nunca falla: protege de rayones y golpes leves", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 30, "img": "assets/mica-03.jpg"}, {"code": "mica-completa", "name": "Mica completa 9D", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Cristal full glue, cubre borde a borde", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 70, "img": "assets/mica-04.jpg"}, {"code": "mica-ceramica", "name": "Mica de cerámica mate 9D", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Flexible, anti-huellas, ideal para jugar", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 70, "img": "assets/mica-05.jpg"}, {"code": "mica-privacidad", "name": "Mica de cristal de privacidad 9D", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Anti-espía: nadie ve tu pantalla de lado", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 80, "img": "assets/mica-06.jpg"}, {"code": "mica-hidro-hd", "name": "Mica de hidrogel HD", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Se corta a la medida en el local, para cualquier modelo", "cat": "micas", "catLabel": "Micas de Protección", "brand": "DRAGON", "model": "Corte a la medida en el local", "price": 150, "img": "assets/hidrogel-01.jpg"}, {"code": "mica-hidro-priv", "name": "Mica de hidrogel privacidad", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Hidrogel con filtro de privacidad, corte a la medida", "cat": "micas", "catLabel": "Micas de Protección", "brand": "DRAGON", "model": "Corte a la medida en el local", "price": 250, "img": "assets/hidrogel-01.jpg"}, {"code": "a-hora-azul", "name": "Audífonos TWS 1HORA azules", "line": "Bluetooth", "sub": "Estuche redondo; 17 h totales con estuche", "cat": "audifonos", "catLabel": "Audífonos", "brand": "1HORA", "model": "TWS estuche redondo (5 h / 17 h con estuche)", "price": 299, "img": "assets/audifonos-26.jpg"}, {"code": "a-corazon", "name": "Audífonos TWS FUTUREM FM-520", "line": "Bluetooth", "sub": "Estuche en forma de corazón rosa/dorado", "cat": "audifonos", "catLabel": "Audífonos", "brand": "FUTUREM", "model": "FM-520 (estuche corazón)", "price": 299, "img": "assets/audifonos-18.jpg"}, {"code": "a-consola", "name": "Audífonos TWS KT-01", "line": "Bluetooth", "sub": "Con funda estilo Nintendo Switch", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Genérica", "model": "KT-01 (funda tipo Nintendo Switch)", "price": 299, "img": "assets/audifonos-20.jpg"}, {"code": "a-j67", "name": "Audífonos TWS J67", "line": "Bluetooth", "sub": "Estuche tipo cámara retro con display de batería", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Genérica", "model": "J67 Stereo Earbuds", "price": 299, "img": "assets/audifonos-29.jpg"}, {"code": "a-hora-rosa", "name": "Audífonos TWS 1HORA rosas", "line": "Bluetooth", "sub": "Estuche redondo; 17 h totales con estuche", "cat": "audifonos", "catLabel": "Audífonos", "brand": "1HORA", "model": "TWS estuche redondo (5 h / 17 h con estuche)", "price": 299, "img": "assets/audifonos-37.jpg"}, {"code": "a-diadema-negra", "name": "Diadema 1HORA Deep Bass", "line": "Hasta 33 h de batería", "sub": "Negra, bajos profundos", "cat": "audifonos", "catLabel": "Audífonos", "brand": "1HORA", "model": "Diadema Deep Bass 33H", "price": 349, "img": "assets/audifonos-01.jpg"}, {"code": "a-diadema-rosa", "name": "Diadema rosa pastel", "line": "Bluetooth", "sub": "Detalles menta", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Genérica", "model": "Diadema rosa pastel (sin marca visible)", "price": 349, "img": "assets/audifonos-02.jpg"}, {"code": "a-diadema-luz", "name": "Diadema Samsung Level BT750", "line": "Luz RGB", "sub": "Blanca, Bluetooth con luz RGB", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Samsung", "model": "Level BT750 (luz RGB)", "price": 399, "img": "assets/audifonos-31.jpg"}, {"code": "a-diadema-led", "name": "Diadema Samsung Level", "line": "Luz LED", "sub": "Luz LED azul, Bluetooth", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Samsung", "model": "Level (luz LED azul)", "price": 399, "img": "assets/audifonos-43.jpg"}, {"code": "bat-10000", "name": "Power bank 1HORA 10,000 mAh", "line": "Cables integrados", "sub": "Carga para todo el día", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank 10,000 mAh con cables integrados", "price": 299, "img": "assets/accesorio-31.jpg"}, {"code": "bat-20000", "name": "Power bank 1HORA 20,000 mAh", "line": "Cables integrados", "sub": "Negra y roja; para varios días", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank 20,000 mAh con cables integrados", "price": 449, "img": "assets/accesorio-10.jpg"}, {"code": "bat-20000-negra", "name": "Power bank 1HORA 20,000 mAh negra", "line": "Cables integrados", "sub": "Color negro; para varios días", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank 20,000 mAh con cables integrados", "price": 449, "img": "assets/accesorio-30.jpg"}, {"code": "bat-magnetica", "name": "Power bank magnética 1HORA 5,000 mAh", "line": "Tipo MagSafe", "sub": "Se pega a tu celular, sin cables", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank magnética 5,000 mAh", "price": 349, "img": "assets/accesorio-29.jpg"}, {"code": "reloj", "name": "Reloj inteligente (kit)", "line": "Accesorio", "sub": "4 correas y cargador magnético", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "Genérica", "model": "Smartwatch kit con 4 correas", "price": 599, "img": "assets/accesorio-08.jpg"}, {"code": "consola-retro", "name": "Consola retro FURIOUS SU-8", "line": "Accesorio", "sub": "Con volante, para jugar en tu TV", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "FURIOUS", "model": "SU-8 (consola con volante)", "price": 499, "img": "assets/accesorio-24.jpg"}, {"code": "ser-display", "name": "Cambio de display", "line": "Servicio en el local", "sub": "Pregunta por el modelo de tu equipo", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "No aplica", "model": "Servicio", "price": 350, "img": "assets/servicio-display.jpg"}, {"code": "ser-vinculacion", "name": "Vinculación de línea / express", "line": "Servicio en el local", "sub": "Activa o vincula tu línea con nosotros", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "No aplica", "model": "Servicio", "price": 30, "img": "assets/servicio-vinculacion.jpg"}, {"code": "chip-telcel", "name": "Chip Express Telcel", "line": "Telcel", "sub": "Chip nuevo, actívalo en el local", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "Telcel", "model": "Chip Express", "price": 50, "img": "assets/servicio-chip.jpg"}, {"code": "decodificador", "name": "Decodificador", "line": "Para tu TV", "sub": "Con su control remoto", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "Por confirmar", "model": "Decodificador", "price": 700, "img": "assets/servicio-decodificador.jpg"}];
+    const byCode = {};
+    PRODUCTS.forEach(p => byCode[p.code] = p);
+    const WA_NUMBER = "527121654968";
+    const money = n => "$" + n.toLocaleString("es-MX");
+
+    /* ---------- Catálogo ---------- */
+    const CATS = [["all", "Todos en Mostrador"], ["fundas", "Fundas"], ["micas", "Micas de Protección"], ["audifonos", "Audífonos"], ["baterias", "Baterías"], ["servicios", "Servicios y Más"]];
+    let activeCat = "all";
+
+    function renderFilters() {
+      const wrap = document.getElementById("catalog-filters");
+      wrap.innerHTML = CATS.map(([key, label]) => {
+        const n = key === "all" ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === key).length;
+        const active = key === activeCat;
+        return `<button class="cat-chip ${active ? "active bg-pink-primary text-white pink-glow-sm" : "bg-surface-2 border border-white/10 text-text-muted"} px-4 py-2 rounded-full hover:bg-surface-3 hover:text-white font-unbounded text-xs ${active ? "font-semibold" : ""} whitespace-nowrap transition-all flex items-center gap-1.5" data-category="${key}" onclick="filterCatalog('${key}')" type="button"><span>${label}</span><span class="px-1.5 py-0.5 rounded-full ${active ? "bg-black/40" : "bg-surface-3"} text-[10px]">${n}</span></button>`;
+      }).join("");
+    }
+
+    function cardHTML(p) {
+      return `
+      <div class="product-card group p-4 rounded-2xl bg-surface-1 hover:bg-surface-2 border border-pink-500/15 hover:border-pink-500/40 transition-all flex flex-col justify-between shadow-lg">
+        <div>
+          <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-surface-3 mb-4">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" alt="${p.name}" src="${p.img}"/>
+            <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-cyber-dark/85 backdrop-blur-md border border-pink-500/20 text-pink-light font-archivo text-[11px] font-semibold">${p.catLabel}</span>
+          </div>
+          <span class="font-archivo text-xs ${p.cat === "micas" ? "text-emerald-400" : "text-pink-primary"} font-bold">${p.line}</span>
+          <h3 class="font-archivo font-bold text-base text-white mt-1 line-clamp-2">${p.name}</h3>
+          <p class="font-archivo text-xs text-text-muted mt-1 line-clamp-2">${p.sub}</p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+          <div>
+            <span class="font-unbounded text-lg text-white font-extrabold">${money(p.price)}</span>
+            <span class="block font-archivo text-[11px] text-text-muted">Precio en mostrador</span>
+          </div>
+          <button class="px-3 py-2 rounded-xl bg-pink-primary/10 hover:bg-pink-primary border border-pink-500/30 text-pink-light hover:text-white transition-all flex items-center gap-1.5 font-unbounded text-[11px] font-semibold" onclick="addToInquiry('${p.code}')" title="Añadir a mi consulta" type="button">
+            <span class="material-symbols-outlined text-[17px]">add_shopping_cart</span><span>+ Consulta</span>
+          </button>
+        </div>
+      </div>`;
+    }
+
+    function renderGrid(list) {
+      const grid = document.getElementById("product-grid");
+      grid.innerHTML = list.map(cardHTML).join("");
+      document.getElementById("catalog-empty").classList.toggle("hidden", list.length > 0);
+    }
+
+    function filterCatalog(cat) {
+      activeCat = cat;
+      renderFilters();
+      renderGrid(cat === "all" ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat));
+    }
+
+    /* ---------- Asesoría guiada ---------- */
+    let currentBrand = "iPhone";
+    function fundasDe(brand) { return PRODUCTS.filter(p => p.cat === "fundas" && p.brand === brand); }
+
+    function renderModelChips() {
+      const wrap = document.getElementById("model-chips");
+      if (!wrap) return;
+      const models = [...new Set(fundasDe(currentBrand).map(p => p.model))];
+      wrap.innerHTML = `<span class="font-archivo text-xs text-text-muted">Modelos en exhibición:</span>` + models.map(m =>
+        `<button class="px-2 py-0.5 rounded-lg bg-pink-primary/10 hover:bg-pink-primary/25 border border-pink-500/30 text-xs text-pink-light transition-colors" onclick="setModel('${currentBrand === "iPhone" ? "iPhone" : currentBrand} ${m}')" type="button">${m}</button>`).join("");
+    }
+
+    function setModel(v) {
+      const input = document.getElementById("model-input");
+      if (input) input.value = v;
+      updateSuggestion();
+    }
+
+    function matchFundas() {
+      const raw = (document.getElementById("model-input")?.value || "").toLowerCase();
+      const stop = ["iphone", "samsung", "galaxy", "motorola", "moto", "honor", "para", "mi", "de"];
+      const tokens = raw.split(/[^a-z0-9+]+/i).filter(t => t && !stop.includes(t));
+      const base = fundasDe(currentBrand);
+      if (!tokens.length) return base;
+      const m = base.filter(p => tokens.every(t => (p.brand + " " + p.model).toLowerCase().includes(t)));
+      return m.length ? m : base;
+    }
+
+    function updateSuggestion() {
+      const model = document.getElementById("model-input")?.value || "tu celular";
+      const style = document.querySelector(".style-chip.active")?.dataset.style || "";
+      const headline = document.getElementById("suggestion-headline");
+      const subline = document.getElementById("suggestion-subline");
+      if (headline) headline.textContent = `Opciones recomendadas para ${model}`;
+      if (subline) subline.textContent = `${fundasDe(currentBrand).length} diseños ${currentBrand} en exhibición${style ? " · Estilo: " + style : ""}. Y tu mica desde $30 con instalación gratis.`;
+    }
+
+    function showSuggestions() {
+      const list = matchFundas();
+      activeCat = "sugeridas";
+      renderFilters();
+      renderGrid(list);
+      const headline = document.getElementById("suggestion-headline");
+      if (headline) headline.textContent = `${list.length} opciones para ${document.getElementById("model-input")?.value || currentBrand}`;
+      document.getElementById("catalogo").scrollIntoView({ behavior: "smooth" });
+    }
+
+    /* ---------- Mi consulta (lista de mostrador) ---------- */
+    let inquiryItems = [];
+    let folio = null;
+    function newFolio() { return "PC-" + Math.random().toString(36).slice(2, 6).toUpperCase(); }
+    function saveState() { try { localStorage.setItem("pc_consulta", JSON.stringify({ items: inquiryItems, folio })); } catch (e) {} }
+    function loadState() {
+      try {
+        const s = JSON.parse(localStorage.getItem("pc_consulta") || "null");
+        if (s && Array.isArray(s.items)) { inquiryItems = s.items.filter(i => byCode[i.code]); folio = s.folio || null; }
+      } catch (e) {}
+    }
+    function shareHash() {
+      const payload = { f: folio, items: inquiryItems.map(i => [i.code, i.qty]) };
+      return "#lista=" + btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    }
+
+    function renderInquiry() {
+      const container = document.getElementById("inquiry-items-container");
+      const totalElement = document.getElementById("inquiry-total");
+      if (!container) return;
+      if (!folio && inquiryItems.length) { folio = newFolio(); }
+      if (inquiryItems.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-xl bg-surface-2 border border-white/5 text-center flex flex-col items-center justify-center gap-2 text-text-muted">
+            <span class="material-symbols-outlined text-[32px] text-pink-primary/40">shopping_bag</span>
+            <p class="font-unbounded text-xs sm:text-sm text-white">Tu lista de consulta está vacía.</p>
+            <span class="font-archivo text-xs">Explora el catálogo y pulsa "+ Consulta" para añadir artículos.</span>
+          </div>`;
+        if (totalElement) totalElement.innerText = "$0 MXN";
+        updateHeaderBadge(0);
+        saveState();
+        return;
+      }
+      let total = 0, units = 0;
+      container.innerHTML = inquiryItems.map((item, index) => {
+        const p = byCode[item.code];
+        const sub = p.price * item.qty;
+        total += sub; units += item.qty;
+        return `
+          <div class="p-3.5 rounded-xl bg-surface-2 border border-pink-500/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <img class="w-11 h-11 rounded-lg object-cover border border-pink-500/25" alt="${p.name}" src="${p.img}"/>
+              <div class="flex flex-col">
+                <span class="font-archivo font-bold text-sm text-white">${p.name}</span>
+                <span class="font-archivo text-xs text-text-muted">${money(p.price)} MXN c/u · ${p.line}</span>
+              </div>
             </div>
-          </div>
-          <p class="fineprint">Te atendemos por mensaje y apartas tu producto para recogerlo en el local.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= EQUIPO ================= -->
-    <section id="equipo">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2>Te atienden personas reales</h2>
-          <p>Las mismas asesoras que ves en el local son las que te responden por mensaje. Así se vive Pink Case por dentro:</p>
-        </div>
-        <div class="team-grid">
-          <figure class="team-card">
-            <img src="assets/asesora-mostrador-tienda.jpg" alt="Asesora de Pink Case detrás del mostrador, con el anaquel de fundas y accesorios al fondo" loading="lazy" />
-            <figcaption class="cap"><b>Atención en el local</b><span>Te mostramos en persona las fundas que sí le quedan a tu celular.</span></figcaption>
-          </figure>
-          <figure class="team-card">
-            <img src="assets/asesora-audifonos-negros-caja.jpg" alt="Asesora de Pink Case usando audífonos de diadema negros y sosteniendo su caja" loading="lazy" />
-            <figcaption class="cap"><b>Audio que sí se escucha</b><span>Audífonos de diadema con bajos profundos y hasta 33 horas de reproducción.</span></figcaption>
-          </figure>
-          <figure class="team-card">
-            <img src="assets/asesora-audifonos-rosas.jpg" alt="Asesora de Pink Case probándose unos audífonos de diadema rosas" loading="lazy" />
-            <figcaption class="cap"><b>Pruébalos antes de pagar</b><span>En Pink Case te los pruebas en el momento, sin compromiso.</span></figcaption>
-          </figure>
-          <figure class="team-card">
-            <img src="assets/asesora-funda-acuatica.jpg" alt="Asesora de Pink Case en exteriores mostrando una funda acuática rosa con un celular dentro" loading="lazy" />
-            <figcaption class="cap"><b>También para tus salidas</b><span>Fundas acuáticas y accesorios para la alberca, la playa o el trabajo.</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= SERVICIO HIDROGEL ================= -->
-    <section id="hidrogel">
-      <div class="wrap">
-        <div class="service-grid">
-          <img src="assets/servicio-01.jpg" alt="Máquina cortadora de mica de hidrogel en el local de Pink Case, con la pantalla para elegir el modelo" loading="lazy" />
-          <div>
-            <h3>Mica de hidrogel, cortada a la medida en el local</h3>
-            <p>Tenemos la máquina que corta tu mica de hidrogel al momento, a la medida exacta de tu modelo: no importa si tu celular es nuevo o poco común, aquí sí hay para el tuyo. También pregunta por la <b>mica con seguro</b>: queda registrada a tu nombre en la tienda.</p>
-            <div class="hidro-actions">
-              <button class="add-btn" type="button" data-hidro="mica-hidro-hd">Hidrogel HD · $150</button>
-              <button class="add-btn" type="button" data-hidro="mica-hidro-priv">Hidrogel privacidad · $250</button>
+            <div class="flex items-center justify-between sm:justify-end gap-4">
+              <div class="flex items-center gap-1.5 bg-surface-3 rounded-lg p-1 border border-white/10">
+                <button type="button" onclick="updateQty(${index}, -1)" class="w-6 h-6 rounded flex items-center justify-center text-white hover:bg-pink-primary/30 transition-colors font-bold text-xs" title="Restar">-</button>
+                <span class="w-6 text-center font-unbounded text-xs text-white">${item.qty}</span>
+                <button type="button" onclick="updateQty(${index}, 1)" class="w-6 h-6 rounded flex items-center justify-center text-white hover:bg-pink-primary/30 transition-colors font-bold text-xs" title="Sumar">+</button>
+              </div>
+              <span class="font-unbounded text-sm font-bold text-white min-w-[75px] text-right">${money(sub)}</span>
+              <button type="button" onclick="removeItem(${index})" class="text-text-muted hover:text-pink-primary transition-colors p-1" title="Eliminar de la consulta">
+                <span class="material-symbols-outlined text-[18px]">close</span>
+              </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          </div>`;
+      }).join("") + `
+          <p class="font-archivo text-xs text-text-muted">Folio de tu lista: <strong class="text-pink-light">${folio}</strong> · Compártela con esta liga: <button type="button" class="underline text-pink-light" onclick="copyShareLink()">copiar liga de mi lista</button></p>`;
+      if (totalElement) totalElement.innerText = money(total) + " MXN";
+      updateHeaderBadge(units);
+      saveState();
+    }
 
-    <!-- ================= TIENDA ================= -->
-    <section id="tienda">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2>Visítanos en el local</h2>
-          <p>Así se ve Pink Case por dentro: paredes completas de fundas y micas para que compares en persona y te pruebes todo en tu celular antes de pagar.</p>
-        </div>
-        <div class="store-grid">
-          <figure class="team-card">
-            <img src="assets/tienda-01.jpg" alt="Pared de la tienda llena de fundas de colores colgadas en exhibición" loading="lazy" />
-            <figcaption class="cap"><b>La pared de fundas</b><span>Cientos de diseños y colores: si no lo viste en la página, seguro está aquí.</span></figcaption>
-          </figure>
-          <figure class="team-card">
-            <img src="assets/tienda-02.jpg" alt="Pared de la tienda con micas de cristal, cerámica y de privacidad en exhibición" loading="lazy" />
-            <figcaption class="cap"><b>La pared de micas</b><span>Cristal, cerámica, privacidad e hidrogel para casi cualquier modelo.</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
+    function updateHeaderBadge(count) {
+      const badge = document.getElementById("header-inquiry-count");
+      if (badge) badge.textContent = count;
+    }
 
-    <!-- ================= CONFIANZA ================= -->
-    <section id="confianza">
-      <div class="wrap">
-        <div class="sec-head">
-          <h2>Por qué las clientas vuelven</h2>
-          <p>Sin letras chicas: esto es lo que respalda cada recomendación de la página.</p>
-        </div>
-        <div class="trust-grid">
-          <div class="trust-card"><b>+6 años en Ixtlahuaca</b><p>No somos una tienda anónima de internet: vendemos en el centro desde hace más de 6 años y la gente nos conoce en persona.</p></div>
-          <div class="trust-card"><b>3 locales y el 4º en camino</b><p>Si algo no te convence por mensaje, puedes venir al local, ver la funda en tu mano y probarla en tu celular.</p></div>
-          <div class="trust-card"><b>“La más pedida” es la del local</b><p>Esa etiqueta se marca solo en los modelos que más se piden en nuestros locales. Cuando tengamos conteos por modelo, se verán aquí.</p></div>
-        </div>
-      </div>
-    </section>
+    function addToInquiry(code) {
+      const found = inquiryItems.find(i => i.code === code);
+      if (found) found.qty += 1; else inquiryItems.push({ code, qty: 1 });
+      if (!folio) folio = newFolio();
+      renderInquiry();
+      document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+    function updateQty(index, change) {
+      if (!inquiryItems[index]) return;
+      inquiryItems[index].qty += change;
+      if (inquiryItems[index].qty <= 0) inquiryItems.splice(index, 1);
+      renderInquiry();
+    }
+    function removeItem(index) { inquiryItems.splice(index, 1); renderInquiry(); }
+    function clearInquiry() { inquiryItems = []; folio = null; renderInquiry(); }
 
-    <!-- ================= SÍGUENOS ================= -->
-    <section id="siguenos">
-      <div class="wrap">
-        <div class="follow-card">
-          <img class="logo-lg" src="assets/logo.jpg" alt="Logo de Pink Case" />
-          <div class="txt">
-            <h2>Pink Case en Facebook</h2>
-            <p>Modelos nuevos, promociones y fotos reales de lo que va llegando a la tienda, primero en nuestra página. Síguenos y no te pierdas nada.</p>
-          </div>
-          <div class="follow-actions">
-            <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=100089142581532" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
-              Seguir en Facebook
-            </a>
-            <a class="btn btn-ghost" href="#asesor">Encuentra tu funda</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    function copyShareLink() {
+      const url = location.origin + location.pathname + shareHash();
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => alert("Liga copiada. Compártela y quien la abra verá tu lista tal cual."));
+      else prompt("Copia la liga de tu lista:", url);
+    }
 
-    <footer>
-      <div class="wrap">
-        <div class="cols">
-          <div>
-            <h3>Pink Case Móvil</h3>
-            <p>Accesorios para celular en Ixtlahuaca, Estado de México. Más de 6 años cuidando tu teléfono.</p>
-            <p style="margin-top:10px"><a href="https://www.facebook.com/profile.php?id=100089142581532" target="_blank" rel="noopener">Síguenos en Facebook →</a></p>
-          </div>
-          <div>
-            <h3>Visítanos</h3>
-            <ul>
-              <li>3 locales en Ixtlahuaca</li>
-              <li>4º local en el centro, muy pronto</li>
-              <li>Atención en local y por WhatsApp</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Lo más pedido</h3>
-            <ul>
-              <li>Fundas de silicón y uso rudo</li>
-              <li>Micas de cristal e hidrogel</li>
-              <li>Audífonos y cargadores</li>
-            </ul>
-          </div>
-        </div>
-        <p class="sample-note"><b>Catálogo real:</b> las fotos de esta página son del negocio, elegidas de su página de Facebook. Los precios de protectores ($250–$350) y micas ($50–$250) son los de lista de la tienda; la existencia para tu modelo exacto se confirma por WhatsApp antes de apartar.</p>
-      </div>
-    </footer>
+    function sendWhatsAppInquiry() {
+      if (inquiryItems.length === 0) { alert("Por favor añade al menos un producto a tu lista para consultar existencias."); return; }
+      const model = document.getElementById("model-input")?.value || "No especificado";
+      let total = 0;
+      let message = "¡Hola Pink Case Móvil! 👋 Quiero consultar disponibilidad en Ixtlahuaca Centro de estos artículos:\n\n";
+      message += `📱 Mi equipo: ${currentBrand} · ${model}\n`;
+      message += `🧾 Folio: ${folio || newFolio()}\n\n📋 Mi lista:\n`;
+      inquiryItems.forEach((item, idx) => {
+        const p = byCode[item.code];
+        const sub = p.price * item.qty;
+        total += sub;
+        message += `${idx + 1}. ${p.name} (${p.line}) x${item.qty} — ${money(sub)}\n`;
+      });
+      message += `\n💰 Total informativo: ${money(total)} MXN\n`;
+      message += `🔗 Mi lista: ${location.origin + location.pathname + shareHash()}\n`;
+      message += "¿Los tienen en existencia para pasar a mostrador? ¡Gracias!";
+      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+    }
 
-    <a class="wa-fab" href="https://wa.me/527121654968?text=Hola%20Pink%20Case%20%F0%9F%92%96%20Quiero%20informaci%C3%B3n%20sobre%20fundas%20y%20micas." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.4 15.2L2.1 22l4.9-1.5A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .9.9-2.9-.2-.3a8.2 8.2 0 1 1 6.8 3.6Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3Z"/></svg>
-    </a>
-
-    <div class="order-bar" id="orderBar" hidden>
-      <span class="txt">Tu pedido · <b id="orderBarCount">0 productos</b> · <b id="orderBarTotal">$0</b></span>
-      <a href="#pedido">Ver pedido →</a>
-    </div>
-
-    <div class="detail-overlay" id="detailOverlay" hidden>
-      <div class="detail-panel" role="dialog" aria-modal="true" aria-label="Detalle del producto">
-        <button class="detail-close" type="button" id="detailClose" aria-label="Cerrar detalle">×</button>
-        <div class="detail-zoom-wrap"><img class="main" id="detailImg" src="assets/logo.jpg" alt="" /></div>
-        <div class="detail-thumbs">
-          <button type="button" id="detailViewFull" class="sel">Vista completa</button>
-          <button type="button" id="detailViewZoom">Detalle ampliado</button>
-        </div>
-        <p style="font-size:13.5px;color:var(--muted);margin:2px 0 0">La ampliación es un acercamiento de la misma foto.</p>
-        <h3 id="detailName"></h3>
-        <p class="dmeta" id="detailMeta"></p>
-        <p class="dwhy" id="detailWhy"></p>
-        <p class="dlabel" id="detailModelsLabel">Le queda a estos modelos</p>
-        <div class="detail-models" id="detailModels"></div>
-        <div class="detail-foot">
-          <span class="price" id="detailPrice"></span>
-          <button class="add-btn" type="button" id="detailAdd">Quiero esta</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="toast" id="toast" role="status"></div>
-
-    <script>
-      "use strict";
-      var WA_NUMBER = "527121654968"; // WhatsApp vinculado al botón de la página
-
-      /* ---------- Datos ---------- */
-      var MODELS = {
-        "iPhone":   ["iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14", "iPhone 15", "iPhone 15 Pro Max", "iPhone 16", "iPhone 16 Pro Max"],
-        "Samsung":  ["Galaxy A15", "Galaxy A35", "Galaxy A55", "Galaxy S23", "Galaxy S24", "Galaxy S25", "Galaxy S25 Ultra"],
-        "Xiaomi":   ["Redmi 13C", "Redmi Note 13", "Redmi Note 13 Pro", "Poco X6"],
-        "Motorola": ["Moto G24", "Moto G54", "Moto G84", "Edge 40"],
-        "Honor":    ["Honor X5B", "Honor X6A", "Honor X6B", "Honor X7B", "Honor X8B", "Honor Magic 6 Lite"],
-        "Huawei":   ["Nova 12 SE", "Nova 13", "Pura 70"],
-        "OPPO":     ["Reno 11", "Reno 12", "A58"]
-      };
-      var ALL_MODELS = [];
-      Object.keys(MODELS).forEach(function (b) { ALL_MODELS = ALL_MODELS.concat(MODELS[b]); });
-
-      // Compatibilidad amplia de ejemplo: la mayoría de fundas cubre casi todos los modelos;
-      // algunas (uso rudo, cartera) cubren un subconjunto, como pasaría con el inventario real.
-      var MOST = ALL_MODELS.filter(function (m) { return m !== "Pura 70"; });
-      var RUGGED_MODELS = ["Galaxy S25 Ultra", "Galaxy S24", "Galaxy S25", "iPhone 15", "iPhone 16", "iPhone 15 Pro Max", "iPhone 16 Pro Max", "Moto G84", "Redmi Note 13 Pro", "Galaxy A55"];
-      var WALLET_MODELS = ["iPhone 13", "iPhone 14", "iPhone 15", "Galaxy A35", "Galaxy A55", "Galaxy S24", "Moto G54", "Reno 11"];
-
-      var FUNDAS = [
-        { id: "f-01", name: "Mate morada con anillo magnético", price: 350, img: "assets/funda-01.jpg",
-          material: "Mate translúcida con anillo magnético", color: "lila", who: ["ella", "el"], styles: ["elegante"],
-          models: MOST, badge: "La más pedida", why: "El marco elevado cuida la cámara y el anillo sirve con cargadores magnéticos" },
-        { id: "f-02", name: "Tipo piel blanca con anillo magnético", price: 350, img: "assets/funda-02.jpg",
-          material: "Tipo piel con anillo magnético", color: "", who: ["ella", "el"], styles: ["elegante"],
-          models: MOST, badge: "", why: "Se ve elegante y se siente suave en la mano" },
-        { id: "f-03", name: "Tornasol con anillo magnético", price: 300, img: "assets/funda-03.jpg",
-          material: "Transparente tornasol con anillo magnético", color: "colores", who: ["ella", "nina"], styles: ["elegante", "divertido"],
-          models: MOST, badge: "Nueva", why: "Cambia de color según le da la luz" },
-        { id: "f-04", name: "Magnética en su empaque", price: 300, img: "assets/funda-04.jpg",
-          material: "Con anillo magnético, varios colores", color: "colores", who: ["ella", "el", "nina", "nino"], styles: ["elegante", "sencillo"],
-          models: MOST, badge: "", why: "Así llega a tus manos: en su empaque, lista para estrenar" },
-        { id: "f-05", name: "Espejo con rosas", price: 300, img: "assets/funda-05.jpg",
-          material: "Acabado espejo con diseño de rosas", color: "rosa", who: ["ella", "nina"], styles: ["divertido", "elegante"],
-          models: MOST, badge: "", why: "Te sirve de espejo y se ve preciosa" },
-        { id: "f-06", name: "Transparente con cerezas", price: 300, img: "assets/funda-06.jpg",
-          material: "Transparente con diseño de cerezas", color: "colores", who: ["ella", "nina"], styles: ["divertido"],
-          models: MOST, badge: "", why: "El diseño de cerezas que todas voltean a ver" },
-        { id: "f-07", name: "Tipo piel azul rey con anillo magnético", price: 350, img: "assets/funda-07.jpg",
-          material: "Tipo piel con anillo magnético", color: "", who: ["el", "ella"], styles: ["elegante", "sencillo"],
-          models: MODELS["Samsung"], badge: "", why: "Azul rey, de los colores que más piden para Samsung" },
-        { id: "f-08", name: "Ahumada con anillo magnético negro", price: 300, img: "assets/funda-08.jpg",
-          material: "Transparente ahumada con anillo magnético", color: "negro", who: ["el", "ella"], styles: ["sencillo", "elegante"],
-          models: MOST, badge: "", why: "Discreta y con buen agarre, no se resbala" },
-        { id: "f-09", name: "Rosa metálica", price: 300, img: "assets/funda-09.jpg",
-          material: "Rosa metálico con marco de cámara morado", color: "rosa", who: ["ella", "nina"], styles: ["elegante"],
-          models: MOST, badge: "La más pedida", why: "El rosa insignia de la tienda" },
-        { id: "f-10", name: "Transparente con anillo rosa", price: 300, img: "assets/funda-10.jpg",
-          material: "Transparente con anillo magnético rosa", color: "rosa", who: ["ella"], styles: ["sencillo", "elegante"],
-          models: MODELS["Samsung"], badge: "", why: "Deja ver tu Samsung tal cual es" },
-        { id: "f-11", name: "Mate gris con anillo magnético", price: 250, img: "assets/funda-11.jpg",
-          material: "Mate gris con anillo magnético", color: "", who: ["el", "ella"], styles: ["sencillo"],
-          models: MODELS["iPhone"], badge: "", why: "Sencilla y ligera, para el uso diario" },
-        { id: "f-12", name: "Mate con borde azul", price: 300, img: "assets/funda-12.jpg",
-          material: "Mate translúcida con borde azul y anillo magnético", color: "", who: ["el"], styles: ["sencillo"],
-          models: MODELS["iPhone"], badge: "", why: "El borde azul le da el toque diferente" },
-        { id: "f-25", name: "Flores y corazón rosa para Honor", price: 300, img: "assets/funda-25.jpg",
-          material: "Transparente con flores y corazón rosa", color: "rosa", who: ["ella", "nina"], styles: ["divertido", "elegante"],
-          models: MODELS["Honor"], badge: "Nueva", why: "Para los Honor, de los modelos que más rotan en el local" },
-        { id: "f-27", name: "De cristal con anillo amarillo", price: 250, img: "assets/funda-27.jpg",
-          material: "Transparente de cristal con anillo magnético", color: "transparente", who: ["ella", "el", "nina", "nino"], styles: ["sencillo"],
-          models: MOST, badge: "", why: "La clásica transparente, ahora con anillo magnético" },
-        { id: "f-28", name: "De cristal con anillo azul", price: 250, img: "assets/funda-28.jpg",
-          material: "Transparente de cristal con anillo magnético", color: "transparente", who: ["ella", "el", "nina", "nino"], styles: ["sencillo"],
-          models: MOST, badge: "La más pedida", why: "La transparente que más se llevan en el local" },
-        { id: "f-29", name: "De cristal con anillo negro", price: 250, img: "assets/funda-29.jpg",
-          material: "Transparente de cristal con anillo magnético", color: "negro", who: ["el", "ella"], styles: ["sencillo"],
-          models: MOST, badge: "", why: "Transparente con el detalle en negro" },
-        { id: "f-30", name: "De cristal con anillo rosa", price: 250, img: "assets/funda-30.jpg",
-          material: "Transparente de cristal con anillo magnético", color: "rosa", who: ["ella", "nina"], styles: ["sencillo", "elegante"],
-          models: MOST, badge: "", why: "Transparente con el toque rosa de la casa" }
-      ];
-
-      var MICAS = [
-        { id: "mica-sencilla", type: "Cristal templado", price: 50, desc: "El básico que sí protege tu pantalla" },
-        { id: "mica-completa", type: "Cristal completa / cerámica", price: 100, desc: "Cubre toda la pantalla, la más pedida" },
-        { id: "mica-hidro-hd", type: "Hidrogel HD", price: 150, desc: "Se corta a la medida de tu modelo en el local" },
-        { id: "mica-hidro-priv", type: "Hidrogel privacidad", price: 250, desc: "Nadie ve tu pantalla de lado" }
-      ];
-
-      var EXTRAS = {
-        audifonos: { id: "audifonos", name: "Audífonos inalámbricos 1HORA lila", price: 299, img: "assets/audifonos-26.jpg",
-          meta: "Hasta 17 horas con su estuche de carga", cat: "audio" },
-        "a-corazon": { id: "a-corazon", name: "Audífonos con estuche de corazón", price: 299, img: "assets/audifonos-18.jpg",
-          meta: "Estuche en forma de corazón, color rosa", cat: "audio" },
-        "a-consola": { id: "a-consola", name: "Audífonos inalámbricos estilo consola KT-01", price: 299, img: "assets/audifonos-20.jpg",
-          meta: "Su estuche parece una mini consola de videojuegos", cat: "audio" },
-        "a-j67": { id: "a-j67", name: "Audífonos inalámbricos J67", price: 299, img: "assets/audifonos-29.jpg",
-          meta: "Estuche con pantalla que marca la carga", cat: "audio" },
-        "a-hora-rosa": { id: "a-hora-rosa", name: "Audífonos inalámbricos 1HORA rosa", price: 299, img: "assets/audifonos-37.jpg",
-          meta: "Hasta 17 horas con su estuche de carga", cat: "audio" },
-        "a-diadema-negra": { id: "a-diadema-negra", name: "Audífonos de diadema 1HORA negros", price: 349, img: "assets/audifonos-01.jpg",
-          meta: "Bajos profundos · hasta 33 horas de reproducción", cat: "audio" },
-        "a-diadema-negra-luz": { id: "a-diadema-negra-luz", name: "Audífonos de diadema 1HORA negros con luz", price: 349, img: "assets/audifonos-42.jpg",
-          meta: "Con detalle de luz en las copas · 33 horas de reproducción", cat: "audio" },
-        "a-diadema-rosa": { id: "a-diadema-rosa", name: "Audífonos de diadema rosa pastel", price: 349, img: "assets/audifonos-02.jpg",
-          meta: "Acolchados, para usarlos todo el día", cat: "audio" },
-        "a-diadema-rosa-bt": { id: "a-diadema-rosa-bt", name: "Audífonos de diadema rosa pastel Bluetooth", price: 349, img: "assets/audifonos-41.jpg",
-          meta: "Bluetooth · pruébalos en el local antes de pagar", cat: "audio" },
-        "a-diadema-luz": { id: "a-diadema-luz", name: "Audífonos de diadema Bluetooth con luz", price: 399, img: "assets/audifonos-31.jpg",
-          meta: "Copas con luz · sonido balanceado", cat: "audio" },
-        "a-diadema-led": { id: "a-diadema-led", name: "Audífonos de diadema con luz LED azul", price: 399, img: "assets/audifonos-43.jpg",
-          meta: "La diadema se ilumina en azul", cat: "audio" },
-        cargador: { id: "cargador", name: "Batería portátil 1HORA 10,000 mAh", price: 299, img: "assets/accesorio-31.jpg",
-          meta: "Cables integrados para cualquier celular", cat: "carga" },
-        "bat-20000": { id: "bat-20000", name: "Batería portátil 1HORA 20,000 mAh", price: 449, img: "assets/accesorio-10.jpg",
-          meta: "Cables integrados · en negro y rojo", cat: "carga" },
-        "bat-20000-negra": { id: "bat-20000-negra", name: "Batería portátil 20,000 mAh con cables integrados", price: 449, img: "assets/accesorio-30.jpg",
-          meta: "La de mayor capacidad de la tienda", cat: "carga" },
-        "bat-magnetica": { id: "bat-magnetica", name: "Batería portátil magnética 1HORA 5,000 mAh", price: 349, img: "assets/accesorio-29.jpg",
-          meta: "Se pega a tu celular: carga sin cables", cat: "carga" },
-        reloj: { id: "reloj", name: "Reloj inteligente con 4 correas", price: 599, img: "assets/accesorio-08.jpg",
-          meta: "Correas azul, beige, negra y naranja · incluye su cargador", cat: "extra" },
-        "consola-retro": { id: "consola-retro", name: "Consola retro con volante", price: 499, img: "assets/accesorio-24.jpg",
-          meta: "Juegos clásicos en una mini consola con forma de volante", cat: "extra" },
-        acuatica: { id: "acuatica", name: "Funda acuática tornasol", price: 150, img: "assets/accesorio-02.jpg",
-          meta: "Para la alberca y la playa · con correa para el cuello", cat: "funda" }
-      };
-
-      var COLORS = [
-        { id: "rosa", label: "Rosa", hex: "#f78fb8" },
-        { id: "lila", label: "Lila", hex: "#b9a7e6" },
-        { id: "negro", label: "Negro", hex: "#2b2b2e" },
-        { id: "transparente", label: "Transparente", hex: "#eef1f3" },
-        { id: "dorado", label: "Dorado / brillos", hex: "#d9a92c" },
-        { id: "colores", label: "De colores / diseños", hex: "linear-gradient(135deg,#f78fb8 0 33%,#7fc8bc 33% 66%,#f6c453 66%)" }
-      ];
-      var WHO_LABEL = { ella: "para ella", el: "para él", nina: "para una niña", nino: "para un niño" };
-      var STYLE_LABEL = { elegante: "elegante", divertido: "divertido", rudo: "de uso rudo", sencillo: "sencillo" };
-
-      /* ---------- Estado ---------- */
-      var state = { brand: null, model: null, who: null, style: null, color: null };
-      var order = {}; // id -> {name, detail, price, img, qty}
-
-      function $(id) { return document.getElementById(id); }
-      function money(n) { return "$" + n.toLocaleString("es-MX"); }
-      function toast(msg) {
-        var t = $("toast"); t.textContent = msg; t.classList.add("show");
-        clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove("show"); }, 2400);
-      }
-
-      /* ---------- Quiz: paso 1 ---------- */
-      function renderBrands() {
-        var box = $("brandChips"); box.innerHTML = "";
-        Object.keys(MODELS).forEach(function (b) {
-          var btn = document.createElement("button");
-          btn.type = "button"; btn.className = "chip" + (state.brand === b ? " sel" : "");
-          btn.textContent = b;
-          btn.addEventListener("click", function () { state.brand = b; state.model = null; renderBrands(); renderModels(""); $("modelZone").hidden = false; $("modelSearch").value = ""; });
-          box.appendChild(btn);
-        });
-      }
-      function renderModels(filter) {
-        var box = $("modelChips"); box.innerHTML = "";
-        var list = (MODELS[state.brand] || []).filter(function (m) {
-          return m.toLowerCase().indexOf((filter || "").toLowerCase()) !== -1;
-        });
-        if (!list.length) {
-          box.innerHTML = "<span style='color:var(--muted)'>No aparece en la lista — pregúntanos por WhatsApp, seguro lo conseguimos.</span>";
-          return;
+    function loadFromHash() {
+      if (!location.hash.startsWith("#lista=")) return false;
+      try {
+        const payload = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(7)))));
+        inquiryItems = (payload.items || []).map(([code, qty]) => ({ code, qty })).filter(i => byCode[i.code]);
+        folio = payload.f || newFolio();
+        const banner = document.getElementById("shared-banner");
+        if (banner && inquiryItems.length) {
+          banner.classList.remove("hidden");
+          banner.innerHTML = `🔎 <strong>Estás viendo una lista compartida</strong> · Folio ${folio} — esto es lo que el cliente quiere consultar: productos, cantidades y total.`;
         }
-        list.forEach(function (m) {
-          var btn = document.createElement("button");
-          btn.type = "button"; btn.className = "chip" + (state.model === m ? " sel" : "");
-          btn.textContent = m.replace(state.brand === "iPhone" ? "" : "", "");
-          btn.addEventListener("click", function () { state.model = m; renderModels($("modelSearch").value); renderCatalog(currentCat); goStep(2); });
-          box.appendChild(btn);
-        });
-      }
-      $("modelSearch").addEventListener("input", function (e) { renderModels(e.target.value); });
-      $("unknownModel").addEventListener("click", function () {
-        state.brand = null; state.model = null; renderCatalog(currentCat); goStep(2);
-      });
+        return inquiryItems.length > 0;
+      } catch (e) { return false; }
+    }
 
-      /* ---------- Quiz: paso 2 ---------- */
-      Array.prototype.forEach.call(document.querySelectorAll("#whoCards .pick"), function (btn) {
-        btn.addEventListener("click", function () {
-          state.who = btn.getAttribute("data-who");
-          Array.prototype.forEach.call(document.querySelectorAll("#whoCards .pick"), function (b) { b.classList.toggle("sel", b === btn); });
-          goStep(3);
+    document.addEventListener("DOMContentLoaded", () => {
+      const brandButtons = document.querySelectorAll(".brand-btn");
+      brandButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          brandButtons.forEach(b => { b.classList.remove("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold"); b.classList.add("bg-surface-2", "border-white/10", "text-text-muted"); });
+          btn.classList.add("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold");
+          btn.classList.remove("bg-surface-2", "border-white/10", "text-text-muted");
+          currentBrand = btn.dataset.brand;
+          renderModelChips();
+          updateSuggestion();
         });
       });
+      const styleChips = document.querySelectorAll(".style-chip");
+      styleChips.forEach(chip => {
+        chip.addEventListener("click", () => {
+          styleChips.forEach(c => { c.classList.remove("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold"); c.classList.add("bg-surface-2", "border-white/10", "text-text-muted"); });
+          chip.classList.add("active", "bg-pink-primary/15", "border-pink-primary", "text-pink-light", "font-semibold");
+          chip.classList.remove("bg-surface-2", "border-white/10", "text-text-muted");
+          updateSuggestion();
+        });
+      });
+      const colorDots = document.querySelectorAll(".color-dot");
+      colorDots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          colorDots.forEach(d => d.classList.remove("ring-2", "ring-pink-primary"));
+          dot.classList.add("ring-2", "ring-pink-primary");
+        });
+      });
+      document.getElementById("model-input")?.addEventListener("input", updateSuggestion);
+      document.getElementById("btn-show-suggestions")?.addEventListener("click", showSuggestions);
 
-      /* ---------- Quiz: paso 3 ---------- */
-      Array.prototype.forEach.call(document.querySelectorAll("#styleChips .chip"), function (btn) {
-        btn.addEventListener("click", function () {
-          state.style = btn.getAttribute("data-style");
-          Array.prototype.forEach.call(document.querySelectorAll("#styleChips .chip"), function (b) { b.classList.toggle("sel", b === btn); });
-          $("showResults").disabled = false;
-        });
-      });
-      (function renderColors() {
-        var box = $("colorSwatches");
-        COLORS.forEach(function (c) {
-          var btn = document.createElement("button");
-          btn.type = "button"; btn.className = "swatch";
-          btn.innerHTML = "<span class='dot'></span>" + c.label;
-          btn.querySelector(".dot").style.background = c.hex;
-          btn.addEventListener("click", function () {
-            state.color = (state.color === c.id) ? null : c.id;
-            Array.prototype.forEach.call(box.children, function (b, i) { b.classList.toggle("sel", COLORS[i].id === state.color); });
-          });
-          box.appendChild(btn);
-        });
-      })();
-
-      function goStep(n) {
-        [1, 2, 3].forEach(function (i) {
-          $("step" + i).classList.toggle("active", i === n);
-          $("bar" + i).classList.toggle("on", i <= n);
-        });
-        // Sin salto automático: el quiz se queda donde está la clienta.
-      }
-      Array.prototype.forEach.call(document.querySelectorAll("[data-back]"), function (btn) {
-        btn.addEventListener("click", function () { goStep(parseInt(btn.getAttribute("data-back"), 10)); });
-      });
-      $("restartQuiz").addEventListener("click", function () {
-        state = { brand: null, model: null, who: null, style: null, color: null };
-        renderBrands(); $("modelZone").hidden = true;
-        Array.prototype.forEach.call(document.querySelectorAll("#whoCards .pick"), function (b) { b.classList.remove("sel"); });
-        Array.prototype.forEach.call(document.querySelectorAll("#styleChips .chip"), function (b) { b.classList.remove("sel"); });
-        Array.prototype.forEach.call(document.querySelectorAll("#colorSwatches .swatch"), function (b) { b.classList.remove("sel"); });
-        $("showResults").disabled = true;
-        renderCatalog(currentCat);
-        goStep(1);
-      });
-      $("showResults").addEventListener("click", function () {
-        if (!state.style) { toast("Elige un estilo para recomendarte mejor"); return; }
-        showResults();
-      });
-
-      /* ---------- Recomendaciones ---------- */
-      function scoreFunda(f) {
-        var s = 0;
-        if (state.model && f.models.indexOf(state.model) === -1) return -1;
-        if (f.badge === "La más pedida") s += 1;              // prueba social
-        if (state.who && f.who.indexOf(state.who) !== -1) s += 4;
-        if (state.style && f.styles.indexOf(state.style) !== -1) s += 3;
-        if (state.color && f.color === state.color) s += 3;
-        return s;
-      }
-      function fundaCard(f, whyOverride) {
-        var inOrder = !!order[f.id];
-        var badge = f.badge ? "<span class='badge " + (f.badge === "La más pedida" ? "hot" : "gold") + "'>" + f.badge + "</span>" : "";
-        var detail = f.material + (state.model ? " · para " + state.model : "");
-        return "<article class='card'><div class='ph' data-detail='funda:" + f.id + "' role='button' aria-label='Ver detalle de " + f.name + "'><img src='" + f.img + "' alt='Funda " + f.name + "' loading='lazy'>" + badge + "</div>" +
-          "<div class='body'><h4>" + f.name + "</h4><p class='meta'>" + detail + "</p>" +
-          (whyOverride ? "<p class='why'>" + whyOverride + "</p>" : "<p class='why'>" + f.why + "</p>") +
-          "<div class='foot'><span class='price'>" + money(f.price) + "</span>" +
-          "<button class='add-btn" + (inOrder ? " added" : "") + "' type='button' data-funda='" + f.id + "'>" + (inOrder ? "Ya está en tu pedido ✓" : "Quiero esta") + "</button></div></div></article>";
-      }
-      function showResults() {
-        var scored = FUNDAS.map(function (f) { return { f: f, s: scoreFunda(f) }; })
-          .filter(function (x) { return x.s >= 0; })
-          .sort(function (a, b) { return (b.s - a.s) || (b.f.price - a.f.price); }) // anclaje: primero las premium
-          .slice(0, 8);
-        var grid = $("resultsGrid"), empty = $("resultsEmpty");
-        grid.innerHTML = ""; empty.innerHTML = "";
-        var title = state.model ? ("Para tu " + state.model) : "Las más pedidas";
-        var subParts = [];
-        if (state.who) subParts.push(WHO_LABEL[state.who]);
-        if (state.style) subParts.push("estilo " + STYLE_LABEL[state.style]);
-        if (state.color) { var c = COLORS.filter(function (x) { return x.id === state.color; })[0]; if (c) subParts.push("color " + c.label.toLowerCase()); }
-        $("resultsTitle").textContent = title + (subParts.length ? " · " + subParts.join(" · ") : "");
-        if (!scored.length) {
-          $("resultsSub").textContent = "";
-          $("resultsCount").textContent = "";
-          empty.innerHTML = "<div class='empty'><b>Esa combinación no está ahorita</b>No tenemos esa combinación ahorita, pero lo conseguimos. Escríbenos y te avisamos en cuanto llegue.<br><br>" +
-            "<a class='btn btn-wa' target='_blank' rel='noopener' href='" + waLink("Hola Pink Case 💖 Busco una funda para " + (state.model || "mi celular") + ". ¿Me la consiguen?") + "'>Preguntar por WhatsApp</a></div>";
-        } else {
-          $("resultsSub").textContent = "Estas sí le quedan a tu celular. Toca “Quiero esta” y pídelas por WhatsApp.";
-          $("resultsCount").textContent = scored.length + (scored.length === 1 ? " opción" : " opciones");
-          grid.innerHTML = scored.map(function (x, i) {
-            return fundaCard(x.f, i === 0 && x.s >= 7 ? "La que mejor combina con lo que buscas" : null);
-          }).join("");
-          bindFundaButtons(grid);
-        }
-        $("resultados").classList.toggle("neutral", state.who === "el" || state.style === "rudo");
-        renderCatalog(currentCat);
-        // Micas compatibles con el modelo elegido
-        $("micaFor").textContent = state.model
-          ? "Para tu " + state.model + ". La colocamos en el local sin costo."
-          : "Elige el tipo que prefieres. La colocamos en el local sin costo.";
-        $("resultados").hidden = false;
-        $("complementos").hidden = false;
-        $("resultados").scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      function bindFundaButtons(scope) {
-        Array.prototype.forEach.call(scope.querySelectorAll("[data-funda]"), function (btn) {
-          btn.addEventListener("click", function () {
-            var f = FUNDAS.filter(function (x) { return x.id === btn.getAttribute("data-funda"); })[0];
-            if (order[f.id]) { delete order[f.id]; toast("Quitado de tu pedido"); }
-            else {
-              order[f.id] = { name: "Funda " + f.name, detail: f.material + (state.model ? " · para " + state.model : ""), price: f.price, img: f.img, qty: 1 };
-              $("complementos").hidden = false;
-              toast("Agregado a tu pedido");
-            }
-            renderOrder(); refreshButtons();
-          });
-        });
-      }
-      function refreshButtons() {
-        Array.prototype.forEach.call(document.querySelectorAll("[data-funda]"), function (btn) {
-          var on = !!order[btn.getAttribute("data-funda")];
-          btn.classList.toggle("added", on);
-          btn.textContent = on ? "Ya está en tu pedido ✓" : "Quiero esta";
-        });
-        Array.prototype.forEach.call(document.querySelectorAll("[data-add]"), function (btn) {
-          var ex = EXTRAS[btn.getAttribute("data-add")];
-          var on = !!order[ex.id];
-          btn.classList.toggle("added", on);
-          btn.textContent = on ? "Ya está en tu pedido ✓" : "Quiero esta";
-        });
-        Array.prototype.forEach.call(document.querySelectorAll("[data-hidro]"), function (btn) {
-          var on = !!order[btn.getAttribute("data-hidro")];
-          btn.classList.toggle("added", on);
-          btn.textContent = on ? "Ya está en tu pedido ✓" : (btn.getAttribute("data-hidro") === "mica-hidro-hd" ? "Hidrogel HD · $150" : "Hidrogel privacidad · $250");
-        });
-      }
-
-      /* ---------- Complementos ---------- */
-      (function renderMicas() {
-        var box = $("micaOpts");
-        MICAS.forEach(function (m) {
-          var btn = document.createElement("button");
-          btn.type = "button"; btn.className = "mica-opt";
-          btn.innerHTML = "<span>" + m.type + "<small>" + m.desc + "</small></span><span class='p'>" + money(m.price) + "</span>";
-          btn.addEventListener("click", function () {
-            if (order[m.id]) { delete order[m.id]; btn.classList.remove("sel"); toast("Mica quitada"); }
-            else {
-              MICAS.forEach(function (o) { delete order[o.id]; });
-              Array.prototype.forEach.call(box.children, function (b) { b.classList.remove("sel"); });
-              order[m.id] = { name: "Mica " + m.type.toLowerCase(), detail: state.model ? "Para " + state.model + " · colocación incluida" : "Colocación incluida en el local", price: m.price, img: "assets/mica-01.jpg", qty: 1 };
-              btn.classList.add("sel"); toast("Mica agregada a tu pedido");
-            }
-            renderOrder(); refreshButtons();
-          });
-          box.appendChild(btn);
-        });
-      })();
-      Array.prototype.forEach.call(document.querySelectorAll("[data-add]"), function (btn) {
-        btn.addEventListener("click", function () {
-          var ex = EXTRAS[btn.getAttribute("data-add")];
-          if (order[ex.id]) { delete order[ex.id]; toast("Quitado de tu pedido"); }
-          else { order[ex.id] = { name: ex.name, detail: ex.meta, price: ex.price, img: ex.img, qty: 1 }; toast("Agregado a tu pedido"); }
-          renderOrder(); refreshButtons();
-        });
-      });
-
-      /* ---------- Pedido + WhatsApp ---------- */
-      function waLink(text) { return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text); }
-
-      /* ---------- Enlace único del pedido (carrito en el hash) ---------- */
-      function encodeOrder() {
-        var payload = { v: 1, m: state.model || "", items: Object.keys(order).map(function (id) { return [id, order[id].qty || 1]; }) };
-        return btoa(JSON.stringify(payload)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-      }
-      function orderLink() { return location.href.split("#")[0] + "#pedido=" + encodeOrder(); }
-      function orderFolio() {
-        var code = encodeOrder(), h = 0;
-        for (var i = 0; i < code.length; i++) { h = ((h * 31) + code.charCodeAt(i)) >>> 0; }
-        return "PC-" + (1000 + (h % 9000));
-      }
-      function addItemById(id, qty) {
-        qty = Math.max(1, parseInt(qty, 10) || 1);
-        var f = FUNDAS.filter(function (x) { return x.id === id; })[0];
-        if (f) {
-          order[f.id] = { name: "Funda " + f.name, detail: f.material + (state.model ? " · para " + state.model : ""), price: f.price, img: f.img, qty: qty };
-          return;
-        }
-        var m = MICAS.filter(function (x) { return x.id === id; })[0];
-        if (m) {
-          order[m.id] = { name: "Mica " + m.type.toLowerCase(), detail: state.model ? "Para " + state.model + " · colocación incluida" : "Colocación incluida en el local", price: m.price, img: "assets/mica-01.jpg", qty: qty };
-          return;
-        }
-        Object.keys(EXTRAS).forEach(function (k) {
-          var e = EXTRAS[k];
-          if (e.id === id) order[e.id] = { name: e.name, detail: e.meta, price: e.price, img: e.img, qty: qty };
-        });
-      }
-      function loadSharedOrder() {
-        var match = (location.hash || "").match(/#pedido=([A-Za-z0-9\-_]+)/);
-        if (!match) return false;
-        try {
-          var b64 = match[1].replace(/-/g, "+").replace(/_/g, "/");
-          while (b64.length % 4) b64 += "=";
-          var data = JSON.parse(atob(b64));
-          if (!data || !data.items || !data.items.length) return false;
-          if (data.m && ALL_MODELS.indexOf(data.m) !== -1) state.model = data.m;
-          data.items.forEach(function (pair) { if (pair && pair[0]) addItemById(pair[0], pair[1]); });
-          return Object.keys(order).length > 0;
-        } catch (e) { return false; }
-      }
-      function clearMicaSel() {
-        Array.prototype.forEach.call(document.querySelectorAll("#micaOpts .mica-opt"), function (b) { b.classList.remove("sel"); });
-      }
-      function orderTotal() {
-        return Object.keys(order).reduce(function (s, id) { return s + order[id].price * (order[id].qty || 1); }, 0);
-      }
-      function buildWaMessage() {
-        var ids = Object.keys(order);
-        if (!ids.length) return "Hola Pink Case 💖 Quiero información sobre fundas y micas.";
-        var lines = ids.map(function (id) {
-          var it = order[id]; var q = it.qty || 1;
-          var head = "• " + (q > 1 ? q + " × " : "") + "*" + it.name + "* — " + money(it.price * q);
-          var sub = "   " + it.detail + (q > 1 ? " · " + money(it.price) + " c/u" : "");
-          return head + "\n" + sub;
-        });
-        return "Hola Pink Case 💖 *Quiero pedir esto:*\n🧾 Folio: *" + orderFolio() + "*\n\n" + lines.join("\n") +
-          "\n\n💰 *Total estimado: " + money(orderTotal()) + "*" +
-          "\n🔗 *Ver mi pedido con fotos:* " + orderLink() +
-          "\n¿Sigue disponible? ¡Gracias!";
-      }
-      function renderWaPreview(msg) {
-        var html = msg.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-          .replace(/\*([^*]+)\*/g, "<strong>$1</strong>").replace(/\n/g, "<br>");
-        $("waBubbleText").innerHTML = html;
-        var strip = $("waItems");
-        var ids = Object.keys(order);
-        strip.hidden = !ids.length;
-        strip.innerHTML = ids.map(function (id) {
-          var it = order[id]; var q = it.qty || 1;
-          return "<div class='wa-item'><img src='" + (it.img || "assets/mica-01.jpg") + "' alt='Foto de " + it.name + "'>" +
-            "<div class='n'>" + it.name + (q > 1 ? " ×" + q : "") + "</div><div class='p'>" + money(it.price * q) + "</div></div>";
-        }).join("");
-        var d = new Date();
-        $("waTime").textContent = ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
-      }
-      function changeQty(id, d) {
-        var it = order[id]; if (!it) return;
-        it.qty = (it.qty || 1) + d;
-        if (it.qty <= 0) { delete order[id]; clearMicaSel(); }
-        renderOrder(); refreshButtons();
-      }
-      function renderOrder() {
-        var box = $("orderItems"); box.innerHTML = "";
-        var ids = Object.keys(order);
-        $("orderEmpty").style.display = ids.length ? "none" : "block";
-        $("orderTotalRow").hidden = !ids.length;
-        var total = 0, count = 0;
-        ids.forEach(function (id) {
-          var it = order[id]; var q = it.qty || 1;
-          total += it.price * q; count += q;
-          var row = document.createElement("div"); row.className = "order-item";
-          row.innerHTML = "<img class='thumb' alt=''><div class='info'><div class='nm'></div><div class='dt'></div></div>" +
-            "<div class='qty'><button type='button' data-dec aria-label='Quitar uno'>−</button><b></b><button type='button' data-inc aria-label='Sumar uno'>+</button></div>" +
-            "<span class='pr'></span>";
-          var thumb = row.querySelector(".thumb");
-          thumb.src = it.img || "assets/mica-01.jpg"; thumb.alt = "Foto de " + it.name;
-          row.querySelector(".nm").textContent = it.name;
-          row.querySelector(".dt").textContent = it.detail;
-          row.querySelector(".qty b").textContent = q;
-          row.querySelector(".pr").innerHTML = money(it.price * q) + (q > 1 ? "<small>" + money(it.price) + " c/u</small>" : "");
-          row.querySelector("[data-dec]").addEventListener("click", function () { changeQty(id, -1); });
-          row.querySelector("[data-inc]").addEventListener("click", function () { changeQty(id, 1); });
-          var rm = document.createElement("button"); rm.type = "button"; rm.className = "rm"; rm.textContent = "×";
-          rm.setAttribute("aria-label", "Quitar " + it.name);
-          rm.addEventListener("click", function () {
-            delete order[id]; clearMicaSel();
-            renderOrder(); refreshButtons();
-          });
-          row.appendChild(rm); box.appendChild(row);
-        });
-        $("orderTotal").textContent = money(total);
-        if (window._pt !== undefined && window._pt !== total && total > 0) {
-          var ot = $("orderTotal");
-          ot.classList.remove("bump"); void ot.offsetWidth; ot.classList.add("bump");
-        }
-        window._pt = total;
-        $("orderTotalLabel").textContent = "Total estimado" + (count ? " · " + count + (count === 1 ? " producto" : " productos") : "");
-        var msg = buildWaMessage();
-        $("waOrder").href = waLink(msg);
-        renderWaPreview(msg);
-        // Barra fija + contador de navegación
-        var bar = $("orderBar");
-        bar.hidden = !ids.length;
-        document.body.classList.toggle("has-bar", !!ids.length);
-        $("orderBarCount").textContent = count + (count === 1 ? " producto" : " productos");
-        $("orderBarTotal").textContent = money(total);
-        var nc = $("navCount");
-        nc.hidden = !count; nc.textContent = count;
-        // Sugerencia de mica cuando hay funda y no hay mica
-        var hasFunda = ids.some(function (id) { return FUNDAS.some(function (f) { return f.id === id; }); });
-        var hasMica = ids.some(function (id) { return MICAS.some(function (m) { return m.id === id; }); });
-        $("micaUpsell").hidden = !(hasFunda && !hasMica);
-        saveOrder();
-        var shareBox = $("shareBox");
-        shareBox.hidden = !ids.length;
-        if (ids.length) {
-          $("shareLink").value = orderLink();
-          $("shareFolio").textContent = "Folio " + orderFolio();
-        }
-      }
-      $("micaUpsellBtn").addEventListener("click", function () {
-        var m = MICAS.filter(function (x) { return x.id === "mica-completa"; })[0];
-        MICAS.forEach(function (o) { delete order[o.id]; });
-        order[m.id] = { name: "Mica " + m.type.toLowerCase(), detail: state.model ? "Para " + state.model + " · colocación incluida" : "Colocación incluida en el local", price: m.price, img: "assets/mica-01.jpg", qty: 1 };
-        Array.prototype.forEach.call(document.querySelectorAll("#micaOpts .mica-opt"), function (b, i) { b.classList.toggle("sel", MICAS[i].id === m.id); });
-        toast("Mica agregada a tu pedido");
-        renderOrder(); refreshButtons();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll("[data-hidro]"), function (btn) {
-        btn.addEventListener("click", function () {
-          var id = btn.getAttribute("data-hidro");
-          if (order[id]) { delete order[id]; clearMicaSel(); toast("Mica quitada"); }
-          else {
-            MICAS.forEach(function (o) { delete order[o.id]; });
-            addItemById(id, 1);
-            toast("Mica de hidrogel agregada a tu pedido");
-          }
-          renderOrder(); refreshButtons();
-        });
-      });
-      $("waOrder").addEventListener("click", function () {
-        var ids = Object.keys(order);
-        if (!ids.length) return;
-        var box = $("orderConfirm");
-        box.hidden = false;
-        box.innerHTML = "<b>Tu pedido " + orderFolio() + " quedó listo en WhatsApp</b> · " + $("orderTotalLabel").textContent + " · Total " + money(orderTotal()) + ". Si el mensaje no se envió, tu pedido sigue guardado en esta página y en este celular: vuelve y tócalo de nuevo.";
-      });
-      $("copyLink").addEventListener("click", function () {
-        var inp = $("shareLink"), link = inp.value;
-        if (!link) return;
-        function done() { toast("Enlace copiado. Compártelo con el vendedor."); }
-        function fallback() {
-          inp.focus(); inp.select();
-          try { if (document.execCommand("copy")) done(); else toast("Mantén presionado el enlace para copiarlo"); }
-          catch (e) { toast("Mantén presionado el enlace para copiarlo"); }
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(link).then(done, fallback);
-        } else fallback();
-      });
-
-      /* ---------- Catálogo: hereda el modelo del quiz ---------- */
-      function updateModelPill() {
-        var pill = $("modelPill");
-        if (!pill) return;
-        pill.hidden = !state.model;
-        if (state.model) $("modelPillName").textContent = state.model;
-      }
-      $("modelPillClear").addEventListener("click", function () {
-        state.model = null;
-        renderCatalog(currentCat);
-        toast("Ya ves todo el catálogo, sin filtro de modelo");
-      });
-
-      /* ---------- Catálogo completo ---------- */
-      function catalogCard(item) {
-        var det = item.fundaId ? "funda:" + item.fundaId : "extra:" + item.extraId;
-        return "<article class='card'><div class='ph' data-detail='" + det + "' role='button' aria-label='Ver detalle de " + item.name + "'><img src='" + item.img + "' alt='" + item.name + "' loading='lazy'>" +
-          (item.badge ? "<span class='badge " + (item.badge === "La más pedida" ? "hot" : "gold") + "'>" + item.badge + "</span>" : "") + "</div>" +
-          "<div class='body'><h4>" + item.name + "</h4><p class='meta'>" + item.meta + "</p>" +
-          "<div class='foot'><span class='price'>" + money(item.price) + "</span>" +
-          (item.fundaId
-            ? "<button class='add-btn" + (order[item.fundaId] ? " added" : "") + "' type='button' data-funda='" + item.fundaId + "'>" + (order[item.fundaId] ? "Ya está en tu pedido ✓" : "Quiero esta") + "</button>"
-            : "<button class='add-btn" + (order[item.extraId] ? " added" : "") + "' type='button' data-add='" + item.extraId + "'>" + (order[item.extraId] ? "Ya está en tu pedido ✓" : "Quiero esta") + "</button>") +
-          "</div></div></article>";
-      }
-      function renderCatalog(cat) {
-        var items = [];
-        FUNDAS.forEach(function (f) {
-          items.push({ img: f.img, name: "Funda " + f.name.toLowerCase(), price: f.price, badge: f.badge,
-            meta: f.material + (state.model ? (f.models.indexOf(state.model) !== -1 ? " · ✓ le queda a tu " + state.model : "") : " · toca la foto para ver modelos"), cat: "funda", fundaId: f.id });
-        });
-        MICAS.forEach(function (m) {
-          items.push({ img: "assets/mica-01.jpg", name: "Mica " + m.type.toLowerCase(), price: m.price, badge: "",
-            meta: m.desc + " · colocación incluida", cat: "mica", extraId: null, mica: m });
-        });
-        Object.keys(EXTRAS).forEach(function (k) {
-          var e = EXTRAS[k];
-          items.push({ img: e.img, name: e.name, price: e.price, badge: "", meta: e.meta, cat: e.cat, extraId: k });
-        });
-        var grid = $("catalogGrid");
-        updateModelPill();
-        var shown = items.filter(function (i) { return cat === "todos" || i.cat === cat; })
-          .filter(function (i) {
-            if (!state.model || !i.fundaId) return true;
-            var f = FUNDAS.filter(function (x) { return x.id === i.fundaId; })[0];
-            return f && f.models.indexOf(state.model) !== -1;
-          });
-        grid.innerHTML = shown.map(function (i) {
-          if (i.mica) {
-            var inOrder = !!order[i.mica.id];
-            return "<article class='card'><div class='ph' data-detail='mica:" + i.mica.id + "' role='button' aria-label='Ver detalle de " + i.name + "'><img src='" + i.img + "' alt='" + i.name + "' loading='lazy'></div>" +
-              "<div class='body'><h4>" + i.name + "</h4><p class='meta'>" + i.meta + "</p>" +
-              "<div class='foot'><span class='price'>" + money(i.price) + "</span>" +
-              "<button class='add-btn" + (inOrder ? " added" : "") + "' type='button' data-mica='" + i.mica.id + "'>" + (inOrder ? "Ya está en tu pedido ✓" : "Quiero esta") + "</button></div></div></article>";
-          }
-          return catalogCard(i);
-        }).join("");
-        bindFundaButtons(grid);
-        Array.prototype.forEach.call(grid.querySelectorAll("[data-add]"), function (btn) {
-          btn.addEventListener("click", function () {
-            var ex = EXTRAS[btn.getAttribute("data-add")];
-            if (order[ex.id]) { delete order[ex.id]; toast("Quitado de tu pedido"); }
-            else { order[ex.id] = { name: ex.name, detail: ex.meta, price: ex.price, img: ex.img, qty: 1 }; $("complementos").hidden = false; toast("Agregado a tu pedido"); }
-            renderOrder(); refreshButtons(); renderCatalog(currentCat);
-          });
-        });
-        Array.prototype.forEach.call(grid.querySelectorAll("[data-mica]"), function (btn) {
-          btn.addEventListener("click", function () {
-            var m = MICAS.filter(function (x) { return x.id === btn.getAttribute("data-mica"); })[0];
-            if (order[m.id]) { delete order[m.id]; toast("Mica quitada"); }
-            else {
-              MICAS.forEach(function (o) { delete order[o.id]; });
-              order[m.id] = { name: "Mica " + m.type.toLowerCase(), detail: state.model ? "Para " + state.model + " · colocación incluida" : "Colocación incluida en el local", price: m.price, img: "assets/mica-01.jpg", qty: 1 };
-              toast("Mica agregada a tu pedido");
-            }
-            renderOrder(); refreshButtons(); renderCatalog(currentCat);
-          });
-        });
-      }
-      var currentCat = "todos";
-      Array.prototype.forEach.call(document.querySelectorAll("#catTabs .tab"), function (btn) {
-        btn.addEventListener("click", function () {
-          currentCat = btn.getAttribute("data-cat");
-          Array.prototype.forEach.call(document.querySelectorAll("#catTabs .tab"), function (b) { b.classList.toggle("sel", b === btn); });
-          renderCatalog(currentCat);
-        });
-      });
-
-      /* ---------- Aparición suave al hacer scroll ---------- */
-      (function initReveal() {
-        var els = document.querySelectorAll(".sec-head, .quiz-card, .team-card, .follow-card, .order");
-        if (!("IntersectionObserver" in window)) return;
-        Array.prototype.forEach.call(els, function (el) { el.classList.add("reveal"); });
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
-          });
-        }, { threshold: 0.1 });
-        Array.prototype.forEach.call(els, function (el) { io.observe(el); });
-        // Respaldo: nada queda oculto si el observador no dispara (capturas, scroll rápido, etc.)
-        setTimeout(function () {
-          Array.prototype.forEach.call(els, function (el) { el.classList.add("in"); io.unobserve(el); });
-        }, 1600);
-      })();
-
-
-      /* ---------- Guardado local del pedido (solo este celular) ---------- */
-      var LS_KEY = "pinkcase_pedido_v1";
-      var isSharedView = false;
-      function saveOrder() {
-        if (isSharedView) return;
-        try {
-          var ids = Object.keys(order);
-          if (!ids.length) { localStorage.removeItem(LS_KEY); return; }
-          localStorage.setItem(LS_KEY, JSON.stringify({
-            items: ids.map(function (id) { return [id, order[id].qty || 1]; }),
-            state: state
-          }));
-        } catch (e) { /* el navegador puede bloquear el guardado; el pedido sigue en memoria */ }
-      }
-      function restoreOrder() {
-        try {
-          var raw = localStorage.getItem(LS_KEY);
-          if (!raw) return false;
-          var data = JSON.parse(raw);
-          if (!data || !data.items || !data.items.length) return false;
-          if (data.state) {
-            ["brand", "model", "who", "style", "color"].forEach(function (k) {
-              if (data.state[k]) state[k] = data.state[k];
-            });
-          }
-          data.items.forEach(function (pair) { if (pair && pair[0]) addItemById(pair[0], pair[1]); });
-          return Object.keys(order).length > 0;
-        } catch (e) { return false; }
-      }
-      function syncRestoredUI() {
-        renderBrands();
-        if (state.model) { $("modelZone").hidden = false; renderModels(""); }
-        Array.prototype.forEach.call(document.querySelectorAll("#whoCards .pick"), function (b) { b.classList.toggle("sel", b.getAttribute("data-who") === state.who); });
-        Array.prototype.forEach.call(document.querySelectorAll("#styleChips .chip"), function (b) { b.classList.toggle("sel", b.getAttribute("data-style") === state.style); });
-        if (state.style) $("showResults").disabled = false;
-        Array.prototype.forEach.call(document.querySelectorAll("#colorSwatches .swatch"), function (b, i) { b.classList.toggle("sel", COLORS[i].id === state.color); });
-        Object.keys(order).forEach(function (id) {
-          var idx = MICAS.map(function (m) { return m.id; }).indexOf(id);
-          if (idx !== -1) {
-            var opts = document.querySelectorAll("#micaOpts .mica-opt");
-            if (opts[idx]) opts[idx].classList.add("sel");
-          }
-        });
-        if (Object.keys(order).some(function (id) { return FUNDAS.some(function (f) { return f.id === id; }); })) {
-          $("complementos").hidden = false;
-        }
-      }
-
-      /* ---------- Ficha de detalle del producto ---------- */
-      var detailCtx = null;
-      function detailData(kind, id) {
-        if (kind === "funda") {
-          var f = FUNDAS.filter(function (x) { return x.id === id; })[0];
-          if (!f) return null;
-          return { key: f.id, name: "Funda " + f.name, img: f.img, price: f.price,
-            meta: f.material + " · Protección " + (f.styles.indexOf("rudo") !== -1 ? "alta, para caídas frecuentes" : "para el uso diario") + " · No incluye mica (puedes agregarla en complementos)",
-            why: f.why, models: f.models };
-        }
-        if (kind === "mica") {
-          var m = MICAS.filter(function (x) { return x.id === id; })[0];
-          if (!m) return null;
-          return { key: m.id, name: "Mica " + m.type.toLowerCase(), img: "assets/mica-01.jpg", price: m.price,
-            meta: m.desc + " · La colocamos en el local sin costo", why: "La mica cuida la pantalla; la funda cuida las esquinas.",
-            models: state.model ? [state.model] : ALL_MODELS.slice(0, 12) };
-        }
-        var ex = null;
-        Object.keys(EXTRAS).forEach(function (k) { if (EXTRAS[k].id === id) ex = EXTRAS[k]; });
-        if (!ex) return null;
-        return { key: ex.id, name: ex.name, img: ex.img, price: ex.price, meta: ex.meta,
-          why: "De los complementos que más piden junto con una funda.", models: null };
-      }
-      function openDetail(kind, id) {
-        var d = detailData(kind, id);
-        if (!d) return;
-        detailCtx = { kind: kind, data: d };
-        $("detailImg").src = d.img;
-        $("detailImg").alt = "Foto de " + d.name;
-        $("detailImg").classList.remove("zoomed");
-        $("detailViewFull").classList.add("sel"); $("detailViewZoom").classList.remove("sel");
-        $("detailName").textContent = d.name;
-        $("detailMeta").textContent = d.meta;
-        $("detailWhy").textContent = d.why;
-        $("detailPrice").textContent = money(d.price);
-        $("detailModelsLabel").style.display = d.models ? "" : "none";
-        $("detailModels").innerHTML = d.models ? d.models.map(function (m) {
-          return "<span>" + (state.model && m === state.model ? "✓ " : "") + m + "</span>";
-        }).join("") : "";
-        syncDetailAdd();
-        $("detailOverlay").hidden = false;
-      }
-      function syncDetailAdd() {
-        if (!detailCtx) return;
-        var on = !!order[detailCtx.data.key];
-        var btn = $("detailAdd");
-        btn.classList.toggle("added", on);
-        btn.textContent = on ? "Ya está en tu pedido ✓" : "Quiero esta";
-      }
-      function closeDetail() { $("detailOverlay").hidden = true; detailCtx = null; }
-      document.addEventListener("click", function (e) {
-        var t = e.target.closest ? e.target.closest("[data-detail]") : null;
-        if (!t) return;
-        var parts = t.getAttribute("data-detail").split(":");
-        openDetail(parts[0], parts.slice(1).join(":"));
-      });
-      $("detailClose").addEventListener("click", closeDetail);
-      $("detailOverlay").addEventListener("click", function (e) { if (e.target === $("detailOverlay")) closeDetail(); });
-      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDetail(); });
-      $("detailViewZoom").addEventListener("click", function () {
-        $("detailImg").classList.add("zoomed");
-        $("detailViewZoom").classList.add("sel"); $("detailViewFull").classList.remove("sel");
-      });
-      $("detailViewFull").addEventListener("click", function () {
-        $("detailImg").classList.remove("zoomed");
-        $("detailViewFull").classList.add("sel"); $("detailViewZoom").classList.remove("sel");
-      });
-      $("detailAdd").addEventListener("click", function () {
-        if (!detailCtx) return;
-        var d = detailCtx.data, kind = detailCtx.kind;
-        if (order[d.key]) { delete order[d.key]; toast("Quitado de tu pedido"); }
-        else {
-          if (kind === "mica") MICAS.forEach(function (o) { delete order[o.id]; });
-          addItemById(d.key, 1);
-          if (kind === "funda") $("complementos").hidden = false;
-          toast("Agregado a tu pedido");
-        }
-        renderOrder(); refreshButtons(); renderCatalog(currentCat); syncDetailAdd();
-      });
-
-      /* ---------- La barra se oculta cuando el pedido ya está a la vista ---------- */
-      (function initBarObserver() {
-        if (!("IntersectionObserver" in window)) return;
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) { $("orderBar").classList.toggle("bar-hidden", en.isIntersecting); });
-        }, { threshold: 0.15 });
-        io.observe($("pedido"));
-      })();
-
-      /* ---------- Init ---------- */
-      var isSharedOrder = loadSharedOrder();
-      isSharedView = isSharedOrder;
-      var wasRestored = false;
-      if (!isSharedOrder) {
-        wasRestored = restoreOrder();
-        if (wasRestored) syncRestoredUI();
-      }
-      renderBrands();
-      if (wasRestored && state.model) { $("modelZone").hidden = false; renderModels(""); }
-      renderCatalog("todos");
-      renderOrder();
-      refreshButtons();
-      if (wasRestored) {
-        $("recoveredNote").hidden = false;
-        toast("Recuperamos tu pedido de hace un rato");
-      }
-      if (isSharedOrder) {
-        $("sharedBanner").hidden = false;
-        $("sharedFolio").textContent = "· Folio " + orderFolio();
-        $("orderTitle").textContent = "Vista previa del pedido";
-        $("orderSub").textContent = "Este pedido llegó por un enlace compartido. Aquí se ve todo lo que el cliente quiere comprar: producto, foto, cantidad y total.";
-        setTimeout(function () { $("pedido").scrollIntoView({ behavior: "smooth", block: "start" }); }, 350);
-      }
-    </script>
-  </body>
-</html>
+      if (!loadFromHash()) loadState();
+      renderFilters();
+      renderGrid(PRODUCTS);
+      renderModelChips();
+      updateSuggestion();
+      renderInquiry();
+    });
+  </script>
+</body></html>
