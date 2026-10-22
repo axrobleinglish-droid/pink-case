@@ -123,7 +123,7 @@
 <body class="bg-cyber-dark font-archivo text-[#f1e9ed] antialiased selection:bg-pink-primary selection:text-white">
 <!-- 1. HEADER (Glassmorphism & Fixed Navigation) -->
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0608]/85 border-b border-pink-500/15 transition-all">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 lg:py-0 lg:h-16 flex flex-wrap items-center justify-between gap-3 lg:gap-4">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3 lg:gap-4">
 <!-- Brand & Local Badge -->
 <div class="flex items-center gap-3">
 <a class="flex items-center gap-2.5 group focus:outline-none" href="#">
@@ -158,10 +158,17 @@
 <span class="material-symbols-outlined text-[18px]">storefront</span>
 </div>
 </div>
+<nav class="w-full order-4 flex items-center justify-start sm:justify-center gap-6 sm:gap-9 overflow-x-auto pt-2.5 border-t border-pink-500/10 scrollbar-none" id="main-nav">
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors whitespace-nowrap" href="#">Inicio</a>
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors whitespace-nowrap" href="#catalogo">Catálogo</a>
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors whitespace-nowrap" href="#asesoria-humana">Asesoría</a>
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors whitespace-nowrap" href="#pedido">Mi Consulta</a>
+<a class="nav-link font-archivo text-sm font-medium text-[#c4b5bc] hover:text-white transition-colors whitespace-nowrap" href="#visitanos">Visítanos</a>
+</nav>
 </div>
 </header>
 <!-- MAIN WRAPPER (Scroll Nativo Fluido) -->
-<main class="w-full pt-[7.75rem] lg:pt-16 bg-cyber-dark">
+<main class="w-full pt-[11rem] lg:pt-[7.25rem] bg-cyber-dark">
 <!-- 2. HERO SECTION -->
 <div class="relative w-full overflow-hidden">
 <!-- Glow ambient background -->
@@ -217,13 +224,23 @@
 </div>
 </div>
 </div>
+<!-- Mapa local del Centro de Ixtlahuaca -->
+<a class="relative block w-full mt-4 rounded-2xl overflow-hidden bg-surface-2 border border-pink-500/20 h-48" href="https://maps.app.goo.gl/p9J2EvtNGQpfS4RU9" rel="noopener noreferrer" target="_blank">
+<div class="w-full h-full bg-cover bg-center" data-location="Centro de Ixtlahuaca, Estado de Mexico" style="background-image: url('assets/mapa.png')"></div>
+<div class="absolute top-3 left-3 px-3 py-1.5 rounded-lg bg-cyber-dark/90 backdrop-blur-md border border-pink-500/30 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-pink-primary animate-ping"></span>
+<span class="font-unbounded text-xs font-bold text-white">Mapa Centro de Ixtlahuaca</span>
+</div>
+<span class="absolute bottom-3 left-3 px-2 py-1 rounded-md bg-cyber-dark/80 text-[10px] font-archivo text-text-muted">Mapa © OpenStreetMap contributors</span>
+<span class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-pink-primary text-white font-unbounded text-[11px] font-bold">Abrir ruta →</span>
+</a>
 </div>
 </div>
 </section>
 </div>
 
 <!-- 4. CATÁLOGO DE PRODUCTOS EN EXHIBICIÓN (#catalogo) -->
-<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 scroll-mt-20" id="asesoria-humana">
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 scroll-mt-[11.5rem] lg:scroll-mt-[7.75rem]" id="asesoria-humana">
 <div class="rounded-3xl bg-surface-1 border border-pink-500/20 p-6 sm:p-10 grid md:grid-cols-[300px_1fr] gap-8 items-center">
 <div class="relative mx-auto w-full max-w-[300px]">
 <img alt="Isabel, asesora de mostrador de Pink Case Ixtlahuaca, atendiéndote en el local" class="w-full h-[350px] object-cover object-top rounded-2xl border border-pink-500/25" src="assets/isabel-mostrador.jpg"/>
@@ -247,7 +264,7 @@
 </div>
 </div>
 </section>
-<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-40" id="catalogo">
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-[11.5rem] lg:scroll-mt-[7.75rem]" id="catalogo">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
 <div>
 <div class="flex items-center gap-2">
@@ -274,7 +291,7 @@
 </div>
 </section>
 <!-- 5. MI CONSULTA DE MOSTRADOR / CONVERSIÓN WHATSAPP (#pedido) -->
-<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20" id="pedido">
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-[11.5rem] lg:scroll-mt-[7.75rem]" id="pedido">
 <div class="p-6 md:p-10 rounded-2xl bg-surface-1 border border-pink-500/25 shadow-2xl flex flex-col gap-6">
 <!-- Header del resumen -->
 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
@@ -321,7 +338,7 @@
 </div>
 </section>
 <!-- 6. EXPERIENCIA DE VISITA Y CONFIANZA LOCAL (#visitanos) -->
-<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 scroll-mt-20" id="visitanos">
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 scroll-mt-[11.5rem] lg:scroll-mt-[7.75rem]" id="visitanos">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 <!-- Detalles y confianza -->
 <div class="lg:col-span-6 flex flex-col gap-6">
@@ -401,16 +418,7 @@
 <span class="font-archivo text-xs font-semibold text-white">Asesoría de mostrador</span>
 </div>
 </div>
-<!-- Mapa local del Centro de Ixtlahuaca -->
-<a class="col-span-2 relative block rounded-2xl overflow-hidden bg-surface-2 border border-pink-500/20 h-48" href="https://maps.app.goo.gl/p9J2EvtNGQpfS4RU9" rel="noopener noreferrer" target="_blank">
-<div class="w-full h-full bg-cover bg-center" data-location="Centro de Ixtlahuaca, Estado de Mexico" style="background-image: url('assets/mapa.png')"></div>
-<div class="absolute top-3 left-3 px-3 py-1.5 rounded-lg bg-cyber-dark/90 backdrop-blur-md border border-pink-500/30 flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-pink-primary animate-ping"></span>
-<span class="font-unbounded text-xs font-bold text-white">Mapa Centro de Ixtlahuaca</span>
-</div>
-<span class="absolute bottom-3 left-3 px-2 py-1 rounded-md bg-cyber-dark/80 text-[10px] font-archivo text-text-muted">Mapa © OpenStreetMap contributors</span>
-<span class="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-pink-primary text-white font-unbounded text-[11px] font-bold">Abrir ruta →</span>
-</a>
+
 </div>
 </div>
 </section>
@@ -610,7 +618,8 @@
       activeCat = "buscar";
       renderFilters();
       const tokens = normText(q).split(/\s+/).filter(Boolean);
-      const list = PRODUCTS.filter(p => { const hay = normText([p.name, p.brand, p.model, p.catLabel, p.line].join(" ")); return tokens.every(t => hay.includes(t)); });
+      const matchTok = (hay, t) => hay.includes(t) || (t.length > 3 && t.endsWith("es") && hay.includes(t.slice(0, -2))) || (t.length > 3 && t.endsWith("s") && hay.includes(t.slice(0, -1)));
+      const list = PRODUCTS.filter(p => { const hay = normText([p.name, p.brand, p.model, p.catLabel, p.line, p.sub, p.tags, (p.modelos || []).join(" ")].join(" ")); return tokens.every(t => matchTok(hay, t)); });
       if (info) { info.textContent = list.length + (list.length === 1 ? " resultado para “" : " resultados para “") + q + "”"; info.classList.remove("hidden"); }
       renderGrid(list);
     }
