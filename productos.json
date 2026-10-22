@@ -1,0 +1,579 @@
+[
+ {
+  "code": "f-01",
+  "name": "Funda MagSafe translúcida ahumada",
+  "line": "Para iPhone 13, 14 y 15",
+  "sub": "Borde morado, aro magnético y acabado ahumado",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "13, 14 y 15",
+  "price": 350,
+  "img": "assets/funda-01.jpg",
+  "modelos": [
+   "13",
+   "14",
+   "15"
+  ]
+ },
+ {
+  "code": "f-02",
+  "name": "Funda tipo piel blanca hueso",
+  "line": "Para iPhone 13, 14 y 15",
+  "sub": "Aro MagSafe, tacto tipo piel",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "13, 14 y 15",
+  "price": 350,
+  "img": "assets/funda-02.jpg",
+  "modelos": [
+   "13",
+   "14",
+   "15"
+  ]
+ },
+ {
+  "code": "f-03",
+  "name": "Funda transparente tornasol SIMER",
+  "line": "Para iPhone 13, 14 y 15",
+  "sub": "Efecto arcoíris con aro MagSafe",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "13, 14 y 15",
+  "price": 300,
+  "img": "assets/funda-03.jpg",
+  "modelos": [
+   "13",
+   "14",
+   "15"
+  ]
+ },
+ {
+  "code": "f-04",
+  "name": "Fundas con anillo magnético en empaque",
+  "line": "Para iPhone 13 y 15",
+  "sub": "Varios diseños en tienda (foto del equipo con empaques SIMER)",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "13 y 15",
+  "price": 300,
+  "img": "assets/funda-04.jpg",
+  "modelos": [
+   "13",
+   "15"
+  ]
+ },
+ {
+  "code": "f-05",
+  "name": "Funda acabado espejo con rositas",
+  "line": "Para Motorola Moto G85",
+  "sub": "Diseño HAPPY de rosas rosas y moradas",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "Motorola",
+  "model": "Moto G85",
+  "price": 300,
+  "img": "assets/funda-05.jpg",
+  "modelos": [
+   "Moto G85"
+  ]
+ },
+ {
+  "code": "f-06",
+  "name": "Funda transparente con cerezas",
+  "line": "Para Samsung Galaxy A36",
+  "sub": "Cerezas rojas y dije de corazón",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "Samsung",
+  "model": "Galaxy A36",
+  "price": 300,
+  "img": "assets/funda-06.jpg",
+  "modelos": [
+   "Galaxy A36"
+  ]
+ },
+ {
+  "code": "f-07",
+  "name": "Funda tipo piel azul rey",
+  "line": "Para Samsung S25 Ultra",
+  "sub": "Aro magnético, color azul rey",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "Samsung",
+  "model": "S25 Ultra",
+  "price": 350,
+  "img": "assets/funda-07.jpg",
+  "modelos": [
+   "S25 Ultra"
+  ]
+ },
+ {
+  "code": "f-08",
+  "name": "Funda translúcida degradado",
+  "line": "Para iPhone 16",
+  "sub": "Degradado blanco a negro con aro MagSafe",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "16",
+  "price": 300,
+  "img": "assets/funda-08.jpg",
+  "modelos": [
+   "16"
+  ]
+ },
+ {
+  "code": "f-09",
+  "name": "Funda rosa mate KIMO",
+  "line": "La más pedida",
+  "sub": "Marco de cámara metálico morado",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "Samsung",
+  "model": "Galaxy A36",
+  "price": 300,
+  "img": "assets/funda-09.jpg",
+  "modelos": [
+   "Galaxy A36"
+  ]
+ },
+ {
+  "code": "f-10",
+  "name": "Funda transparente aro MagSafe rosa",
+  "line": "Para Samsung Galaxy S24",
+  "sub": "Aro magnético rosa",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "Samsung",
+  "model": "Galaxy S24",
+  "price": 300,
+  "img": "assets/funda-10.jpg",
+  "modelos": [
+   "Galaxy S24"
+  ]
+ },
+ {
+  "code": "f-11",
+  "name": "Funda gris mate con aro MagSafe",
+  "line": "Para iPhone 14",
+  "sub": "Acabado mate, aro magnético",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "14",
+  "price": 250,
+  "img": "assets/funda-11.jpg",
+  "modelos": [
+   "14"
+  ]
+ },
+ {
+  "code": "f-12",
+  "name": "Funda translúcida borde azul",
+  "line": "Para iPhone 14 Pro",
+  "sub": "Aro MagSafe, borde azul",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "14 Pro",
+  "price": 300,
+  "img": "assets/funda-12.jpg",
+  "modelos": [
+   "14 Pro"
+  ]
+ },
+ {
+  "code": "f-25",
+  "name": "Funda transparente con florecitas",
+  "line": "Para Honor X9b",
+  "sub": "Florecitas rosas, cámara circular",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "Honor",
+  "model": "X9b",
+  "price": 300,
+  "img": "assets/funda-25.jpg",
+  "modelos": [
+   "X9b"
+  ]
+ },
+ {
+  "code": "f-27",
+  "name": "Funda transparente SIMER aro amarillo",
+  "line": "Para iPhone 16e",
+  "sub": "Aro MagSafe amarillo/verde",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "16e",
+  "price": 250,
+  "img": "assets/funda-27.jpg",
+  "modelos": [
+   "16e"
+  ]
+ },
+ {
+  "code": "f-28",
+  "name": "Funda transparente SIMER aro azul",
+  "line": "Para iPhone 15",
+  "sub": "Aro MagSafe azul",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "15",
+  "price": 250,
+  "img": "assets/funda-28.jpg",
+  "modelos": [
+   "15"
+  ]
+ },
+ {
+  "code": "f-29",
+  "name": "Funda transparente SIMER aro negro",
+  "line": "Para iPhone 15",
+  "sub": "Aro MagSafe negro",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "15",
+  "price": 250,
+  "img": "assets/funda-29.jpg",
+  "modelos": [
+   "15"
+  ]
+ },
+ {
+  "code": "f-30",
+  "name": "Funda transparente SIMER aro rosa",
+  "line": "Para iPhone 15",
+  "sub": "Aro MagSafe rosa",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "iPhone",
+  "model": "15",
+  "price": 250,
+  "img": "assets/funda-30.jpg",
+  "modelos": [
+   "15"
+  ]
+ },
+ {
+  "code": "acuatica",
+  "name": "Funda-bolsa impermeable KBOD",
+  "line": "Para cualquier modelo",
+  "sub": "Tornasol, con correa; protege del agua",
+  "cat": "fundas",
+  "catLabel": "Fundas",
+  "brand": "KBOD",
+  "model": "Bolsa impermeable universal",
+  "price": 150,
+  "img": "assets/accesorio-02.jpg",
+  "modelos": [
+   "Bolsa impermeable universal"
+  ]
+ },
+ {
+  "code": "mica-sencilla",
+  "name": "Mica de cristal templado",
+  "line": "Instalación gratis · 1 cambio gratis en precio actual",
+  "sub": "La básica que nunca falla: protege de rayones y golpes leves",
+  "cat": "micas",
+  "catLabel": "Micas de Protección",
+  "brand": "Universal",
+  "model": "Según modelo del cliente",
+  "price": 30,
+  "img": "assets/mica-03.jpg"
+ },
+ {
+  "code": "mica-completa",
+  "name": "Mica completa 9D",
+  "line": "Instalación gratis · 1 cambio gratis en precio actual",
+  "sub": "Cristal full glue, cubre borde a borde",
+  "cat": "micas",
+  "catLabel": "Micas de Protección",
+  "brand": "Universal",
+  "model": "Según modelo del cliente",
+  "price": 70,
+  "img": "assets/mica-04.jpg"
+ },
+ {
+  "code": "mica-ceramica",
+  "name": "Mica de cerámica mate 9D",
+  "line": "Instalación gratis · 1 cambio gratis en precio actual",
+  "sub": "Flexible, anti-huellas, ideal para jugar",
+  "cat": "micas",
+  "catLabel": "Micas de Protección",
+  "brand": "Universal",
+  "model": "Según modelo del cliente",
+  "price": 70,
+  "img": "assets/mica-05.jpg"
+ },
+ {
+  "code": "mica-privacidad",
+  "name": "Mica de cristal de privacidad 9D",
+  "line": "Instalación gratis · 1 cambio gratis en precio actual",
+  "sub": "Anti-espía: nadie ve tu pantalla de lado",
+  "cat": "micas",
+  "catLabel": "Micas de Protección",
+  "brand": "Universal",
+  "model": "Según modelo del cliente",
+  "price": 80,
+  "img": "assets/mica-06.jpg"
+ },
+ {
+  "code": "mica-hidro-hd",
+  "name": "Mica de hidrogel HD",
+  "line": "Instalación gratis · 1 cambio gratis en precio actual",
+  "sub": "Se corta a la medida en el local, para cualquier modelo",
+  "cat": "micas",
+  "catLabel": "Micas de Protección",
+  "brand": "DRAGON",
+  "model": "Corte a la medida en el local",
+  "price": 150,
+  "img": "assets/hidrogel-01.jpg"
+ },
+ {
+  "code": "mica-hidro-priv",
+  "name": "Mica de hidrogel privacidad",
+  "line": "Instalación gratis · 1 cambio gratis en precio actual",
+  "sub": "Hidrogel con filtro de privacidad, corte a la medida",
+  "cat": "micas",
+  "catLabel": "Micas de Protección",
+  "brand": "DRAGON",
+  "model": "Corte a la medida en el local",
+  "price": 250,
+  "img": "assets/hidrogel-01.jpg"
+ },
+ {
+  "code": "a-hora-azul",
+  "name": "Audífonos TWS 1HORA azules",
+  "line": "Bluetooth",
+  "sub": "Estuche redondo; 17 h totales con estuche",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "1HORA",
+  "model": "TWS estuche redondo (5 h / 17 h con estuche)",
+  "price": 299,
+  "img": "assets/audifonos-26.jpg"
+ },
+ {
+  "code": "a-corazon",
+  "name": "Audífonos TWS FUTUREM FM-520",
+  "line": "Bluetooth",
+  "sub": "Estuche en forma de corazón rosa/dorado",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "FUTUREM",
+  "model": "FM-520 (estuche corazón)",
+  "price": 299,
+  "img": "assets/audifonos-18.jpg"
+ },
+ {
+  "code": "a-consola",
+  "name": "Audífonos TWS KT-01",
+  "line": "Bluetooth",
+  "sub": "Con funda estilo Nintendo Switch",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "Genérica",
+  "model": "KT-01 (funda tipo Nintendo Switch)",
+  "price": 299,
+  "img": "assets/audifonos-20.jpg"
+ },
+ {
+  "code": "a-j67",
+  "name": "Audífonos TWS J67",
+  "line": "Bluetooth",
+  "sub": "Estuche tipo cámara retro con display de batería",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "Genérica",
+  "model": "J67 Stereo Earbuds",
+  "price": 299,
+  "img": "assets/audifonos-29.jpg"
+ },
+ {
+  "code": "a-hora-rosa",
+  "name": "Audífonos TWS 1HORA rosas",
+  "line": "Bluetooth",
+  "sub": "Estuche redondo; 17 h totales con estuche",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "1HORA",
+  "model": "TWS estuche redondo (5 h / 17 h con estuche)",
+  "price": 299,
+  "img": "assets/audifonos-37.jpg"
+ },
+ {
+  "code": "a-diadema-negra",
+  "name": "Diadema 1HORA Deep Bass",
+  "line": "Hasta 33 h de batería",
+  "sub": "Negra, bajos profundos",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "1HORA",
+  "model": "Diadema Deep Bass 33H",
+  "price": 349,
+  "img": "assets/audifonos-01.jpg"
+ },
+ {
+  "code": "a-diadema-rosa",
+  "name": "Diadema rosa pastel",
+  "line": "Bluetooth",
+  "sub": "Detalles menta",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "Genérica",
+  "model": "Diadema rosa pastel (sin marca visible)",
+  "price": 349,
+  "img": "assets/audifonos-02.jpg"
+ },
+ {
+  "code": "a-diadema-luz",
+  "name": "Diadema Samsung Level BT750",
+  "line": "Luz RGB",
+  "sub": "Blanca, Bluetooth con luz RGB",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "Samsung",
+  "model": "Level BT750 (luz RGB)",
+  "price": 399,
+  "img": "assets/audifonos-31.jpg"
+ },
+ {
+  "code": "a-diadema-led",
+  "name": "Diadema Samsung Level",
+  "line": "Luz LED",
+  "sub": "Luz LED azul, Bluetooth",
+  "cat": "audifonos",
+  "catLabel": "Audífonos",
+  "brand": "Samsung",
+  "model": "Level (luz LED azul)",
+  "price": 399,
+  "img": "assets/audifonos-43.jpg"
+ },
+ {
+  "code": "bat-10000",
+  "name": "Power bank 1HORA 10,000 mAh",
+  "line": "Cables integrados",
+  "sub": "Carga para todo el día",
+  "cat": "baterias",
+  "catLabel": "Baterías",
+  "brand": "1HORA",
+  "model": "Power bank 10,000 mAh con cables integrados",
+  "price": 299,
+  "img": "assets/accesorio-31.jpg"
+ },
+ {
+  "code": "bat-20000",
+  "name": "Power bank 1HORA 20,000 mAh",
+  "line": "Cables integrados",
+  "sub": "Negra y roja; para varios días",
+  "cat": "baterias",
+  "catLabel": "Baterías",
+  "brand": "1HORA",
+  "model": "Power bank 20,000 mAh con cables integrados",
+  "price": 449,
+  "img": "assets/accesorio-10.jpg"
+ },
+ {
+  "code": "bat-20000-negra",
+  "name": "Power bank 1HORA 20,000 mAh negra",
+  "line": "Cables integrados",
+  "sub": "Color negro; para varios días",
+  "cat": "baterias",
+  "catLabel": "Baterías",
+  "brand": "1HORA",
+  "model": "Power bank 20,000 mAh con cables integrados",
+  "price": 449,
+  "img": "assets/accesorio-30.jpg"
+ },
+ {
+  "code": "bat-magnetica",
+  "name": "Power bank magnética 1HORA 5,000 mAh",
+  "line": "Tipo MagSafe",
+  "sub": "Se pega a tu celular, sin cables",
+  "cat": "baterias",
+  "catLabel": "Baterías",
+  "brand": "1HORA",
+  "model": "Power bank magnética 5,000 mAh",
+  "price": 349,
+  "img": "assets/accesorio-29.jpg"
+ },
+ {
+  "code": "reloj",
+  "name": "Reloj inteligente (kit)",
+  "line": "Accesorio",
+  "sub": "4 correas y cargador magnético",
+  "cat": "servicios",
+  "catLabel": "Servicios y Más",
+  "brand": "Genérica",
+  "model": "Smartwatch kit con 4 correas",
+  "price": 599,
+  "img": "assets/accesorio-08.jpg"
+ },
+ {
+  "code": "consola-retro",
+  "name": "Consola retro FURIOUS SU-8",
+  "line": "Accesorio",
+  "sub": "Con volante, para jugar en tu TV",
+  "cat": "servicios",
+  "catLabel": "Servicios y Más",
+  "brand": "FURIOUS",
+  "model": "SU-8 (consola con volante)",
+  "price": 499,
+  "img": "assets/accesorio-24.jpg"
+ },
+ {
+  "code": "ser-display",
+  "name": "Cambio de display",
+  "line": "Servicio en el local",
+  "sub": "Pregunta por el modelo de tu equipo",
+  "cat": "servicios",
+  "catLabel": "Servicios y Más",
+  "brand": "No aplica",
+  "model": "Servicio",
+  "price": 350,
+  "img": "assets/servicio-display.jpg"
+ },
+ {
+  "code": "ser-vinculacion",
+  "name": "Vinculación de línea / express",
+  "line": "Servicio en el local",
+  "sub": "Activa o vincula tu línea con nosotros",
+  "cat": "servicios",
+  "catLabel": "Servicios y Más",
+  "brand": "No aplica",
+  "model": "Servicio",
+  "price": 30,
+  "img": "assets/servicio-vinculacion.jpg"
+ },
+ {
+  "code": "chip-telcel",
+  "name": "Chip Express Telcel",
+  "line": "Telcel",
+  "sub": "Chip nuevo, actívalo en el local",
+  "cat": "servicios",
+  "catLabel": "Servicios y Más",
+  "brand": "Telcel",
+  "model": "Chip Express",
+  "price": 50,
+  "img": "assets/servicio-chip.jpg"
+ },
+ {
+  "code": "decodificador",
+  "name": "Decodificador",
+  "line": "Para tu TV",
+  "sub": "Con su control remoto",
+  "cat": "servicios",
+  "catLabel": "Servicios y Más",
+  "brand": "Por confirmar",
+  "model": "Decodificador",
+  "price": 700,
+  "img": "assets/servicio-decodificador.jpg"
+ }
+]

@@ -401,6 +401,12 @@
           Precios informativos para consulta rápida. Añade los artículos de tu interés a la lista para verificar disponibilidad al instante.
         </p>
 </div>
+<div class="relative mb-5">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
+<input autocomplete="off" class="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-surface-1 border border-white/10 focus:border-pink-primary focus:ring-1 focus:ring-pink-primary text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none transition-colors" id="catalog-search" placeholder="Busca por modelo o producto: A36, iPhone 13, mica, audífonos…" type="text"/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-surface-3 border border-white/15 text-white text-sm leading-none items-center justify-center" id="catalog-search-clear" onclick="clearSearch()" title="Limpiar búsqueda" type="button">×</button>
+</div>
+<p class="hidden font-archivo text-xs text-text-muted mb-4" id="search-info"></p>
 <!-- Filtros de categorías estilo Pill Activos -->
 <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none" id="catalog-filters"></div>
 <!-- Catalog Grid (Cards con elevación y precio Unbounded) -->
@@ -408,6 +414,10 @@
 <!-- Tarjetas generadas por JS desde el inventario real -->
 </div>
 <p class="hidden font-archivo text-sm text-text-muted text-center py-8" id="catalog-empty">No hay productos en esta categoría por el momento.</p>
+<div class="hidden text-center mt-8" id="ver-mas-wrap">
+<p class="font-archivo text-xs text-text-muted mb-3" id="ver-mas-info"></p>
+<button class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface-2 hover:bg-surface-3 border border-pink-500/30 text-white font-unbounded text-xs sm:text-sm font-semibold transition-all" id="ver-mas-btn" onclick="showMore()" type="button"><span>Ver más productos</span><span class="material-symbols-outlined text-[18px]">expand_more</span></button>
+</div>
 </section>
 <!-- 5. MI CONSULTA DE MOSTRADOR / CONVERSIÓN WHATSAPP (#pedido) -->
 <section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20" id="pedido">
@@ -644,9 +654,9 @@
 </div>
 <!-- Interactivity Scripts: catálogo real Pink Case -->
 <script>
-    const PRODUCTS = [{"code": "f-01", "name": "Funda MagSafe translúcida ahumada", "line": "Para iPhone 13, 14 y 15", "sub": "Borde morado, aro magnético y acabado ahumado", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13, 14 y 15", "price": 350, "img": "assets/funda-01.jpg"}, {"code": "f-02", "name": "Funda tipo piel blanca hueso", "line": "Para iPhone 13, 14 y 15", "sub": "Aro MagSafe, tacto tipo piel", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13, 14 y 15", "price": 350, "img": "assets/funda-02.jpg"}, {"code": "f-03", "name": "Funda transparente tornasol SIMER", "line": "Para iPhone 13, 14 y 15", "sub": "Efecto arcoíris con aro MagSafe", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13, 14 y 15", "price": 300, "img": "assets/funda-03.jpg"}, {"code": "f-04", "name": "Fundas con anillo magnético en empaque", "line": "Para iPhone 13 y 15", "sub": "Varios diseños en tienda (foto del equipo con empaques SIMER)", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "13 y 15", "price": 300, "img": "assets/funda-04.jpg"}, {"code": "f-05", "name": "Funda acabado espejo con rositas", "line": "Para Motorola Moto G85", "sub": "Diseño HAPPY de rosas rosas y moradas", "cat": "fundas", "catLabel": "Fundas", "brand": "Motorola", "model": "Moto G85", "price": 300, "img": "assets/funda-05.jpg"}, {"code": "f-06", "name": "Funda transparente con cerezas", "line": "Para Samsung Galaxy A36", "sub": "Cerezas rojas y dije de corazón", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "Galaxy A36", "price": 300, "img": "assets/funda-06.jpg"}, {"code": "f-07", "name": "Funda tipo piel azul rey", "line": "Para Samsung S25 Ultra", "sub": "Aro magnético, color azul rey", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "S25 Ultra", "price": 350, "img": "assets/funda-07.jpg"}, {"code": "f-08", "name": "Funda translúcida degradado", "line": "Para iPhone 16", "sub": "Degradado blanco a negro con aro MagSafe", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "16", "price": 300, "img": "assets/funda-08.jpg"}, {"code": "f-09", "name": "Funda rosa mate KIMO", "line": "La más pedida", "sub": "Marco de cámara metálico morado", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "Galaxy A36", "price": 300, "img": "assets/funda-09.jpg"}, {"code": "f-10", "name": "Funda transparente aro MagSafe rosa", "line": "Para Samsung Galaxy S24", "sub": "Aro magnético rosa", "cat": "fundas", "catLabel": "Fundas", "brand": "Samsung", "model": "Galaxy S24", "price": 300, "img": "assets/funda-10.jpg"}, {"code": "f-11", "name": "Funda gris mate con aro MagSafe", "line": "Para iPhone 14", "sub": "Acabado mate, aro magnético", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "14", "price": 250, "img": "assets/funda-11.jpg"}, {"code": "f-12", "name": "Funda translúcida borde azul", "line": "Para iPhone 14 Pro", "sub": "Aro MagSafe, borde azul", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "14 Pro", "price": 300, "img": "assets/funda-12.jpg"}, {"code": "f-25", "name": "Funda transparente con florecitas", "line": "Para Honor X9b", "sub": "Florecitas rosas, cámara circular", "cat": "fundas", "catLabel": "Fundas", "brand": "Honor", "model": "X9b", "price": 300, "img": "assets/funda-25.jpg"}, {"code": "f-27", "name": "Funda transparente SIMER aro amarillo", "line": "Para iPhone 16e", "sub": "Aro MagSafe amarillo/verde", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "16e", "price": 250, "img": "assets/funda-27.jpg"}, {"code": "f-28", "name": "Funda transparente SIMER aro azul", "line": "Para iPhone 15", "sub": "Aro MagSafe azul", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "15", "price": 250, "img": "assets/funda-28.jpg"}, {"code": "f-29", "name": "Funda transparente SIMER aro negro", "line": "Para iPhone 15", "sub": "Aro MagSafe negro", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "15", "price": 250, "img": "assets/funda-29.jpg"}, {"code": "f-30", "name": "Funda transparente SIMER aro rosa", "line": "Para iPhone 15", "sub": "Aro MagSafe rosa", "cat": "fundas", "catLabel": "Fundas", "brand": "iPhone", "model": "15", "price": 250, "img": "assets/funda-30.jpg"}, {"code": "acuatica", "name": "Funda-bolsa impermeable KBOD", "line": "Para cualquier modelo", "sub": "Tornasol, con correa; protege del agua", "cat": "fundas", "catLabel": "Fundas", "brand": "KBOD", "model": "Bolsa impermeable universal", "price": 150, "img": "assets/accesorio-02.jpg"}, {"code": "mica-sencilla", "name": "Mica de cristal templado", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "La básica que nunca falla: protege de rayones y golpes leves", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 30, "img": "assets/mica-03.jpg"}, {"code": "mica-completa", "name": "Mica completa 9D", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Cristal full glue, cubre borde a borde", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 70, "img": "assets/mica-04.jpg"}, {"code": "mica-ceramica", "name": "Mica de cerámica mate 9D", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Flexible, anti-huellas, ideal para jugar", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 70, "img": "assets/mica-05.jpg"}, {"code": "mica-privacidad", "name": "Mica de cristal de privacidad 9D", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Anti-espía: nadie ve tu pantalla de lado", "cat": "micas", "catLabel": "Micas de Protección", "brand": "Universal", "model": "Según modelo del cliente", "price": 80, "img": "assets/mica-06.jpg"}, {"code": "mica-hidro-hd", "name": "Mica de hidrogel HD", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Se corta a la medida en el local, para cualquier modelo", "cat": "micas", "catLabel": "Micas de Protección", "brand": "DRAGON", "model": "Corte a la medida en el local", "price": 150, "img": "assets/hidrogel-01.jpg"}, {"code": "mica-hidro-priv", "name": "Mica de hidrogel privacidad", "line": "Instalación gratis · 1 cambio gratis en precio actual", "sub": "Hidrogel con filtro de privacidad, corte a la medida", "cat": "micas", "catLabel": "Micas de Protección", "brand": "DRAGON", "model": "Corte a la medida en el local", "price": 250, "img": "assets/hidrogel-01.jpg"}, {"code": "a-hora-azul", "name": "Audífonos TWS 1HORA azules", "line": "Bluetooth", "sub": "Estuche redondo; 17 h totales con estuche", "cat": "audifonos", "catLabel": "Audífonos", "brand": "1HORA", "model": "TWS estuche redondo (5 h / 17 h con estuche)", "price": 299, "img": "assets/audifonos-26.jpg"}, {"code": "a-corazon", "name": "Audífonos TWS FUTUREM FM-520", "line": "Bluetooth", "sub": "Estuche en forma de corazón rosa/dorado", "cat": "audifonos", "catLabel": "Audífonos", "brand": "FUTUREM", "model": "FM-520 (estuche corazón)", "price": 299, "img": "assets/audifonos-18.jpg"}, {"code": "a-consola", "name": "Audífonos TWS KT-01", "line": "Bluetooth", "sub": "Con funda estilo Nintendo Switch", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Genérica", "model": "KT-01 (funda tipo Nintendo Switch)", "price": 299, "img": "assets/audifonos-20.jpg"}, {"code": "a-j67", "name": "Audífonos TWS J67", "line": "Bluetooth", "sub": "Estuche tipo cámara retro con display de batería", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Genérica", "model": "J67 Stereo Earbuds", "price": 299, "img": "assets/audifonos-29.jpg"}, {"code": "a-hora-rosa", "name": "Audífonos TWS 1HORA rosas", "line": "Bluetooth", "sub": "Estuche redondo; 17 h totales con estuche", "cat": "audifonos", "catLabel": "Audífonos", "brand": "1HORA", "model": "TWS estuche redondo (5 h / 17 h con estuche)", "price": 299, "img": "assets/audifonos-37.jpg"}, {"code": "a-diadema-negra", "name": "Diadema 1HORA Deep Bass", "line": "Hasta 33 h de batería", "sub": "Negra, bajos profundos", "cat": "audifonos", "catLabel": "Audífonos", "brand": "1HORA", "model": "Diadema Deep Bass 33H", "price": 349, "img": "assets/audifonos-01.jpg"}, {"code": "a-diadema-rosa", "name": "Diadema rosa pastel", "line": "Bluetooth", "sub": "Detalles menta", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Genérica", "model": "Diadema rosa pastel (sin marca visible)", "price": 349, "img": "assets/audifonos-02.jpg"}, {"code": "a-diadema-luz", "name": "Diadema Samsung Level BT750", "line": "Luz RGB", "sub": "Blanca, Bluetooth con luz RGB", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Samsung", "model": "Level BT750 (luz RGB)", "price": 399, "img": "assets/audifonos-31.jpg"}, {"code": "a-diadema-led", "name": "Diadema Samsung Level", "line": "Luz LED", "sub": "Luz LED azul, Bluetooth", "cat": "audifonos", "catLabel": "Audífonos", "brand": "Samsung", "model": "Level (luz LED azul)", "price": 399, "img": "assets/audifonos-43.jpg"}, {"code": "bat-10000", "name": "Power bank 1HORA 10,000 mAh", "line": "Cables integrados", "sub": "Carga para todo el día", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank 10,000 mAh con cables integrados", "price": 299, "img": "assets/accesorio-31.jpg"}, {"code": "bat-20000", "name": "Power bank 1HORA 20,000 mAh", "line": "Cables integrados", "sub": "Negra y roja; para varios días", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank 20,000 mAh con cables integrados", "price": 449, "img": "assets/accesorio-10.jpg"}, {"code": "bat-20000-negra", "name": "Power bank 1HORA 20,000 mAh negra", "line": "Cables integrados", "sub": "Color negro; para varios días", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank 20,000 mAh con cables integrados", "price": 449, "img": "assets/accesorio-30.jpg"}, {"code": "bat-magnetica", "name": "Power bank magnética 1HORA 5,000 mAh", "line": "Tipo MagSafe", "sub": "Se pega a tu celular, sin cables", "cat": "baterias", "catLabel": "Baterías", "brand": "1HORA", "model": "Power bank magnética 5,000 mAh", "price": 349, "img": "assets/accesorio-29.jpg"}, {"code": "reloj", "name": "Reloj inteligente (kit)", "line": "Accesorio", "sub": "4 correas y cargador magnético", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "Genérica", "model": "Smartwatch kit con 4 correas", "price": 599, "img": "assets/accesorio-08.jpg"}, {"code": "consola-retro", "name": "Consola retro FURIOUS SU-8", "line": "Accesorio", "sub": "Con volante, para jugar en tu TV", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "FURIOUS", "model": "SU-8 (consola con volante)", "price": 499, "img": "assets/accesorio-24.jpg"}, {"code": "ser-display", "name": "Cambio de display", "line": "Servicio en el local", "sub": "Pregunta por el modelo de tu equipo", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "No aplica", "model": "Servicio", "price": 350, "img": "assets/servicio-display.jpg"}, {"code": "ser-vinculacion", "name": "Vinculación de línea / express", "line": "Servicio en el local", "sub": "Activa o vincula tu línea con nosotros", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "No aplica", "model": "Servicio", "price": 30, "img": "assets/servicio-vinculacion.jpg"}, {"code": "chip-telcel", "name": "Chip Express Telcel", "line": "Telcel", "sub": "Chip nuevo, actívalo en el local", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "Telcel", "model": "Chip Express", "price": 50, "img": "assets/servicio-chip.jpg"}, {"code": "decodificador", "name": "Decodificador", "line": "Para tu TV", "sub": "Con su control remoto", "cat": "servicios", "catLabel": "Servicios y Más", "brand": "Por confirmar", "model": "Decodificador", "price": 700, "img": "assets/servicio-decodificador.jpg"}];
+    let PRODUCTS = [];
     const byCode = {};
-    PRODUCTS.forEach(p => byCode[p.code] = p);
+    function setProducts(list) { PRODUCTS = list || []; PRODUCTS.forEach(p => byCode[p.code] = p); }
     const WA_NUMBER = "527121654968";
     const money = n => "$" + n.toLocaleString("es-MX");
 
@@ -687,18 +697,67 @@
       </div>`;
     }
 
+    let currentList = [];
+    let shownCount = 0;
+    const PAGE_SIZE = 24;
     function renderGrid(list) {
+      currentList = list;
+      shownCount = PAGE_SIZE;
+      paintGrid();
+    }
+    function paintGrid() {
       const grid = document.getElementById("product-grid");
-      grid.innerHTML = list.map(cardHTML).join("");
-      document.getElementById("catalog-empty").classList.toggle("hidden", list.length > 0);
+      grid.innerHTML = currentList.slice(0, shownCount).map(cardHTML).join("");
+      const emptyEl = document.getElementById("catalog-empty");
+      emptyEl.classList.toggle("hidden", currentList.length > 0);
+      if (!currentList.length) emptyEl.textContent = activeCat === "buscar" ? "Sin resultados para tu búsqueda. Prueba con el modelo (ej. A36, iPhone 13) o pregúntale a Isabel." : "No hay productos en esta categoría por el momento.";
+      const wrap = document.getElementById("ver-mas-wrap");
+      if (wrap) {
+        const quedan = currentList.length - shownCount;
+        wrap.classList.toggle("hidden", quedan <= 0);
+        const info = document.getElementById("ver-mas-info");
+        if (info) info.textContent = "Mostrando " + Math.min(shownCount, currentList.length) + " de " + currentList.length + " productos";
+      }
       refreshCardButtons();
     }
+    function showMore() { shownCount += PAGE_SIZE; paintGrid(); }
 
     function filterCatalog(cat) {
       activeCat = cat;
+      clearSearchUI();
       renderFilters();
       renderGrid(cat === "all" ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat));
     }
+
+    /* ---------- Buscador del catálogo ---------- */
+    function clearSearchUI() {
+      const input = document.getElementById("catalog-search");
+      if (input) input.value = "";
+      const info = document.getElementById("search-info");
+      if (info) info.classList.add("hidden");
+      const clearBtn = document.getElementById("catalog-search-clear");
+      if (clearBtn) { clearBtn.classList.add("hidden"); clearBtn.classList.remove("flex"); }
+    }
+    function normText(s) { return (s || "").toString().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+    function applySearch() {
+      const input = document.getElementById("catalog-search");
+      const q = (input?.value || "").trim();
+      const clearBtn = document.getElementById("catalog-search-clear");
+      if (clearBtn) { clearBtn.classList.toggle("hidden", !q); clearBtn.classList.toggle("flex", !!q); }
+      const info = document.getElementById("search-info");
+      if (!q) {
+        if (info) info.classList.add("hidden");
+        if (activeCat === "buscar") { activeCat = "all"; renderFilters(); renderGrid(PRODUCTS); }
+        return;
+      }
+      activeCat = "buscar";
+      renderFilters();
+      const tokens = normText(q).split(/\s+/).filter(Boolean);
+      const list = PRODUCTS.filter(p => { const hay = normText([p.name, p.brand, p.model, p.catLabel, p.line].join(" ")); return tokens.every(t => hay.includes(t)); });
+      if (info) { info.textContent = list.length + (list.length === 1 ? " resultado para “" : " resultados para “") + q + "”"; info.classList.remove("hidden"); }
+      renderGrid(list);
+    }
+    function clearSearch() { const input = document.getElementById("catalog-search"); if (input) input.value = ""; applySearch(); }
 
     /* ---------- Asesoría guiada ---------- */
     let currentBrand = "";
@@ -744,6 +803,7 @@
     function showSuggestions() {
       const list = matchFundas();
       activeCat = "sugeridas";
+      clearSearchUI();
       renderFilters();
       renderGrid(list);
       const headline = document.getElementById("suggestion-headline");
@@ -935,16 +995,25 @@
         });
       });
       document.getElementById("model-input")?.addEventListener("input", updateSuggestion);
+      document.getElementById("catalog-search")?.addEventListener("input", applySearch);
       document.getElementById("btn-show-suggestions")?.addEventListener("click", showSuggestions);
       document.getElementById("btn-reset-advisor")?.addEventListener("click", resetAdvisor);
 
-      const fromShared = loadFromHash();
-      renderFilters();
-      renderGrid(PRODUCTS);
-      renderModelChips();
-      updateSuggestion();
-      renderInquiry();
-      if (fromShared) setTimeout(() => document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }), 450);
+      const gridEl = document.getElementById("product-grid");
+      if (gridEl) gridEl.innerHTML = '<p class="col-span-full text-center font-archivo text-sm text-text-muted py-10">Cargando el catálogo…</p>';
+      fetch("productos.json", { cache: "no-cache" })
+        .then(r => { if (!r.ok) throw new Error("datos"); return r.json(); })
+        .then(data => { setProducts(data); startApp(); })
+        .catch(() => { if (gridEl) gridEl.innerHTML = '<p class="col-span-full text-center font-archivo text-sm text-text-muted py-10">No se pudo cargar el catálogo. Revisa tu conexión y recarga la página.</p>'; });
+      function startApp() {
+        const fromShared = loadFromHash();
+        renderFilters();
+        renderGrid(PRODUCTS);
+        renderModelChips();
+        updateSuggestion();
+        renderInquiry();
+        if (fromShared) setTimeout(() => document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }), 450);
+      }
     });
   </script>
 </body></html>
