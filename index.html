@@ -163,6 +163,15 @@
 </header>
 <!-- MAIN WRAPPER (Scroll Nativo Fluido) -->
 <main class="w-full pt-16 bg-cyber-dark">
+<div class="sticky top-16 z-40 bg-[#0a0608]/90 backdrop-blur-md border-b border-pink-500/15">
+<div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
+<input autocomplete="off" class="w-full pl-12 pr-12 py-3 rounded-2xl bg-surface-1 border border-white/10 focus:border-pink-primary focus:ring-1 focus:ring-pink-primary text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none transition-colors" id="catalog-search" placeholder="Busca tu modelo o producto: A36, iPhone 13, mica, audífonos…" type="text"/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-surface-3 border border-white/15 text-white text-sm leading-none items-center justify-center" id="catalog-search-clear" onclick="clearSearch()" title="Limpiar búsqueda" type="button">×</button>
+</div>
+</div>
+</div>
 <!-- 2. HERO SECTION -->
 <div class="relative w-full overflow-hidden">
 <!-- Glow ambient background -->
@@ -388,7 +397,7 @@
 </div>
 </div>
 </section>
-<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20" id="catalogo">
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-40" id="catalogo">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
 <div>
 <div class="flex items-center gap-2">
@@ -400,11 +409,6 @@
 <p class="font-archivo text-xs sm:text-sm text-text-muted max-w-md">
           Precios informativos para consulta rápida. Añade los artículos de tu interés a la lista para verificar disponibilidad al instante.
         </p>
-</div>
-<div class="relative mb-5">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
-<input autocomplete="off" class="w-full pl-12 pr-12 py-3.5 rounded-2xl bg-surface-1 border border-white/10 focus:border-pink-primary focus:ring-1 focus:ring-pink-primary text-white placeholder:text-text-muted/60 font-archivo text-sm focus:outline-none transition-colors" id="catalog-search" placeholder="Busca por modelo o producto: A36, iPhone 13, mica, audífonos…" type="text"/>
-<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-surface-3 border border-white/15 text-white text-sm leading-none items-center justify-center" id="catalog-search-clear" onclick="clearSearch()" title="Limpiar búsqueda" type="button">×</button>
 </div>
 <p class="hidden font-archivo text-xs text-text-muted mb-4" id="search-info"></p>
 <!-- Filtros de categorías estilo Pill Activos -->
@@ -739,9 +743,12 @@
       if (clearBtn) { clearBtn.classList.add("hidden"); clearBtn.classList.remove("flex"); }
     }
     function normText(s) { return (s || "").toString().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+    let lastQ = "";
     function applySearch() {
       const input = document.getElementById("catalog-search");
       const q = (input?.value || "").trim();
+      if (!lastQ && q) document.getElementById("catalogo")?.scrollIntoView({ behavior: "smooth" });
+      lastQ = q;
       const clearBtn = document.getElementById("catalog-search-clear");
       if (clearBtn) { clearBtn.classList.toggle("hidden", !q); clearBtn.classList.toggle("flex", !!q); }
       const info = document.getElementById("search-info");
@@ -757,7 +764,7 @@
       if (info) { info.textContent = list.length + (list.length === 1 ? " resultado para “" : " resultados para “") + q + "”"; info.classList.remove("hidden"); }
       renderGrid(list);
     }
-    function clearSearch() { const input = document.getElementById("catalog-search"); if (input) input.value = ""; applySearch(); }
+    function clearSearch() { const input = document.getElementById("catalog-search"); if (input) input.value = ""; lastQ = ""; applySearch(); }
 
     /* ---------- Asesoría guiada ---------- */
     let currentBrand = "";
