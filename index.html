@@ -8,7 +8,12 @@
 <meta content="Fundas, micas con seguro, audífonos y servicios para tu celular en el Centro de Ixtlahuaca. Arma tu lista y confirma existencias por WhatsApp." name="description"/>
 <meta content="Pink Case Móvil — Accesorios para tu celular, con asesoría cercana" property="og:title"/>
 <meta content="Catálogo de mostrador en Ixtlahuaca Centro: fundas por modelo, micas desde $30 con instalación gratis y 1 cambio gratis en precio actual." property="og:description"/>
-<meta content="assets/tienda-02.jpg" property="og:image"/>
+<meta content="https://pinkcasemovil.github.io/pink-case/assets/tienda-02.jpg" property="og:image"/>
+<meta content="https://pinkcasemovil.github.io/pink-case/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Pink Case Móvil — Accesorios para tu celular, con asesoría cercana" name="twitter:title"/>
+<meta content="Catálogo de mostrador en Ixtlahuaca Centro: fundas por modelo, micas desde $30 con instalación gratis y 1 cambio gratis en precio actual." name="twitter:description"/>
+<meta content="https://pinkcasemovil.github.io/pink-case/assets/tienda-02.jpg" name="twitter:image"/>
 <meta content="website" property="og:type"/>
 <!-- Fonts: Unbounded (Titulares & Precios) + Archivo (Lectura & Contenido) -->
 <style>
@@ -775,17 +780,17 @@
       if (inquiryItems.length === 0) { alert("Por favor añade al menos un producto a tu lista para consultar existencias."); return; }
       const model = document.getElementById("model-input")?.value || "No especificado";
       let total = 0;
-      let message = "¡Hola Pink Case Móvil! 👋 Quiero consultar disponibilidad en Ixtlahuaca Centro de estos artículos:\n\n";
-      message += `📱 Mi equipo: ${currentBrand} · ${model}\n`;
-      message += `🧾 Folio: ${folio || newFolio()}\n\n📋 Mi lista:\n`;
+      let message = "¡Hola Pink Case Móvil! Quiero consultar disponibilidad en Ixtlahuaca Centro de estos artículos:\n\n";
+      message += `• Mi equipo: ${currentBrand} · ${model}\n`;
+      message += `• Folio: ${folio || newFolio()}\n\nMi lista:\n`;
       inquiryItems.forEach((item, idx) => {
         const p = byCode[item.code];
         const sub = p.price * item.qty;
         total += sub;
         message += `${idx + 1}. ${p.name} (${p.line}) x${item.qty} — ${money(sub)}\n`;
       });
-      message += `\n💰 Total informativo: ${money(total)} MXN\n`;
-      message += `🔗 Mi lista: ${location.origin + location.pathname + shareHash()}\n`;
+      message += `\n★ Total informativo: ${money(total)} MXN\n`;
+      message += `Liga de mi lista: ${location.origin + location.pathname + shareHash()}\n`;
       message += "¿Los tienen en existencia para pasar a mostrador? ¡Gracias!";
       window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
     }
@@ -838,12 +843,14 @@
       document.getElementById("model-input")?.addEventListener("input", updateSuggestion);
       document.getElementById("btn-show-suggestions")?.addEventListener("click", showSuggestions);
 
-      if (!loadFromHash()) loadState();
+      const fromShared = loadFromHash();
+      if (!fromShared) loadState();
       renderFilters();
       renderGrid(PRODUCTS);
       renderModelChips();
       updateSuggestion();
       renderInquiry();
+      if (fromShared) setTimeout(() => document.getElementById("pedido")?.scrollIntoView({ behavior: "smooth" }), 450);
     });
   </script>
 </body></html>
