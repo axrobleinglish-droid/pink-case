@@ -67,3 +67,5 @@ assets/
 ## Editar el catálogo
 
 Los productos viven en los arreglos de JavaScript al final de `index.html`. Para agregar o cambiar un producto basta con editar su objeto (id, nombre, precio, imagen, compatibilidad) y recargar la página.
+
+<!-- despliegue: actualizacion de navegacion 2026-10-22 -->
