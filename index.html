@@ -539,12 +539,13 @@
       return `
       <div class="product-card group p-4 rounded-2xl bg-surface-1 hover:bg-surface-2 border border-pink-500/15 hover:border-pink-500/40 transition-all flex flex-col justify-between shadow-lg">
         <div>
-          <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-surface-3 mb-4">
+          <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-surface-3 mb-4 cursor-pointer" onclick="openProduct('${p.code}')" title="Ver producto">
             <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" alt="${p.name}" src="${p.img}"/>
             <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-cyber-dark/85 backdrop-blur-md border border-pink-500/20 text-pink-light font-archivo text-[11px] font-semibold">${p.catLabel}</span>
+            <span class="absolute bottom-2.5 right-2.5 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyber-dark/85 backdrop-blur-md border border-pink-500/30 text-white font-archivo text-[11px] font-semibold"><span class="material-symbols-outlined text-[14px]">zoom_in</span>Ver</span>
           </div>
           <span class="font-archivo text-xs ${p.cat === "micas" ? "text-emerald-400" : "text-pink-primary"} font-bold">${p.line}</span>
-          <h3 class="font-archivo font-bold text-base text-white mt-1 line-clamp-2">${p.name}</h3>
+          <h3 class="font-archivo font-bold text-base text-white mt-1 line-clamp-2 cursor-pointer hover:text-pink-light transition-colors" onclick="openProduct('${p.code}')">${p.name}</h3>
           <p class="font-archivo text-xs text-text-muted mt-1 line-clamp-2">${p.sub}</p>
         </div>
         <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
@@ -624,6 +625,43 @@
       renderGrid(list);
     }
     function clearSearch() { const input = document.getElementById("catalog-search"); if (input) input.value = ""; lastQ = ""; applySearch(); }
+
+    /* ---------- Vista de producto: detalle con zoom y galería (lista para más fotos) ---------- */
+    let pmCode = null, pmZoom = false;
+    function pmResetZoom() { pmZoom = false; const img = document.getElementById("pm-img"); if (img) { img.style.transform = ""; img.style.transformOrigin = "center center"; } const w = document.getElementById("pm-zoom-wrap"); if (w) { w.classList.add("cursor-zoom-in"); w.classList.remove("cursor-zoom-out"); } }
+    function openProduct(code) {
+      const p = byCode[code]; if (!p) return;
+      pmCode = code;
+      const imgs = (p.imgs && p.imgs.length) ? p.imgs : [p.img];
+      const img = document.getElementById("pm-img"); img.src = imgs[0]; img.alt = p.name;
+      const thumbs = document.getElementById("pm-thumbs");
+      thumbs.innerHTML = imgs.map((s, i) => `<button type="button" class="pm-thumb w-16 h-16 rounded-xl overflow-hidden border border-pink-500/25 ${i === 0 ? "ring-2 ring-pink-primary" : ""}" onclick="pmSetImg('${s}', this)"><img class="w-full h-full object-cover" loading="lazy" alt="" src="${s}"/></button>`).join("");
+      thumbs.classList.toggle("hidden", imgs.length < 2);
+      document.getElementById("pm-cat").textContent = p.catLabel;
+      document.getElementById("pm-name").textContent = p.name;
+      document.getElementById("pm-line").textContent = p.line || "";
+      document.getElementById("pm-sub").textContent = p.sub || "";
+      document.getElementById("pm-price").textContent = money(p.price);
+      const fb = Math.round(p.price * 0.8);
+      document.getElementById("pm-fb").innerHTML = 'Precio por Facebook: <strong class="text-white">' + money(fb) + '</strong> · te ahorras ' + money(p.price - fb);
+      const chips = [];
+      if (p.cat === "fundas") { const ms = (p.modelos && p.modelos.length) ? p.modelos : (p.model ? [p.model] : []); ms.forEach(m => chips.push(p.brand + " " + m)); }
+      else if (p.brand) { chips.push(p.brand + (p.model ? " " + p.model : "")); }
+      const mw = document.getElementById("pm-models-wrap");
+      document.getElementById("pm-models").innerHTML = chips.map(c => `<span class="px-2.5 py-1 rounded-full bg-surface-2 border border-pink-500/25 text-pink-light font-archivo text-[11px] font-semibold">${c}</span>`).join("");
+      mw.classList.toggle("hidden", chips.length === 0);
+      const addBtn = document.getElementById("pm-add"); addBtn.dataset.code = code;
+      document.getElementById("pm-wa").href = "https://wa.me/527121654968?text=" + encodeURIComponent("Hola, me interesa este producto: " + p.name + " (" + money(p.price) + "). ¿Sigue disponible?");
+      pmResetZoom();
+      document.getElementById("product-modal").classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+      refreshCardButtons();
+    }
+    function closeProduct() { const m = document.getElementById("product-modal"); if (m) m.classList.add("hidden"); document.body.style.overflow = ""; pmResetZoom(); }
+    function pmSetImg(src, btn) { const img = document.getElementById("pm-img"); if (img) img.src = src; pmResetZoom(); document.querySelectorAll(".pm-thumb").forEach(b => b.classList.toggle("ring-2", b === btn)); }
+    function pmToggleZoom(ev) { const img = document.getElementById("pm-img"); const w = document.getElementById("pm-zoom-wrap"); if (!img || !w) return; pmZoom = !pmZoom; img.style.transform = pmZoom ? "scale(2)" : ""; w.classList.toggle("cursor-zoom-out", pmZoom); w.classList.toggle("cursor-zoom-in", !pmZoom); if (pmZoom) pmMoveZoom(ev); }
+    function pmMoveZoom(ev) { if (!pmZoom || !ev || ev.clientX === undefined) return; const w = document.getElementById("pm-zoom-wrap"); const img = document.getElementById("pm-img"); if (!w || !img) return; const r = w.getBoundingClientRect(); const x = Math.min(100, Math.max(0, ((ev.clientX - r.left) / r.width) * 100)); const y = Math.min(100, Math.max(0, ((ev.clientY - r.top) / r.height) * 100)); img.style.transformOrigin = x + "% " + y + "%"; }
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeProduct(); });
 
     /* ---------- Asesoría guiada ---------- */
     let currentBrand = "";
@@ -880,4 +918,40 @@
       }
     });
   </script>
+<!-- Vista de producto -->
+<div class="hidden fixed inset-0 z-[60]" id="product-modal" role="dialog" aria-modal="true">
+<div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeProduct()"></div>
+<div class="absolute inset-x-0 bottom-0 top-10 sm:inset-6 lg:inset-y-10 lg:left-1/2 lg:-translate-x-1/2 lg:w-[880px] overflow-y-auto rounded-t-3xl sm:rounded-3xl bg-surface-1 border border-pink-500/25 shadow-2xl">
+<button class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-cyber-dark/85 backdrop-blur border border-white/20 text-white text-lg leading-none flex items-center justify-center" onclick="closeProduct()" title="Cerrar" type="button">×</button>
+<div class="grid md:grid-cols-2">
+<div class="p-4 sm:p-6">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-surface-3 cursor-zoom-in" id="pm-zoom-wrap" onclick="pmToggleZoom(event)" onmousemove="pmMoveZoom(event)">
+<img class="w-full h-full object-cover transition-transform duration-200" id="pm-img" alt=""/>
+<span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-cyber-dark/85 backdrop-blur-md border border-pink-500/30 text-white font-archivo text-[11px] font-semibold pointer-events-none">Toca la foto para acercar</span>
+</div>
+<div class="hidden flex gap-2 mt-3" id="pm-thumbs"></div>
+</div>
+<div class="p-4 sm:p-6 pt-0 md:pt-6 flex flex-col gap-3">
+<span class="font-archivo text-xs text-pink-primary font-bold uppercase tracking-wide" id="pm-cat"></span>
+<h3 class="font-unbounded text-xl sm:text-2xl font-bold text-white leading-snug" id="pm-name"></h3>
+<p class="font-archivo text-sm text-pink-light font-semibold" id="pm-line"></p>
+<p class="font-archivo text-sm text-text-muted leading-relaxed" id="pm-sub"></p>
+<div class="p-4 rounded-xl bg-surface-2 border border-pink-500/20">
+<span class="font-unbounded text-3xl text-white font-extrabold" id="pm-price"></span>
+<span class="block font-archivo text-[11px] text-text-muted mt-0.5">Precio en mostrador</span>
+<p class="font-archivo text-xs text-text-muted mt-2" id="pm-fb"></p>
+</div>
+<div id="pm-models-wrap">
+<span class="font-archivo text-xs text-text-muted font-semibold">Compatible con:</span>
+<div class="flex flex-wrap gap-1.5 mt-1.5" id="pm-models"></div>
+</div>
+<div class="flex flex-col sm:flex-row gap-2.5 mt-1">
+<button class="add-btn flex-1 px-4 py-3 rounded-xl bg-pink-primary/10 hover:bg-pink-primary border border-pink-500/30 text-pink-light hover:text-white transition-all flex items-center justify-center gap-1.5 font-unbounded text-xs font-semibold" data-code="" id="pm-add" onclick="if (pmCode) toggleInquiry(pmCode)" type="button"><span class="material-symbols-outlined text-[17px]">add_shopping_cart</span><span>+ Consulta</span></button>
+<a class="flex-1 px-4 py-3 rounded-xl bg-whatsapp hover:bg-[#20bd5a] text-[#0a0608] font-unbounded text-xs font-bold transition-all flex items-center justify-center gap-1.5" href="#" id="pm-wa" rel="noopener" target="_blank"><span class="material-symbols-outlined text-[17px]">chat</span><span>Preguntar por WhatsApp</span></a>
+</div>
+<p class="font-archivo text-[11px] text-text-muted">Precio de mostrador; confirma existencias y colores por WhatsApp antes de venir.</p>
+</div>
+</div>
+</div>
+</div>
 </body></html>
